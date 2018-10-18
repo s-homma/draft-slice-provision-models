@@ -27,12 +27,14 @@
 <!ENTITY I-D.draft-netslices-usecases SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-netslices-usecases-02.xml"> 
 <!ENTITY I-D.draft-qiang-coms-architecture SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-qiang-coms-architecture-00.xml">
 <!ENTITY I-D.draft-qiang-coms-netslicing-information-model SYSTEM "https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-qiang-coms-netslicing-information-model-01.xml">
+-->
 <!ENTITY I-D.draft-defoy-coms-subnet-interconnection SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-defoy-coms-subnet-interconnection-01.xml"> 
+<!--
 <!ENTITY I-D.draft-qiang-coms-netslicing-information-model SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-qiang-coms-netslicing-information-model-01.xml">
 <!ENTITY I-D.draft-ietf-spring-segment-routing-mpls SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-spring-segment-routing-mpls-11.xml">
 <!ENTITY I-D.draft-ietf-6man-segment-routing-header SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-6man-segment-routing-header-08.xml">
 -->
-
+<!ENTITY I-D.draft-homma-nfvrg-slice-gateway SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-homma-nfvrg-slice-gateway-00.xml">
 ]> 
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?> 
 <!-- used by XSLT processors --> 
@@ -285,20 +287,20 @@
           
           <t>
           (v)Interface
-            <list style="symboles">
+            <list style="symbols">
               <t>QoS setting (e.g., DSCP remarking, PIR/CIR)</t>
-              <t>Filtering</t>
+              <t>Filter setting</t>
             </list>
           </t>
           
           <t>
-          vRouter/vSwitch (#It is treated as a set of virtual/physical links and (v)interfaces.)
+          vRouter/vSwitch (# Treated as a set of virtual/physical links and (v)interfaces.)
           </t>
           
           <t>
           GateWay(GW) functionality
             <list style="symbols">
-              <t>Access Points (e.g., radio access, Wi-Fi access, fixed access)</t>
+              <t>Access Points (e.g., for radio, Wi-Fi, and fixed access)</t>
               <t>Authentication</t>
             </list>
           </t>
@@ -350,32 +352,34 @@
       
         <t>
         <xref target="Overview-NS-Structure"/> describes the overview of this structure. Access network, core network, and DC domains 
-        provide NS-subnets by combining network/server resources, and an E2E-NS is established by stitching these NS-subnets. 
+        provide NS-subnets by combining network/server resources, and an E2E-NS is established by stitching these NS-subnets. Ways to 
+        stitch NS-subnets are described in <xref target="I-D.defoy-coms-subnet-interconnection"/> and 
+        <xref target="I-D.homma-nfvrg-slice-gateway"/>. 
         </t>
 
 <figure anchor="Overview-NS-Structure" title="Overview of NS Structure">
   <artwork align="center"><![CDATA[
   
 
-   _____________________________________________
-  /                                            /
- /____________________________________________/
+   ___________________________________________
+  /                                          /
+ /__________________________________________/
                      E2E-NS
-      A              A               A
-      |              |               |
-   ____________   ___________   _______________
-  /           /  /          /  /              /
- /___________/  /__________/  /______________/
+      A              A              A
+      |              |              |
+   ____________   ___________   ______________
+  /           /  /          /  /             /
+ /___________/  /__________/  /_____________/
   NS-Subnet#1   NS-Subnet#2     NS-Subnet#3
-      A             A                A
-      |             |                |
+      A              A              A
+      |              |              |
 
-  o---o         [SF]               /---- SV
-     / `--,     /  `----,         /---- SV
- o---o-----o   o---------o   o---o---- SV
- NW Rsrc#1     NW Rsrc+SF      NW+SV Rsrc
-     A              A                A
-     |              |                |
+  o---o         [SF]               /----[SV]
+     / `--.     /  `----.         /----[SV]
+ o---o-----o   o---------o   o---o----[SV]
+ NW Rsrc#1     NW Rsrc+SF      NW+SV Rsrcs
+     A               A              A
+     |               |              |
 
  ,--------.     ,--------.    ,-----------.
 / Access   \   / Core     \  /             \
@@ -386,7 +390,8 @@
 *Legends
   o  : virtual/physical node structuring NS
   -- : virtual/physical link structuring NS
-  SV : Server on NS
+ [SF]: service function on NS
+ [SV]: server on NS
 
   ]]></artwork>
 </figure>
@@ -547,8 +552,10 @@
     &I-D.draft-ietf-spring-segment-routing-mpls;
     &I-D.draft-ietf-6man-segment-routing-header;
     &I-D.draft-ietf-sfc-hierarchical;
-    &I-D.draft-defoy-coms-subnet-interconnection;
 -->
+    &I-D.draft-defoy-coms-subnet-interconnection;
+    &I-D.draft-homma-nfvrg-slice-gateway;
+
       
        <reference anchor='TS.28.530-3GPP'  target="http://ftp.3gpp.org//Specs/archive/28_series/28.530/28530-100.zip">
         <front>
