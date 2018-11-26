@@ -119,13 +119,92 @@
           <city/>
           <region/>
           <code/>
-          <country/>
+          <country>Japan</country>
         </postal>
         <email>ta-miyasaka@kddi-research.jp</email>
       </address>
     </author>
 
-    <date day="19" month="October" year="2018"/>
+
+    <author fullname="Alex Galis" initials="A." surname="Galis">
+      <organization>University College London</organization>
+
+      <address>
+        <postal>
+          <street/>
+          <city/>
+          <region/>
+          <code/>
+          <country>UK</country>
+        </postal>
+        <email>a.galis@ucl.ac.uk</email>
+      </address>
+    </author>
+
+    <author fullname="Vishnu Ram" initials="V." surname="Ram">
+      <organization>Independent Research Consultant India</organization>
+
+      <address>
+        <postal>
+          <street/>
+          <city/>
+          <region/>
+          <code/>
+          <country>India</country>
+        </postal>
+        <email>vishnu.u@ieee.org</email>
+      </address>
+    </author>
+
+    <author fullname="Diego R. Lopez" initials="D." surname="Lopez">
+      <organization>Telefonica I+D</organization>
+
+      <address>
+        <postal>
+          <street/>
+          <city/>
+          <region/>
+          <code/>
+          <country>Spain</country>
+        </postal>
+        <email>diego.r.lopez@telefonica.com</email>
+      </address>
+    </author>
+
+
+    <author fullname="Luis M. Contreras" initials="L." surname="Contreras">
+      <organization>Telefonica</organization>
+
+      <address>
+        <postal>
+          <street/>
+          <city/>
+          <region/>
+          <code/>
+          <country>Spain</country>
+        </postal>
+        <email>luismiguel.contrerasmurillo@telefonica.com</email>
+      </address>
+    </author>
+
+    <author fullname="Jose Ordonez Lucena" initials="J." surname="Ordnez">
+      <organization>Telefonica</organization>
+
+      <address>
+        <postal>
+          <street/>
+          <city/>
+          <region/>
+          <code/>
+          <country>Spain</country>
+        </postal>
+        <email>joseantonio.ordonezlucena@telefonica.com</email>
+      </address>
+    </author>
+
+
+
+    <date day="7" month="December" year="2018"/>
 
     <area>IRTF</area>
 
@@ -137,8 +216,8 @@
       <t>
       Network slicing is an approach to provide separate virtual network based on service requirements. It's a 
       fundamental concept of the 5G and the architecture and specification is under standardization in several 
-      organizations. However, the definitions and scopes on network slicing are a bit vary by organization. This 
-      document provides classification of provisioning models of network slice for clarifying the differences 
+      organizations. However, the definitions and scopes of network slicing vary to some degree from one organization 
+      to another. This document provides classification of provisioning models of network slice for clarifying the differences 
       on the definitions and scopes.
       </t>
     </abstract>
@@ -155,7 +234,7 @@
       <t>
       In addition, network slicing is expected to enable a business model to provide dedicated networks to 3rd parties 
       on-demand, called NSaaS (Network Slice as a Service). For such usage, in network slicing, provision of networks 
-      which guarantee communication qualities from end to end would be required. However, the definitions are not authorized 
+      able to guarantee communication characteristics end to end would be required. However, the definitions are not harmonized 
       over several SDOs (Standards Developing Organizations).
       </t>
       
@@ -169,7 +248,7 @@
 
     <section title="Definition of Terms">
       <t>
-      This section lists definitions and terminologies related to network slicing. They refer ones of <xref target="TS.28.530-3GPP"/>
+      This section lists definitions and terms related to network slicing. They refer ones in <xref target="TS.28.530-3GPP"/>
       and <xref target="NGMN-5G-White-Paper"/>.
       </t>
       
@@ -189,7 +268,7 @@
       </t>
       
       <t hangText="Network Slice Subnet (NS-Subnet):">
-      An NS subnet is partially virtual network established within a single domain.
+      An NS subnet is a partially virtual network established within a single domain.
       </t>
       
       
@@ -212,7 +291,7 @@
       </t>
       
       <t hangText="Resource:">
-      A resource is element used to create virtual networks. There are several types of resources, i.e., 
+      A resource is an element used to create virtual networks. There are several types of resources, i.e., 
       connectivity, computing and storage. The details are described <xref target="NS-Rsrc"/>
       </t>
       
@@ -236,20 +315,20 @@
     
     <section title="General Requirements for Network Slicing">
       <t>
-      On network slice operation, capability of dynamic instantiation, change, and delete would be required because 
-      an NS is established based on received order from a tenant. From this aspect, some mechanism to design a network 
+      On network slice operations, capabilities for dynamic instantiation, change, and deletion should be required because 
+      an NS is established based on received orders from tenants. From this aspect, some mechanisms to design a network 
       based on service requirements and to convert concrete configurations based on the design would be required. 
       </t>
       
       <t>
-      In addition, each NS has to maintain definite communication quality from end to end, and resource reservations 
-      on data plane and isolation among NSs would be required. Isolation is a concept to prevent some reduction of 
-      communication quality caused by disturbance from another or other NSs, and it has some levels on the strength, 
+      In addition, each NS has to maintain concrete communication characteristics end to end, and resource reservations 
+      on data plane and isolation among NSs would be required. Isolation is a concept to prevent the reduction of 
+      communication quality caused by disturbance from other NSs, and it may have some levels of strength, 
       such as hard or soft isolations. 
       </t>
       
       <t>
-      The required promptness of slice operation and granularity of communication quality would vary depending on 
+      The required agility of slice operation and granularity of communication quality requested can vary depending on 
       provisioning model.
       </t>
 
@@ -257,13 +336,13 @@
 
     <section anchor="NS-Structure" title="Network Slice Structure">
       <t>
-      This section describes section describes resources used for structuring NSs and basic structure of E2E-NS.
+      This section describes resources used for structuring NSs and the basic structure of E2E-NS.
       </t>
 
       <section anchor="NS-Rsrc" title="Resources for Structuring Network Slices">
         <t>
-        A network slice is structured with combinations of the resources. Such resources are mainly categorized into 
-        three patterns: network, server functionality resources. Variations of each resources are described below. 
+        A network slice is structured as combinations of the resources it uses. Such resources are mainly categorized into 
+        three classes: network, server functionality resources. Variations of each resources are described below. 
         (Note that the lists are not exhaustive.)
         </t>
       
@@ -338,13 +417,13 @@
 
       <section anchor="Basic-NS-Structure" title="Basic Network Slice Structure">
         <t>
-        An E2E-NS is structured by stitching NS subnets instantiated on each domain. (In some case, a single NS subnet 
-        is treated as an E2E NS.) Domain types where some sub-NSs are established are described below:
+        An E2E-NS is constructed by stitching NS subnets instantiated on each participating domain. This includes the 
+        simplest case of a single NS subnet as an E2E NS. Domain types where some NS-subnets are established are described below:
         <list style="symbols">
-          <t>Fix access network</t>
+          <t>Fixed access network</t>
           <t>Mobile access network</t>
           <t>Transport network</t>
-          <t>Fix core network</t>
+          <t>Fixed core network</t>
           <t>Mobile core network</t>
           <t>Data center (DC)</t>
         </list>
@@ -400,9 +479,9 @@
       
       </section>
       
-      <section anchor="Players-on-NS" title="Players on Structuring Network Slices">
+      <section anchor="Players-on-NS" title="Stakeholders in the Structuring Network Slices">
         <t>
-        This sub-section describes players on structuring NSs. On a basic NS structure, an E2E-NS is established by either following players:
+        On a basic NS structure, an E2E-NS is established by either following Stakeholders:
         <list style="symbols">
           <t>One of NS-subnet providers</t>
           <t>Service provider (user of E2E-NS)</t>
@@ -411,7 +490,7 @@
         </t>
 
         <t>
-        Also, candidates of players on network slicing are described below:
+        Other potential stakeholders in network slicing are described below:
         <list style="hanging">
           <t hangText="NS-subnet provider:">
           infrastructure operator
@@ -430,16 +509,16 @@
       </section>
     </section>
 
-    <section anchor="NS-Types" title="Types of Network Slices on Provision to Tenants">
+    <section anchor="NS-Types" title="Types of Network Slices by their Provision to Tenants">
       <t>
-      The types of NSs on their provision are mainly categorized into two types: ready-made(RM) NS and custom-made(CM) NS. 
+      NSs can be classified according to their provision pattern into tow typpes: ready-made(RM) NS and custom-made(CM) NS. 
       This section describes the features of these types.
       </t>
       
       <section anchor="RM-NS" title="Ready-made Network Slice">
         <t>
-        An RM-NS is a NS which the infrastructure operator decides requirements and established based on them in advance. 
-        A tenant selects one of RM-NSs whose requirements are closer to its requrest. As examples of usages of RM-NSs, 
+        An RM-NS is a NS which the infrastructure operator decides requirements for, and established based on them in advance. 
+        A tenant selects one of RM-NSs whose features are closer to its requirements. As examples of usages of RM-NSs, 
         the following three types communication is advocated in 3GPP (Ref. <xref target="TS.28.530-3GPP"/>).
         <list style="hanging">
           <t hangText="URLLC (Ultra-Reliable and Low Latency Communication):">
@@ -449,7 +528,7 @@
           
           <t hangText="eMBB (enhanced Mobile BroadBand):">
           NS for eMBB provides high-capacity bandwidth communication, and it is expected to be used for services which consume 
-          enormous traffic such as VR/AR and high quality video streaming(e.g., 4K/8K).
+          high volumes of traffic such as VR/AR and high quality video streaming(e.g., 4K/8K).
           </t>
           
           <t hangText="mIoT (massive IoT):">
@@ -461,13 +540,13 @@
       
       <section anchor="CM-NS" title="Custom-made Network Slice">
         <t>
-        A CM-NS is a NS which is established based on an order from an external and provided to it. As examples of usage of CM-NS, 
-        an enterprise builds and operate a virtual network for connecting several bases, or OTT (Over The Top) or other industrial 
-        service providers use NSs as a part of their own services (e.g., connected vehicles/drones, online video games, or remote surgery). 
+        A CM-NS is a NS which is established based on an order from a tenant and provided to it. As examples of usage of CM-NS, 
+        an enterprise builds and operates a virtual network for connecting several bases, or OTT (Over The Top) or other industrial 
+        service providers can use NSs as a part of their own services (e.g., connected vehicles/drones, online video games, or remote surgery). 
         </t>
         
         <t>
-        In this model, network operation system would be required to have intelligence and orchestration function(s) to create the 
+        In this model, network operation system would be required to incorperate intelligence and orchestration function(s) to create the 
         appropriate network on-demand.
         </t>
       </section>
@@ -475,7 +554,7 @@
  
     <section anchor="NS-Provision-Model" title="Network Slice Provision Models">
       <t>
-      This section describes provision models of NSs on NSaaS.
+      Three provision models are defined:
       </t>
       
       <section title="Provision Models">
@@ -485,24 +564,24 @@
         <list style="hanging">
           <t hangText="SaaS-like Model:">
           In this model, an infrastructure operator designs NS templates in advance, and a tenant selects and uses one which fulfills 
-          most its requirement from the templates. The specifications of NSs are abstracted to KPI as networks and servers and shown 
+          most its requirement among the templates. The specifications of NSs are abstracted to KPIs as networks and servers and shown 
           to tenants. In short, detailed parameters of infrastructure network are hidden from tenant. RM-NS is categorized into this model.
           </t>
         
           <t hangText="PaaS-like Model:">
-          In this model, a tenant offers its request shown with connected area, KPIs, and included service functions, and infrastructure operators 
-          designs a template and instantiate an NS based on the request dynamically. The configurable values would vary depending on policy 
+          In this model, a tenant makes its request, including connected area, KPIs and included service functions, and infrastructure operator 
+          designs a template and instantiate an NS based on the request dynamically. The configurable values would vary depending on the policy 
           of each NS provider. 
           </t>
         
           <t hangText="IaaS-like Model:">
           In this model, a tenant designs and instantiates NSs by indicating concrete resources to infrastructure operators. In other words, 
-          infrastructure operators provide just their resources, and NSs are coordinated by tenant.
+          infrastructure operators provide just their resources, and NSs are coordinated by the tenant.
           </t>
         </list>
         </t>
         
-        <t>Note that, in some cases, an E2E-NS may be established by stitching different types of NS-subnets. </t>
+        <t>Note that, in some cases, NS-subnets which composing an E2E-NS may be provided with different provision models. </t>
       </section>
 
           
