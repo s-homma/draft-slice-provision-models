@@ -388,9 +388,6 @@
           Network address for connected devices
           </t>
         
-          <t>
-          DNS registration
-          </t>
         </list>
         </t>
       
@@ -406,12 +403,45 @@
       
         <t hangText="Functionality Resources:">
           <list style="symbols">
-          <t>Data Plane(DP) NF (e.g., Security appliance, DPI, etc.)</t>
-          <t>Control Plane(CP) NF (e.g., DHCP, DNS, or Authentication servers)</t>
-          </list>
-        </t>
+          <t>Data Plane(DP) NF:
+            <list style="symbols">
+            <t>Security Appriance:
+              <list style="symbols">
+                <t>IPS</t>
+                <t>IDS</t>
+                <t>WAF</t>
+              </list>
+              </t>
+            <t>DPI</t>
+            <t>TCP Accelerator</t>
+            <t>Video Optimizer</t>
+            <t>Parental Control</t>
+           </list>
+          </t>
+          <t>Control Plane(CP) NF:
+            <list style="symbols">
+              <t>DHCP
+                <list style="symbols">
+                  <t>Fixed IP address allocation</t>
+                  <t>Dynamic IP address allocation</t>
+                  <t>The number of registrated devices</t>
+               </list>
+              </t>
+              <t>Local DNS
+                <list style="symbols">
+                  <t>DNS Record</t>
+                </list>
+                </t>
+              <t>Authentication server</t>
+              <t>SBC</t>
+            </list>
+            </t>
         </list>
         </t>
+      </list>
+      </t>
+
+      <t># The above list are not exhostive, and more discussion would be needed.</t>
       </section>
       
 
