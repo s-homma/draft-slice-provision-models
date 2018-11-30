@@ -61,14 +61,14 @@
 <?rfc subcompact="no" ?> 
 <!-- keep one blank line between list items --> 
 <!-- end of list of popular I-D processing instructions --> 
-<rfc category="info" docName="draft-homma-nmrg-slice-provision-models-00">
+<rfc category="info" docName="draft-nmrg-slice-provision-models-00">
   <!-- ***** FRONT MATTER ***** --> 
 
 
 
 
   <front>
-    <title abbrev="draft-homma-nmrg-slice-provision-models">
+    <title abbrev="draft-homma-slice-provision-models">
     Network Slice Provision Models
     </title>
 
