@@ -255,31 +255,37 @@
       <t>
       <list style="hanging">
       <t hangText="Network Slicing:">
-      Network slicing is a technology or an approach to create separate virtual networks in support of 
+      Network slicing is a technology or an approach to create logical separate networks in support of 
       services, depending on several requirements, on the same physical resources. This is possible by 
       combinations of several network technologies.
       </t>
       
       <t hangText="Network Slice (NS):">
-      An NS is a virtual network established on network infrastructure. Some include additional network 
-      functions such as firewall or load-balancer in addition to basically forwarding functions such as 
-      switches or routers. It has an overlay architecture and is independent from the underlay network's 
-      topology.
-      </t>
-      
-      <t hangText="Network Slice Subnet (NS-Subnet):">
-      An NS subnet is a partially virtual network established within a single domain.
+      An NS is a general name of logical separate networks instantiated on a network infrastructure. It includes 
+      Network Slice Instance, Network Slice Subnet Instance, and End-to-End Network Slice Instance.
       </t>
       
       
-      <t hangText="End-to-End Network Slice (E2E-NS):">
-      An E2E-NS is a virtual network connecting between end points. E2E slices are composed of a single NS 
-      subnet or multiple NS subnets.
+      <t hangText="Network Slice Instance (NSI):">
+      An NSI is a logical network instantiated with network resources such as links, switches an routers, 
+      and some include additional network service functions such as firewall or load-balancer. It is composed of 
+      one or more Network Slice Subnet Instances. When it provides connectivity from end to end for end users, 
+      it is called End-to-End Network Slice Instance. An NSI has an overlay architecture and is independent of 
+      the underlay network's topology.
+      </t>
+      
+      <t hangText="Network Slice Subnet Instance (NSSI):">
+      An NSSI is a partially virtual network instantiated within a single domain.
+      </t>
+      
+      
+      <t hangText="End-to-End Network Slice Instance (E2E-NSI):">
+      An E2E-NS is a virtual network connecting among end points. It is composed of one or multiple NSSIs.
       </t>
       
       <t hangText="Network Slice as a Service (NSaaS):">
-      An NSaaS is a NS distribution model in which a third-party provider hosts NSs and makes them available 
-      to customers.
+      An NSaaS is a NS distribution model in which a third-party provider or a vertical customer hosts NSIs 
+      and makes them available to customers.
       </t>
       
       <t hangText="Network Slice Tenant (NS Tenant):">
@@ -379,7 +385,7 @@
           <t>
           GateWay(GW) functionality
             <list style="symbols">
-              <t>Access Points (e.g., for radio, Wi-Fi, and fixed access)</t>
+              <t>Access Points Type (e.g., for radio, Wi-Fi, and fixed access)</t>
               <t>Authentication</t>
             </list>
           </t>
@@ -430,6 +436,15 @@
                 </t>
               <t>Authentication server</t>
               <t>SBC</t>
+              <t>5G Mobility Management Functions
+                <list style="symbols">
+                  <t>AMF(Access and Mobility management Function)</t>
+                  <t>SMF(Session Management Function)</t>
+                  <t>PCF(Policy Control Function)</t>
+                  <t>UDM(Unified Data Management)</t>
+                  <t>NEF(Network Exposure Function)</t>
+                </list>
+              </T>
             </list>
             </t>
         </list>
