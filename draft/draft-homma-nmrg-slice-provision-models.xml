@@ -287,11 +287,44 @@
       An NSaaS is a NS distribution model in which a third-party provider or a vertical customer hosts NSIs 
       and makes them available to customers.
       </t>
-      
+
+      <t hangText="Infrastructure Operator:">
+      An infrastructure operator is an organization who manages infrastructure networks for running NSIs.
+      </t>
+
+      <t hangText="Vertical Customer:">
+      A vertical customer is a service provider providing some communication services with using NSIs on NSaaS model.
+      For example, video gaming companies or vehicle vendors will possibly be vertical customers on NSaaS.
+      </t>
+
+      <t hangText="Network Slice Provider (NS Provider):">
+      An NS provider is a person or group that designs and instantiates one or more NSIs, and provides them to 
+      NS tenants. In some cases, an NS provider is an infrastructure operator simultaneously.
+      </t>
+
       <t hangText="Network Slice Tenant (NS Tenant):">
       An NS tenant is a person or group that rents and occupies NSs from NS providers.
       </t>
-      
+
+      <t hangText="Network Slice Type (NS Type):">
+      An NS type is a definition identifying characters on a NS. NS types can be defined by each NS provider. As examples, 
+      <xref="TS.28.530-3GPP"/> describes three NS types: URLLC, eMBB, and mIoT.
+      </t>
+
+      <t hangText="URLLC (Ultra-Reliable and Low Latency Communication):">
+      NS for URLLC provides low-latency and High reliable communication, and it is expected to be used for services which 
+      require real-time control such as connected vehicles.
+      </t>
+          
+      <t hangText="eMBB (enhanced Mobile BroadBand):">
+      An NS for eMBB provides high-capacity bandwidth communication, and it is expected to be used for services which consume 
+      high volumes of traffic such as VR/AR and high quality video streaming(e.g., 4K/8K).
+      </t>
+          
+      <t hangText="mIoT (massive IoT):">
+      mIoT NS provides connectivity for massive number of IoT devices such as smart meters.
+      </t>
+
       <t hangText="Domain:">
       A domain is a group of a network and devices administrated as a unit with common rules and procedures.
       </t>
@@ -363,10 +396,9 @@
               <t>Connected area/end points</t>
               <t>Forwarding route/path (e.g., for traffic engineering, redundancy)</t>
               <t>Priority (e.g., QoS class)</t>
-              <t>Session capacity (e.g., the number of connectable devices)</t>
               <t>Multicast support</t>
-              <t>Metadata conveyance</t>
-              <t>Protocol of virtual link</t>
+              <t>Metadata conveyance (e.g., subscriber ID)</t>
+              <t>Protocol of slice data plane</t>
             </list>
           </t>
           
@@ -436,7 +468,7 @@
                 </t>
               <t>Authentication server</t>
               <t>SBC</t>
-              <t>5G Mobility Management Functions
+              <t>Mobility Management Functionalities (in 5G)
                 <list style="symbols">
                   <t>AMF(Access and Mobility management Function)</t>
                   <t>SMF(Session Management Function)</t>
@@ -453,6 +485,7 @@
       </t>
 
       <t># The above list are not exhostive, and more discussion would be needed.</t>
+      <t># 
       </section>
       
 
@@ -558,9 +591,15 @@
       
       <section anchor="RM-NS" title="Ready-made Network Slice">
         <t>
-        An RM-NS is a NS which the infrastructure operator decides requirements for, and established based on them in advance. 
+        An RM-NS is a NS which the infrastructure operator decides requirements for assumed services, and established based on them in advance. 
         A tenant selects one of RM-NSs whose features are closer to its requirements. As examples of usages of RM-NSs, 
         the following three types communication is advocated in 3GPP (Ref. <xref target="TS.28.530-3GPP"/>).
+        <list style="symbols">
+        <t>URLLC</t>
+        <t>eMBB</t>
+        <t>mIoT</t>
+        </list>
+<!--
         <list style="hanging">
           <t hangText="URLLC (Ultra-Reliable and Low Latency Communication):">
           NS for URLLC provides low-latency and High reliable communication, and it is expected to be used for services which 
@@ -576,6 +615,7 @@
           mIoT NS provides connectivity for massive number of IoT devices such as smart meters.
           </t>
         </list>
+-->
         </t>
       </section>
       
@@ -587,8 +627,8 @@
         </t>
         
         <t>
-        In this model, network operation system would be required to incorperate intelligence and orchestration function(s) to create the 
-        appropriate network on-demand.
+        In this model, network operation system would be required to incorperate intelligence into orchestration function(s) for designing 
+        appropriate networks on-demand.
         </t>
       </section>
     </section>
