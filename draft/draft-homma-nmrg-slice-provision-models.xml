@@ -309,7 +309,7 @@
 
       <t hangText="Network Slice Type (NS Type):">
       An NS type is a definition identifying characters or attributes on a NS. NS types can be defined by each NS provider. 
-      As examples, <xref="TS.28.530-3GPP"/> describes three NS types: URLLC, eMBB, and mIoT.
+      As examples, <xref target="TS.28.530-3GPP"/> describes three NS types: URLLC, eMBB, and mIoT.
       </t>
 
       <t hangText="URLLC (Ultra-Reliable and Low Latency Communication):">
