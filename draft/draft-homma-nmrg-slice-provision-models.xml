@@ -248,8 +248,8 @@
 
     <section title="Definition of Terms">
       <t>
-      This section lists definitions and terms related to network slicing. They refer ones in <xref target="TS.28.530-3GPP"/>
-      and <xref target="NGMN-5G-White-Paper"/>.
+      This section lists definitions and terms related to network slicing. They refer ones in <xref target="TS.28.530-3GPP"/>, 
+      <xref target="TS.28.801-3GPP"/>, and <xref target="NGMN-5G-White-Paper"/>.
       </t>
       
       <t>
@@ -298,17 +298,18 @@
       </t>
 
       <t hangText="Network Slice Provider (NS Provider):">
-      An NS provider is a person or group that designs and instantiates one or more NSIs, and provides them to 
-      NS tenants. In some cases, an NS provider is an infrastructure operator simultaneously.
+      An NS provider is a person or group that designs and instantiates one or more NSIs/NSSIs, and provides them to 
+      NS tenants. In some cases, an NS provider is an infrastructure operator simultaneously. This includes NSI, NSSI, and 
+      E2E-NSI providers.
       </t>
 
       <t hangText="Network Slice Tenant (NS Tenant):">
-      An NS tenant is a person or group that rents and occupies NSs from NS providers.
+      An NS tenant is a person or group that rents and occupies NSIs from NS providers.
       </t>
 
       <t hangText="Network Slice Type (NS Type):">
-      An NS type is a definition identifying characters on a NS. NS types can be defined by each NS provider. As examples, 
-      <xref="TS.28.530-3GPP"/> describes three NS types: URLLC, eMBB, and mIoT.
+      An NS type is a definition identifying characters or attributes on a NS. NS types can be defined by each NS provider. 
+      As examples, <xref="TS.28.530-3GPP"/> describes three NS types: URLLC, eMBB, and mIoT.
       </t>
 
       <t hangText="URLLC (Ultra-Reliable and Low Latency Communication):">
@@ -326,7 +327,7 @@
       </t>
 
       <t hangText="Domain:">
-      A domain is a group of a network and devices administrated as a unit with common rules and procedures.
+      A domain is a group of a network and devices administrated under a policy-based common set of rules and procedures.
       </t>
       
       <t hangText="Resource:">
@@ -390,7 +391,7 @@
           <t hangText="Network(WAN) Resources:">
           <list style="symbols">
           <t>
-          (v)Link:
+          (v)Link/connectivity:
             <list style="symbols">
               <t>Bandwidth per link/session</t>
               <t>Connected area/end points</t>
@@ -401,7 +402,10 @@
               <t>Protocol of slice data plane:
                 <list style="symbols">
                   <t>VLAN</t>
-                  <t>PPP</t>
+                  <t>IPoE (IPv4 or IPv6)</t>
+                  <t>MAP-E</t>
+                  <t>DS-Lite</t>
+                  <t>PPPoE</t>
                   <t>L2TP</t>
                   <t>GRE</t>
                   <t>MPLS</t>
@@ -409,6 +413,7 @@
                   <t>GTP-U</t>
                   <t>Segment Routing MPLS</t>
                   <t>Segment Routing IPv6</t>
+                  <t>Other</t>
                 </list>
               </t>
             </list>
@@ -472,6 +477,7 @@
               </list>
               </t>
             <t>DPI</t>
+            <t>Load Balancer</t>
             <t>TCP Accelerator</t>
             <t>Video Optimizer</t>
             <t>Parental Control</t>
@@ -490,13 +496,13 @@
               <t>VoIP (SBC, SIP server)</t>
               <t>Mobility Management Functionalities (referring 3GPP 5GS)
                 <list style="symbols">
-                  <t>AMF(Access and Mobility management Function)</t>
-                  <t>SMF(Session Management Function)</t>
-                  <t>PCF(Policy Control Function)</t>
-                  <t>UDM(Unified Data Management)</t>
-                  <t>NEF(Network Exposure Function)</t>
+                  <t>AMF (Access and Mobility management Function)</t>
+                  <t>SMF (Session Management Function)</t>
+                  <t>PCF (Policy Control Function)</t>
+                  <t>UDM (Unified Data Management)</t>
+                  <t>NEF (Network Exposure Function)</t>
                 </list>
-              </T>
+              </t>
             </list>
             </t>
         </list>
@@ -504,7 +510,10 @@
       </list>
       </t>
 
-      <t>In terms of slice provisioning, .</t>
+      <t>
+      In terms of security or usability for NS tenants, some abstraction on resource information would be required, 
+      however both low infrastructure and abstracted information may coexist in these lists.
+      </t>
       </section>
       
 
@@ -524,7 +533,7 @@
       
         <t>
         <xref target="Overview-NS-Structure"/> describes the overview of this structure. Access network, core network, and DC domains 
-        provide NS-subnets by combining network/server resources, and an E2E-NS is established by stitching these NS-subnets. Ways to 
+        provide NSSIs by combining resources, and an NSI and an E2E-NSI is established by stitching these NSSIs. Ways to 
         stitch NS-subnets are described in <xref target="I-D.defoy-coms-subnet-interconnection"/> and 
         <xref target="I-D.homma-nfvrg-slice-gateway"/>. 
         </t>
@@ -539,6 +548,7 @@
                     E2E-NSI
       A              A              A
       |              |              |
+
    ____________   ___________   ______________
   /           /  /          /  /             /
  /___________/  /__________/  /_____________/
@@ -548,7 +558,7 @@
 
   o---o         [SF]               /----[SV]
      / `--.     /  `----.         /----[SV]
- o---o-----o   o---------o   o---o----[SV]
+ o---o-----o...o---------o...o---o----[SV]
  NW Rsrc#1     NW Rsrc+SF      NW+SV Rsrcs
      A               A              A
      |               |              |
@@ -569,33 +579,72 @@
 </figure>
     
 
-      
+      <t>
+      Althoug it is shown that an NSSI belongs to just only one E2E-NSI in <xref target="Overview-NS-Structure"/>, it may be allowed that 
+      multple E2E-NSIs share an NSSI. Some resouces may belong to multiple NSSI as well.
+      </t>
+
+      <t>
+      In addition, structure on composition of NSI may be recursive. In other words, even though <xref target="Overview-NS-Structure"/> 
+      shows a case where NSSIs compose directly an E2E-NSI, in some cases, NSSIs compose an NSI which is a part of an E2E-NSI. Such NSI is called 
+      middle-NSI in this document. The overview is shown in <xref target="NS-Recursive"/>.
+      </t>
+
+<figure anchor="NS-Recursive" title="Overview of NS recursive structure">
+  <artwork align="center"><![CDATA[
+  
+   ___________________________________________
+  /                                          /
+ /__________________________________________/
+                    E2E-NSI
+      A              A              A
+      |              |              |
+   ___________________________      |
+  /                          /      |
+ /__________________________/       |
+         Middle-NSI#4               |
+      A              A              |
+      |              |              |
+   ____________   ___________   _____________
+  /           /  /          /  /            /
+ /___________/  /__________/  /____________/
+    NSSI#1         NSSI#2         NSSI#3
+
+  ]]></artwork>
+</figure>
+
       </section>
       
-      <section anchor="Players-on-NS" title="Stakeholders in the Structuring Network Slices">
+      <section anchor="Stakeholders-on-NS" title="Stakeholders in the Structuring Network Slices">
         <t>
-        On a basic NS structure, an E2E-NS is established by either following Stakeholders:
+        On a basic NS structure, an E2E-NSI is established based on order of either following Stakeholders:
         <list style="symbols">
-          <t>One of NS-subnet providers</t>
-          <t>Service provider (user of E2E-NS)</t>
-          <t>Others (e.g., external coordinator)</t>
+          <t>One of NSSI providers</t>
+          <t>E2E-NSI provider</t>
+          <t>Others (e.g., external coordinator or broker)</t>
         </list>
         </t>
 
         <t>
         Other potential stakeholders in network slicing are described below:
         <list style="hanging">
-          <t hangText="NS-subnet provider:">
+          <t hangText="NSSI provider:">
           infrastructure operator
           </t>
-          <t hangText="E2E-NS provider:">
-          infrastructure operator, coordinator
+          
+          <t hangText="Middle-NSI provider">
+          infrastructure operator, coordinator/broker
           </t>
+
+          <t hangText="E2E-NSI provider:">
+          infrastructure operator, coordinator/broker, service provider
+          </t>
+
           <t hangText="NS tenant:">
-          infrastructure operator, service provider, enterprise, mass user
+          infrastructure operator, coordinator/broker, service provider, enterprise, mass user
           </t>
           <t hangText="End customer:">
-          enterprise, mass user
+          enterprise, mass user, etc.
           </t>
         </list>
         </t>
@@ -671,17 +720,20 @@
           <t hangText="PaaS-like Model:">
           In this model, a tenant makes its request, including connected area, KPIs and included service functions, and infrastructure operator 
           designs a template and instantiate an NS based on the request dynamically. The configurable values would vary depending on the policy 
-          of each NS provider. 
+          of each NS provider. CM-NS is categorized into this model.
           </t>
         
           <t hangText="IaaS-like Model:">
           In this model, a tenant designs and instantiates NSs by indicating concrete resources to infrastructure operators. In other words, 
-          infrastructure operators provide just their resources, and NSs are coordinated by the tenant.
+          infrastructure operators provide just their resources, and NSs are coordinated by the tenant. CM-NS is categorized into this model.
           </t>
         </list>
         </t>
         
-        <t>Note that, in some cases, NS-subnets which composing an E2E-NS may be provided with different provision models. </t>
+        <t>
+        Note that, in case that each NSSI is provided by different infrastructure provider, provision models on each NSSI composing an E2E-NSI 
+        may be different. 
+        </t>
       </section>
 
           
@@ -693,8 +745,8 @@
 
     <section title="Security Considerations">
       <t>
-      In IaaS-like model on NS provisioning, some mechanisms, such as authentication for APIs, to prevent illegal access to infrastructure 
-      would be required.
+      In NSaaS, parts of controls of infrastructures are opened to externals, and thus some mechanisms, such as authentication for APIs, to 
+      prevent illegal access would be required.
       </t>
     
       <t>Other considerations are TBD</t>
@@ -708,7 +760,7 @@
     
     <section title="Acknowledgement">
       <t>
-      The author would like to thank Toru Okugawa for her kind review and valuable feedback.
+      The author would like to thank Toru Okugawa for his kind review and valuable feedback.
       </t>
     </section>
     
@@ -760,6 +812,18 @@
         </front>
       </reference>
 
+       <reference anchor='TS.28.801-3GPP'  target="http://www.3gpp.org/ftp//Specs/archive/28_series/28.801/28801-f10.zip">
+        <front>
+        <title>3GPP TS 28.801 (V15.1.0): Study on Management and Orchestration of Network Slicing,
+        </title>
+        <author>
+        <organization>
+        3rd Generation Partnership Project (3GPP)
+        </organization>
+        </author>
+        <date month="June" year="2018"/>
+        </front>
+      </reference>
     </references>
 
 
