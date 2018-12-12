@@ -289,7 +289,7 @@
       </t>
 
       <t hangText="Infrastructure Operator:">
-      An infrastructure operator is an organization who manages infrastructure networks for running NSIs.
+      An infrastructure operator is an organization who manages infrastructure networks or data centers for running NSIs.
       </t>
 
       <t hangText="Vertical Customer:">
@@ -381,24 +381,36 @@
       <section anchor="NS-Rsrc" title="Resources for Structuring Network Slices">
         <t>
         A network slice is structured as combinations of the resources it uses. Such resources are mainly categorized into 
-        three classes: network, server functionality resources. Variations of each resources are described below. 
+        three classes: network/WAN, server/NFVI, and functionality resources. Variations of each resources are described below. 
         (Note that the lists are not exhaustive.)
         </t>
       
         <t>
         <list style="hanging">
-          <t hangText="Network Resources:">
+          <t hangText="Network(WAN) Resources:">
           <list style="symbols">
           <t>
-          Virtual/physical links:
+          (v)Link:
             <list style="symbols">
               <t>Bandwidth per link/session</t>
               <t>Connected area/end points</t>
               <t>Forwarding route/path (e.g., for traffic engineering, redundancy)</t>
-              <t>Priority (e.g., QoS class)</t>
+              <t>Communication Priority (e.g., QoS class)</t>
               <t>Multicast support</t>
               <t>Metadata conveyance (e.g., subscriber ID)</t>
-              <t>Protocol of slice data plane</t>
+              <t>Protocol of slice data plane:
+                <list style="symbols">
+                  <t>VLAN</t>
+                  <t>PPP</t>
+                  <t>L2TP</t>
+                  <t>GRE</t>
+                  <t>MPLS</t>
+                  <t>VxLAN</t>
+                  <t>GTP-U</t>
+                  <t>Segment Routing MPLS</t>
+                  <t>Segment Routing IPv6</t>
+                </list>
+              </t>
             </list>
           </t>
           
@@ -414,24 +426,28 @@
           vRouter/vSwitch (# Treated as a set of virtual/physical links and (v)interfaces.)
           </t>
           
-          <t>
-          GateWay(GW) functionality
-            <list style="symbols">
-              <t>Access Points Type (e.g., for radio, Wi-Fi, and fixed access)</t>
-              <t>Authentication</t>
-            </list>
-          </t>
+
         
         </list>
         </t>
       
-        <t hangText="Server(computing) Resources:">
+        <t hangText="Server(NFVI) Resources:">
           <list style="symbols">
           <t>(v)CPU core</t>
           <t>Storage</t>
           <t>Memory</t>
-          <t>VNF Infrastructure</t>
-          <t>VNF location</t>
+          <t>VPC Network</t>
+          <t>Image</t>
+          <t>Library</t>
+          <t>VNF Type
+            <list style="symbols">
+            <t>VM</t>
+            <t>container</t>
+            <t>micro kernel</t>
+            </list>
+          </t>
+          <t>VNF Infrastructure Type (e.g., open source, product of vender#A, etc.)</t>
+          <t>VNF location (i.e., data center where the VNF deployed)</t>
           </list>
         </t>
       
@@ -439,11 +455,20 @@
           <list style="symbols">
           <t>Data Plane(DP) NF:
             <list style="symbols">
-            <t>Security Appriance:
+              <t>
+              GateWay(GW) function:
+                <list style="symbols">
+                  <t>Access Point Type (e.g., for radio, Wi-Fi, and fixed accesses)</t>
+                  <t>Slice Selection Setting</t>
+                  <t>Terminate protocol</t>
+                  <t>Authentication</t>
+                </list>
+              </t>
+              <t>Security Appliance:
               <list style="symbols">
-                <t>IPS</t>
-                <t>IDS</t>
-                <t>WAF</t>
+                <t>IPS (Intrusion Prevention System)</t>
+                <t>IDS (Intrusion Detection System)</t>
+                <t>WAF (Web Application Firewall)</t>
               </list>
               </t>
             <t>DPI</t>
@@ -461,14 +486,9 @@
                   <t>The number of registrated devices</t>
                </list>
               </t>
-              <t>Local DNS
-                <list style="symbols">
-                  <t>DNS Record</t>
-                </list>
-                </t>
-              <t>Authentication server</t>
-              <t>SBC</t>
-              <t>Mobility Management Functionalities (in 5G)
+              <t>DNS</t>
+              <t>VoIP (SBC, SIP server)</t>
+              <t>Mobility Management Functionalities (referring 3GPP 5GS)
                 <list style="symbols">
                   <t>AMF(Access and Mobility management Function)</t>
                   <t>SMF(Session Management Function)</t>
@@ -484,8 +504,7 @@
       </list>
       </t>
 
-      <t># The above list are not exhostive, and more discussion would be needed.</t>
-      <t># 
+      <t>In terms of slice provisioning, .</t>
       </section>
       
 
@@ -517,13 +536,13 @@
    ___________________________________________
   /                                          /
  /__________________________________________/
-                     E2E-NS
+                    E2E-NSI
       A              A              A
       |              |              |
    ____________   ___________   ______________
   /           /  /          /  /             /
  /___________/  /__________/  /_____________/
-  NS-Subnet#1   NS-Subnet#2     NS-Subnet#3
+    NSSI#1         NSSI#2         NSSI#3
       A              A              A
       |              |              |
 
