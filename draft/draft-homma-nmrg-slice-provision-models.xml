@@ -678,9 +678,9 @@
       </section>
     </section>
 
-    <section anchor="NS-Types" title="Variations of Network Slice Types">
+    <section anchor="NS-Creation-Variations" title="Variations of Network Slice Creation">
       <t>
-      NSs can be classified according to their provision pattern into tow types: ready-made(RM) NS and custom-made(CM) NS. 
+      NSs can be classified according to their creation pattern into two types: ready-made(RM) NS and custom-made(CM) NS. 
       This section describes the features of these types.
       </t>
       
