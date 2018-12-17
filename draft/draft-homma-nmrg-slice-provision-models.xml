@@ -542,7 +542,7 @@
               <t>Edge DC</t>
               <t>Central DC</t>
             </list>
-          <t>
+          </t>
           <t>Private network
             <list style="symbols">
               <t>Enterprise</t>
@@ -550,9 +550,9 @@
               <t>Utilities</t>
               <t>Farming</t>
               <t>Home/SOHO</t>
-              </t>Other</t>
+              <t>Other</t>
             </list>
-          <t>
+          </t>
         </list>
         </t>
 
@@ -837,7 +837,7 @@
     
     <section title="Acknowledgement">
       <t>
-      The author would like to thank Toru Okugawa for his kind review and valuable feedback.
+      The author would like to thank Toru Okugawa and  Laurent Ciavaglia for their kind review and valuable feedback.
       </t>
     </section>
     
