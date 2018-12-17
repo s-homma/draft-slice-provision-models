@@ -61,7 +61,7 @@
 <?rfc subcompact="no" ?> 
 <!-- keep one blank line between list items --> 
 <!-- end of list of popular I-D processing instructions --> 
-<rfc category="info" docName="draft-nmrg-slice-provision-models-00">
+<rfc category="info" docName="draft-homma-slice-provision-models-00">
   <!-- ***** FRONT MATTER ***** --> 
 
 
@@ -767,8 +767,8 @@
 <figure anchor="Mapping-NS-Provision-Model" title="Mapping of NS provision models">
   <artwork align="center"><![CDATA[
 
-                                     manage
-              [NS Tenant] ---------------------------------+
+                                         manage
+                    [NS Tenant] ---------------------------+
                                                            |
                                                            |
 . . . . . . . . . . . . . . . . . . . . . . . .            |
@@ -777,10 +777,11 @@
  .------.                           (    )-.               |
 | Area#A |<==== Connectivity ====> .' [APL] '     SaaS-like|
  `------' [BW:100Mbps, Delay<10ms](           )  <---------+
- .------.                           ( [APL] -'             |
+ .------.                          (  [APL] -'             |
 | Area#B |<==== Connectivity ====>  '-(     )              |
  `------' [BW:100Mbps, Delay<10ms]     '---'               |
-                               Virtual Private Cloud       |
+                                 Virtual Private           |
+                                      Cloud                |
 . . . . . . . . . . . . . . . . . . . . . . . .            |
 *NS Layer                                                  |
            __________________________________              |
@@ -789,7 +790,7 @@
         /         / `--.     /---[VM]     /      <---------+
        /  [AP]---o-----o--[FW]--[VM]     /                 |
       /_________________________________/                  |
-                      NSI                                  |
+                       NSI                                 |
 . . . . . . . . . . . . . . . . . . . . . . . .            |
 *Infra Layer                                               |
                                                            |
