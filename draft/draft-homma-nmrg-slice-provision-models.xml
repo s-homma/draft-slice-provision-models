@@ -248,14 +248,15 @@
 
     <section title="Definition of Terms">
       <t>
-      This section lists definitions and terms related to network slicing. They refer ones in <xref target="TS.28.530-3GPP"/>, 
-      <xref target="TS.28.801-3GPP"/>, and <xref target="NGMN-5G-White-Paper"/>.
+      This section lists definitions and terms related to network slicing. Although this document refers terms and view points 
+      on network slicing in 3GPP documents (<xref target="TS.28.530-3GPP"/> and <xref target="TS.28.801-3GPP"/>) and <xref target="NGMN-5G-White-Paper"/>, 
+      some of definitions in this document may be different from ones of those documents.
       </t>
       
       <t>
       <list style="hanging">
       <t hangText="Network Slicing:">
-      Network slicing is a technology or an approach to create logical separate networks in support of 
+      Network slicing indicates a technology, an approach, or a concept to create logical separate networks in support of 
       services, depending on several requirements, on the same physical resources. This is possible by 
       combinations of several network technologies.
       </t>
@@ -297,6 +298,10 @@
       For example, video gaming companies or vehicle vendors will possibly be vertical customers on NSaaS.
       </t>
 
+      <t hangText="NS Stakeholder:">
+      An NS stakeholder is an actor in network slicing, and has roles of either NS provider or tenant.
+      </t>
+      
       <t hangText="Network Slice Provider (NS Provider):">
       An NS provider is a person or group that designs and instantiates one or more NSIs/NSSIs, and provides them to 
       NS tenants. In some cases, an NS provider is an infrastructure operator simultaneously. This includes NSI, NSSI, and 
@@ -346,6 +351,11 @@
       processes on top of industry-standard high-volume servers, switches and storage, or cloud computing 
       infrastructure, and capable of implementing network functions traditionally implemented via custom 
       hardware appliances and middleboxes (e.g., router, NAT, firewall, load balancer, etc.)
+      </t>
+
+      <t hangText="Network Operation System:">
+      A network operation system is an entity or a group of entities for operating network nodes and functions as 
+      compositions of infrastructure network.
       </t>
 
       </list>
@@ -527,7 +537,22 @@
           <t>Transport network</t>
           <t>Fixed core network</t>
           <t>Mobile core network</t>
-          <t>Data center (DC)</t>
+          <t>Data center (DC)
+            <list style="symbols">
+              <t>Edge DC</t>
+              <t>Central DC</t>
+            </list>
+          <t>
+          <t>Private network
+            <list style="symbols">
+              <t>Enterprise</t>
+              <t>Factory</t>
+              <t>Utilities</t>
+              <t>Farming</t>
+              <t>Home/SOHO</t>
+              </t>Other</t>
+            </list>
+          <t>
         </list>
         </t>
 
@@ -599,8 +624,8 @@
   /                                          /
  /__________________________________________/
                     E2E-NSI
-      A              A              A
-      |              |              |
+               A                    A
+               |                    |
    ___________________________      |
   /                          /      |
  /__________________________/       |
@@ -628,7 +653,7 @@
         </t>
 
         <t>
-        Other potential stakeholders in network slicing are described below:
+        Other potential NS stakeholders in network slicing are described below:
         <list style="hanging">
           <t hangText="NSSI provider:">
           infrastructure operator
@@ -653,7 +678,7 @@
       </section>
     </section>
 
-    <section anchor="NS-Types" title="Types of Network Slices Provided to Tenants">
+    <section anchor="NS-Types" title="Variations of Network Slice Types">
       <t>
       NSs can be classified according to their provision pattern into tow types: ready-made(RM) NS and custom-made(CM) NS. 
       This section describes the features of these types.
@@ -694,30 +719,32 @@
         <t>
         A CM-NS is a NS which is established based on an order from a tenant and provided to it. As examples of usage of CM-NS, 
         an enterprise builds and operates a virtual network for connecting several bases, or OTT (Over The Top) or other industrial 
-        service providers can use NSs as a part of their own services (e.g., connected vehicles/drones, online video games, or remote surgery). 
+        service providers can create and use NSs as a part of their own services (e.g., connected vehicles/drones, online video games, 
+        or remote surgery) based on thier own requirements. 
         </t>
         
         <t>
         In this model, network operation system would be required to incorperate intelligence into orchestration function(s) for designing 
-        appropriate networks on-demand.
+        appropriate NSs on-demand.
         </t>
       </section>
     </section>
  
     <section anchor="NS-Provision-Model" title="Network Slice Provision Models">
       <t>
-      Three provision models are defined:
+      This document classify NS provision models into three categories defined in the following section. The capabilities which NS tenants 
+      can have on management of NSs would vary depending on the selected provision model. 
       </t>
       
-      <section title="Provision Models">
+      <section title="Three Provision Models">
         <t>
         The provision models are categorized into three models: 
-        SaaS (Service as a Service), PaaS (Platform as a Service), IaaS (Infrastructure as a Service) like models as below. 
+        SaaS (Software as a Service), PaaS (Platform as a Service), IaaS (Infrastructure as a Service) like models as below. 
         <list style="hanging">
           <t hangText="SaaS-like Model:">
           In this model, an infrastructure operator designs NS templates in advance, and a tenant selects and uses one which fulfills 
           most its requirement among the templates. The specifications of NSs are abstracted to KPIs as networks and servers and shown 
-          to tenants. In short, detailed parameters of infrastructure network are hidden from tenant. RM-NS is categorized into this model.
+          to tenants. In short, detailed parameters of infrastructure network are hidden from tenants. RM-NS is categorized into this model.
           </t>
         
           <t hangText="PaaS-like Model:">
@@ -740,7 +767,7 @@
 <figure anchor="Mapping-NS-Provision-Model" title="Mapping of NS provision models">
   <artwork align="center"><![CDATA[
 
-                                  handle
+                                     manage
               [NS Tenant] ------------------------------+
                                                         |
                                                         |
@@ -783,7 +810,7 @@
       </section>
 
           
-      <section title="Configurable Values on each Provision Models">
+      <section title="Configurable Parameters/Attributes on each Provision Models">
         <t>TBD</t>
       </section>
 
