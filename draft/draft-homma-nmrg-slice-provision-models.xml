@@ -768,37 +768,43 @@
   <artwork align="center"><![CDATA[
 
                                      manage
-              [NS Tenant] ------------------------------+
-                                                        |
-                                                        |
-. . . . . . . . . . . . . . . . . . . . . . .           |
-*Service Layer                                          |
-                                   .--.                 |
-                                  (    )-.              |
-   Area#A <====Connectivity=====>.'Private'    SaaS-like|
-         [BW:100Mbps,Delay<10ms](  Cloud   )  <---------+
-                                 (       -'             |
-  Area#B <====Connectivity======> '-(     )             |
-         [BW:100Mbps,Delay<10ms]     '---'              |
-                                                        |
-. . . . . . . . . . . . . . . . . . . . . . .           |
-*NS Layer                                               |
-       __________________________________               |
-      /                                 /               |
-     / [AP]----o                       /       PaaS-like|
-    /         / `--.     /---[SV]     /       <---------+
-   /  [AP]---o-----o--[FW]--[SV]     /                  |
-  /_________________________________/                   |
-                                                        |
-. . . . . . . . . . . . . . . . . . . . . . .           |
-*Infra Layer                                            |
-                                                        |
-                                                        |
-       [AP]----o          /---[SV]                      |
-              / `--.     /---[SV]              IaaS-like|
-      [AP]---o-----o--[FW]--[SV]              <---------+
-              .---'    /---[SV]                          
-     [AP]----'                                           
+              [NS Tenant] ---------------------------------+
+                                                           |
+                                                           |
+. . . . . . . . . . . . . . . . . . . . . . . .            |
+*Service Layer                                             |
+                                     .--.                  |
+ .------.                           (    )-.               |
+| Area#A |<==== Connectivity ====> .' [APL] '     SaaS-like|
+ `------' [BW:100Mbps, Delay<10ms](           )  <---------+
+ .------.                           ( [APL] -'             |
+| Area#B |<==== Connectivity ====>  '-(     )              |
+ `------' [BW:100Mbps, Delay<10ms]     '---'               |
+                               Virtual Private Cloud       |
+. . . . . . . . . . . . . . . . . . . . . . . .            |
+*NS Layer                                                  |
+          __________________________________               |
+         / [AP]----o                       /      PaaS-like|
+        /         / `--.     /---[VM]     /      <---------+
+       /  [AP]---o-----o--[FW]--[VM]     /                 |
+      /_________________________________/                  |
+                                                           |
+. . . . . . . . . . . . . . . . . . . . . . . .            |
+*Infra Layer                                               |
+                                                           |
+                                                           |
+           [AP]----o          /---[SV]                     |
+                  / `--.     /---[SV]             IaaS-like|
+          [AP]---o-----o--[FW]--[SV]             <---------+
+                  .---'    /---[SV]                          
+         [AP]----'                                           
+
+*Legends
+  [AP] : Access point
+  [APL]: Application owned by NS Tenant
+  [FW] : Firewall
+  [VM] : Virtual Machine Instance
+
 
   ]]></artwork>
 </figure>
