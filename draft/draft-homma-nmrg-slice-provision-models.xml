@@ -232,7 +232,7 @@
       </t>
       
       <t>
-      In addition, network slicing is expected to enable a business model to provide dedicated networks to 3rd parties 
+      In addition, network slicing is expected to enable a business model to provide dedicated networks to 3rd parties or vertical customers
       on-demand, called NSaaS (Network Slice as a Service). For such usage, in network slicing, provision of networks 
       able to guarantee communication characteristics end to end would be required. However, the definitions are not harmonized 
       over several SDOs (Standards Developing Organizations).
@@ -268,10 +268,10 @@
       
       
       <t hangText="Network Slice Instance (NSI):">
-      An NSI is a logical network instantiated with network resources such as links, switches an routers, 
+      An NSI is a logical network instantiated with network and server resources, 
       and some include additional network service functions such as firewall or load-balancer. It is composed of 
       one or more Network Slice Subnet Instances. When it provides connectivity from end to end for end users, 
-      it is called End-to-End Network Slice Instance. An NSI has an overlay architecture and is independent of 
+      it is called End-to-End Network Slice Instance. An NSI is an overlay network and is independent of 
       the underlay network's topology.
       </t>
       
@@ -298,7 +298,7 @@
       For example, video gaming companies or vehicle vendors will possibly be vertical customers on NSaaS.
       </t>
 
-      <t hangText="NS Stakeholder:">
+      <t hangText="Network Slice Stakeholder (NS Stakeholder):">
       An NS stakeholder is an actor in network slicing, and has roles of either NS provider or tenant.
       </t>
       
@@ -310,6 +310,11 @@
 
       <t hangText="Network Slice Tenant (NS Tenant):">
       An NS tenant is a person or group that rents and occupies NSIs from NS providers.
+      </t>
+
+      <t hangText="Network Slice Broker (NS Broker):">
+      An NS broker is a person or group that rents resources or NSSIs from infrastructure provider and sells E2E-NSIs 
+      created with such resources or NSSIs.
       </t>
 
       <t hangText="Network Slice Type (NS Type):">
@@ -401,46 +406,52 @@
           <t hangText="Network(WAN) Resources:">
           <list style="symbols">
           <t>
-          (v)Link/connectivity:
+          Connectivity:
+          <list style="symbols">
+            <t>(v)Link
             <list style="symbols">
               <t>Bandwidth per link/session</t>
               <t>Connected area/end points</t>
               <t>Forwarding route/path (e.g., for traffic engineering, redundancy)</t>
-              <t>Communication Priority (e.g., QoS class)</t>
-              <t>Multicast support</t>
-              <t>Metadata conveyance (e.g., subscriber ID)</t>
-              <t>Protocol of slice data plane:
-                <list style="symbols">
-                  <t>VLAN</t>
-                  <t>IPoE (IPv4 or IPv6)</t>
-                  <t>MAP-E</t>
-                  <t>DS-Lite</t>
-                  <t>PPPoE</t>
-                  <t>L2TP</t>
-                  <t>GRE</t>
-                  <t>MPLS</t>
-                  <t>VxLAN</t>
-                  <t>GTP-U</t>
-                  <t>Segment Routing MPLS</t>
-                  <t>Segment Routing IPv6</t>
-                  <t>Other</t>
-                </list>
-              </t>
+              <t>Communication Priority (e.g., QoS class)</t>              
             </list>
-          </t>
+            </t>
           
-          <t>
-          (v)Interface
+            <t>
+            (v)Interface
             <list style="symbols">
               <t>QoS setting (e.g., Queue size, DSCP remarking, PIR/CIR)</t>
               <t>Filter setting</t>
             </list>
+            </t>
+        
+            <t>
+            vRouter/vSwitch (# Treated as a set of virtual/physical links and (v)interfaces.)
+            </t>
+          </list>
           </t>
           
-          <t>
-          vRouter/vSwitch (# Treated as a set of virtual/physical links and (v)interfaces.)
-          </t>
-          
+            <t>Protocol of slice data plane:
+              <list style="symbols">
+                <t>VLAN</t>
+                <t>IPoE (IPv4 or IPv6)</t>
+                <t>MAP-E</t>
+                <t>DS-Lite</t>
+                <t>PPPoE</t>
+                <t>L2TP</t>
+                <t>GRE</t>
+                <t>MPLS</t>
+                <t>VxLAN</t>
+                <t>GTP-U</t>
+                <t>Segment Routing MPLS</t>
+                <t>Segment Routing IPv6</t>
+                <t>NSH</t>
+                <t>Other</t>
+              </list>
+            </t>
+
+            <t>Multicast support</t>
+            <t>Metadata conveyance (e.g., subscriber ID)</t>
 
         
         </list>
@@ -491,6 +502,7 @@
             <t>TCP Accelerator</t>
             <t>Video Optimizer</t>
             <t>Parental Control</t>
+            <t>Other</t>
            </list>
           </t>
           <t>Control Plane(CP) NF:
@@ -643,6 +655,7 @@
       </section>
       
       <section anchor="Stakeholders-on-NS" title="Stakeholders in the Structuring Network Slices">
+<!--
         <t>
         On a basic NS structure, an E2E-NSI is established based on order of either following Stakeholders:
         <list style="symbols">
@@ -651,24 +664,24 @@
           <t>Others (e.g., external coordinator or broker)</t>
         </list>
         </t>
-
+-->
         <t>
-        Other potential NS stakeholders in network slicing are described below:
+        Potential stakeholders in network slicing are described below:
         <list style="hanging">
           <t hangText="NSSI provider:">
           infrastructure operator
           </t>
           
           <t hangText="Middle-NSI provider">
-          infrastructure operator, coordinator/broker
+          infrastructure operator, NS broker
           </t>
 
           <t hangText="E2E-NSI provider:">
-          infrastructure operator, coordinator/broker, service provider
+          infrastructure operator, NS broker, service provider
           </t>
 
           <t hangText="NS tenant:">
-          infrastructure operator, coordinator/broker, service provider, enterprise, mass user
+          infrastructure operator, NS broker, service provider, enterprise, mass user
           </t>
           <t hangText="End customer:">
           enterprise, mass user, etc.
@@ -680,13 +693,13 @@
 
     <section anchor="NS-Creation-Variations" title="Variations of Network Slice Creation">
       <t>
-      NSs can be classified according to their creation pattern into two types: ready-made(RM) NS and custom-made(CM) NS. 
+      NSs can be classified according to their creation pattern into two types: ready-made(RM) NS, custom-made(CM), and semi-custom-made(sCM) NS. 
       This section describes the features of these types.
       </t>
       
       <section anchor="RM-NS" title="Ready-made Network Slice">
         <t>
-        An RM-NS is a NS which the infrastructure operator decides requirements for assumed services, and established based on them in advance. 
+        An RM-NS is an NS which the infrastructure operator decides requirements for assumed services, and established based on them in advance. 
         A tenant selects one of RM-NSs whose features are closer to its requirements. As examples of usages of RM-NSs, 
         the following three types communication is advocated in 3GPP (Ref. <xref target="TS.28.530-3GPP"/>). The attribute defining 
         the NS-types are defined in the annex K in <xref target="TS.28.541-3GPP"/>.
@@ -717,17 +730,26 @@
       
       <section anchor="CM-NS" title="Custom-made Network Slice">
         <t>
-        A CM-NS is a NS which is established based on an order from a tenant and provided to it. As examples of usage of CM-NS, 
+        A CM-NS is an NS which is established based on an order from a tenant and provided to it. As examples of usage of CM-NS, 
         an enterprise builds and operates a virtual network for connecting several bases, or OTT (Over The Top) or other industrial 
         service providers can create and use NSs as a part of their own services (e.g., connected vehicles/drones, online video games, 
         or remote surgery) based on thier own requirements. 
         </t>
         
         <t>
-        In this model, network operation system would be required to incorperate intelligence into orchestration function(s) for designing 
+        In this model, network operation system would be required to have incorperate intelligence for designing 
         appropriate NSs on-demand.
         </t>
       </section>
+
+      <section anchor="sCM-NS" title="semi-Custom-made Network Slice">
+        <t>
+        An sCM-NS is a derivation of a CM-NS. In sCM-NS, an infrastructure operator designs the outline of NSs in advance, and a tenant 
+        tunes an NS with deciding some parameters or applications run on resources. For example, an infrastructure operator designs 
+        a logical network presenting connectivity, and tenants install their own applications on servers running on the logical network. 
+        </t>
+      </section>
+
     </section>
  
     <section anchor="NS-Provision-Model" title="Network Slice Provision Models">
@@ -744,7 +766,8 @@
           <t hangText="SaaS-like Model:">
           In this model, an infrastructure operator designs NS templates in advance, and a tenant selects and uses one which fulfills 
           most its requirement among the templates. The specifications of NSs are abstracted to KPIs as networks and servers and shown 
-          to tenants. In short, detailed parameters of infrastructure network are hidden from tenants. RM-NS is categorized into this model.
+          to tenants. In short, detailed parameters of infrastructure network are hidden from tenants. RM-NS and sCM-NSs are categorized 
+          into this model.
           </t>
         
           <t hangText="PaaS-like Model:">
