@@ -281,7 +281,7 @@
       
       
       <t hangText="End-to-End Network Slice Instance (E2E-NSI):">
-      An E2E-NS is a virtual network connecting among end points. It is composed of one or multiple NSSIs.
+      An E2E-NSI is a virtual network connecting among end points. It is composed of one or multiple NSSIs.
       </t>
       
       <t hangText="Network Slice as a Service (NSaaS):">
@@ -321,7 +321,7 @@
       An NS type is a definition identifying characters or attributes on a NS. NS types can be defined by each NS provider. 
       As examples, <xref target="TS.28.530-3GPP"/> describes three NS types: URLLC, eMBB, and mIoT.
       </t>
-
+<!--
       <t hangText="URLLC (Ultra-Reliable and Low Latency Communication):">
       NS for URLLC provides low-latency and High reliable communication, and it is expected to be used for services which 
       require real-time control such as connected vehicles.
@@ -335,7 +335,7 @@
       <t hangText="mIoT (massive IoT):">
       mIoT NS provides connectivity for massive number of IoT devices such as smart meters.
       </t>
-
+-->
       <t hangText="Domain:">
       A domain is a group of a network and devices administrated under a policy-based common set of rules and procedures.
       </t>
@@ -360,7 +360,8 @@
 
       <t hangText="Network Operation System:">
       A network operation system is an entity or a group of entities for operating network nodes and functions as 
-      compositions of infrastructure network.
+      compositions of infrastructure network. For example, OSS/BSS, orchestrator, and EMS are network operation 
+      systems. 
       </t>
 
       </list>
@@ -371,20 +372,21 @@
     <section title="General Requirements for Network Slicing">
       <t>
       On network slice operations, capabilities for dynamic instantiation, change, and deletion should be required because 
-      an NS is established based on received orders from tenants. From this aspect, some mechanisms to design a network 
+      an NSI is established based on received orders from tenants in NSaaS. From this aspect, some mechanisms to design a network 
       based on service requirements and to convert concrete configurations based on the design would be required. 
       </t>
-      
+
       <t>
       In addition, each NS has to maintain concrete communication characteristics end to end, and resource reservations 
-      on data plane and isolation among NSs would be required. Isolation is a concept to prevent the reduction of 
+      on data plane and isolation among NSIs would be required. Isolation is a concept to prevent the reduction of 
       communication quality caused by disturbance from other NSs, and it may have some levels of strength, 
-      such as hard or soft isolations. 
+      such as hard or soft isolations. In some cases, for providing appropriate communication between client and server, 
+      it would be allowed for NS tenants to put thier applications as contents server on NSIs by using computing resources.
       </t>
       
       <t>
       The required agility of slice operation and granularity of communication quality requested can vary depending on 
-      provisioning model.
+      provision model.
       </t>
 
     </section>
@@ -397,7 +399,7 @@
       <section anchor="NS-Rsrc" title="Resources for Structuring Network Slices">
         <t>
         A network slice is structured as combinations of the resources it uses. Such resources are mainly categorized into 
-        three classes: network/WAN, server/NFVI, and functionality resources. Variations of each resources are described below. 
+        three classes: network/WAN, computing/NFVI, and functionality resources. Variations of each resources are described below. 
         (Note that the lists are not exhaustive.)
         </t>
       
@@ -426,7 +428,7 @@
             </t>
         
             <t>
-            vRouter/vSwitch (# Treated as a set of virtual/physical links and (v)interfaces.)
+            vRouter/vSwitch (# Treated as a set of (v)links and (v)interfaces.)
             </t>
           </list>
           </t>
@@ -457,12 +459,13 @@
         </list>
         </t>
       
-        <t hangText="Server(NFVI) Resources:">
+        <t hangText="Computing(NFVI) Resources:">
           <list style="symbols">
           <t>(v)CPU core</t>
           <t>Storage</t>
           <t>Memory</t>
           <t>Disk</t>
+          <t>vNIC</t>
           <t>Connectivity (VPC Network)</t>
           <t>Image</t>
           <t>VNF Type
@@ -472,7 +475,7 @@
             <t>micro kernel</t>
             </list>
           </t>
-          <t>VNF Infrastructure Type (e.g., open source, product of vender#A, etc.)</t>
+          <t>VNF Infrastructure Type (e.g., open source, product of vender#A, ..., etc.)</t>
           <t>VNF location (i.e., data center where the VNF deployed)</t>
           </list>
         </t>
@@ -541,8 +544,8 @@
 
       <section anchor="Basic-NS-Structure" title="Basic Network Slice Structure">
         <t>
-        An E2E-NS is constructed by stitching NS subnets instantiated on each participating domain. This includes the 
-        simplest case of a single NS subnet as an E2E NS. Domain types where some NS-subnets are established are described below:
+        An E2E-NSI is constructed by stitching NSSIs instantiated on each participating domain. This includes the 
+        simplest case of a single NSSI as an E2E NS. Domain types where some NSSIs are established are described below:
         <list style="symbols">
           <t>Fixed access network</t>
           <t>Mobile access network</t>
@@ -595,10 +598,10 @@
       A              A              A
       |              |              |
 
-  o---o         [SF]               /----[SV]
-     / `--.     /  `----.         /----[SV]
- o---o-----o...o---------o...o---o----[SV]
- NW Rsrc#1     NW Rsrc+SF      NW+SV Rsrcs
+  o---o         [SF]               /----[VM]
+     / `--.     /  `----.         /----[VM]
+ o---o-----o...o---------o...o---o----[VM]
+ NW Rsrc#1     NW Rsrc+SF      NW+CMP Rsrcs
      A               A              A
      |               |              |
 
@@ -609,10 +612,12 @@
  `--------'     `--------'    `-----------'
      
 *Legends
+ NW Rsrc : Network Resource
+ CMP Rsrc: Computing Resource
   o  : virtual/physical node structuring NSI
   -- : virtual/physical link structuring NSI
  [SF]: service function on NSI
- [SV]: server on NSI
+ [VM]: Virtual Machine Instance on NSI
 
   ]]></artwork>
 </figure>
@@ -699,8 +704,15 @@
       
       <section anchor="RM-NS" title="Ready-made Network Slice">
         <t>
-        An RM-NS is an NS which the infrastructure operator decides requirements for assumed services, and established based on them in advance. 
-        A tenant selects one of RM-NSs whose features are closer to its requirements. As examples of usages of RM-NSs, 
+        RM-NS is an NS creation pattern in which an infrastructure operator decides service requirements in itself, and established based on the
+        requirements in advance. NS tenants select one of RM-NSs whose features are closer to their requirements.  
+        </t>
+        
+        <t>
+        This model doesn't need immediancy on designing of NSI and enables to mitigate the difficulty of implementation compared with other models. 
+        </t> 
+        
+<!--    As examples of usages of RM-NSs, 
         the following three types communication is advocated in 3GPP (Ref. <xref target="TS.28.530-3GPP"/>). The attribute defining 
         the NS-types are defined in the annex K in <xref target="TS.28.541-3GPP"/>.
         <list style="symbols">
@@ -708,7 +720,7 @@
         <t>eMBB</t>
         <t>mIoT</t>
         </list>
-<!--
+
         <list style="hanging">
           <t hangText="URLLC (Ultra-Reliable and Low Latency Communication):">
           NS for URLLC provides low-latency and High reliable communication, and it is expected to be used for services which 
@@ -725,15 +737,15 @@
           </t>
         </list>
 -->
-        </t>
+
       </section>
       
       <section anchor="CM-NS" title="Custom-made Network Slice">
         <t>
-        A CM-NS is an NS which is established based on an order from a tenant and provided to it. As examples of usage of CM-NS, 
-        an enterprise builds and operates a virtual network for connecting several bases, or OTT (Over The Top) or other industrial 
-        service providers can create and use NSs as a part of their own services (e.g., connected vehicles/drones, online video games, 
-        or remote surgery) based on thier own requirements. 
+        CM-NS is an NS creation pattern in which an NS is established based on an order from a tenant and is provided to it. As examples of usage of CM-NS, 
+        an enterprise builds and operates a virtual private network for connecting several bases, or OTT (Over The Top) or other industrial 
+        service providers create NSs based on thier own requirements and use them as a part of their own services (e.g., connected vehicles/drones, online video games, 
+        or remote surgery). 
         </t>
         
         <t>
@@ -744,7 +756,7 @@
 
       <section anchor="sCM-NS" title="semi-Custom-made Network Slice">
         <t>
-        An sCM-NS is a derivation of a CM-NS. In sCM-NS, an infrastructure operator designs the outline of NSs in advance, and a tenant 
+        sCM-NS is a derivation of a CM-NS. In sCM-NS, an infrastructure operator designs the outline of NSs in advance, and a tenant 
         tunes an NS with deciding some parameters or applications run on resources. For example, an infrastructure operator designs 
         a logical network presenting connectivity, and tenants install their own applications on servers running on the logical network. 
         </t>
@@ -766,19 +778,18 @@
           <t hangText="SaaS-like Model:">
           In this model, an infrastructure operator designs NS templates in advance, and a tenant selects and uses one which fulfills 
           most its requirement among the templates. The specifications of NSs are abstracted to KPIs as networks and servers and shown 
-          to tenants. In short, detailed parameters of infrastructure network are hidden from tenants. RM-NS and sCM-NSs are categorized 
-          into this model.
+          to tenants. In short, detailed parameters of infrastructure network are hidden from tenants. 
           </t>
-        
+       
           <t hangText="PaaS-like Model:">
           In this model, a tenant makes its request, including connected area, path routes, the KPIs, and included service functions, and infrastructure 
           operator designs a template and instantiate an NS based on the request dynamically. The configurable values would vary depending on the policy 
-          of each NS provider. CM-NS is categorized into this model.
+          of each NS provider. 
           </t>
         
           <t hangText="IaaS-like Model:">
           In this model, a tenant designs and instantiates NSs by indicating concrete resources to infrastructure operators. In other words, 
-          infrastructure operators provide just their resources, and NSs are coordinated by the tenant. CM-NS is categorized into this model.
+          infrastructure operators provide just their resources, and NSs are coordinated by the tenant.
           </t>
         </list>
         </t>
@@ -825,10 +836,13 @@
          [AP]----'                                           
 
 *Legends
+  o  : virtual/physical node
+  -- : virtual/physical link
   [AP] : Access point
   [APL]: Application owned by NS Tenant
-  [FW] : Firewall
-  [VM] : Virtual Machine Instance
+  [FW] : Firewall Function
+  [VM] : Virtual Machine Instance on Sever
+  [SV] : Server as Infrastructure
 
 
   ]]></artwork>
