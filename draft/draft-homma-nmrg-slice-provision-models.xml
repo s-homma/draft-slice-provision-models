@@ -204,7 +204,7 @@
 
 
 
-    <date day="20" month="December" year="2018"/>
+    <date day="28" month="December" year="2018"/>
 
     <area>Individual</area>
 
@@ -215,7 +215,7 @@
     <abstract>
       <t>
       Network slicing is an approach to provide separate virtual network based on service requirements. It's a 
-      fundamental concept of the 5G and the architecture and specification is under standardization in several 
+      fundamental concept of the 5G, and the architecture and specification is under standardization in several 
       organizations. However, the definitions and scopes of network slicing vary to some degree from one organization 
       to another. This document provides classification of provisioning models of network slice for clarifying the differences 
       on the definitions and scopes.
@@ -849,8 +849,9 @@
 </figure>
 
         <t>
-        Note that, in case that each NSSI is provided by different infrastructure provider, provision models on each NSSI composing an E2E-NSI 
-        may be different. 
+        In some cases, NSIs provided based on IaaS- or PaaS-like models are coordinated to a form of SaaS-like model by an NS broker.  
+        For example, a vertical customer sends its high-level requirements to an NS broker, and the NS broker create an appropriate NSI 
+        with resources provided by infrastructure operators.
         </t>
       </section>
 
