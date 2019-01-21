@@ -202,9 +202,55 @@
       </address>
     </author>
 
+    <author fullname="Li Qiang" initial="L." surname="Qiang">
+      <organization>Huawei Technologies</organization>
+      
+      <address>
+        <postal>
+          <street/>
+          <city/>
+          <region/>
+          <code/>
+          <country>China</country>
+        </postal>
+        <email> qiangli3@huawei.com</email>
+      </address>
+    </author>
 
 
-    <date day="28" month="December" year="2018"/>
+    <author fullname="Reza Rokui" initials="R." surname="Rokui">
+      <organization>Nokia</organization>
+
+      <address>
+        <postal>
+          <street/>
+          <city/>
+          <region/>
+          <code/>
+          <country>Canada</country>
+        </postal>
+        <email>reza.rokui@nokia.com</email>
+      </address>
+    </author>
+
+     <author fullname="Pedro Martinez-Julia" initials="P." surname="Martinez-Julia">
+      <organization>NICT</organization>
+
+      <address>
+        <postal>
+          <street/>
+          <city/>
+          <region/>
+          <code/>
+          <country>Japan</country>
+        </postal>
+        <email>pedro@nict.go.jp</email>
+      </address>
+    </author>
+
+
+
+    <date/>
 
     <area>Individual</area>
 
@@ -232,7 +278,7 @@
       </t>
       
       <t>
-      In addition, network slicing is expected to enable a business model to provide dedicated networks to 3rd parties or vertical customers
+      In addition, network slicing is expected to enable a business model to provide dedicated logical networks to 3rd parties or vertical customers
       on-demand, called NSaaS (Network Slice as a Service). For such usage, in network slicing, provision of networks 
       able to guarantee communication characteristics end to end would be required. However, the definitions are not harmonized 
       over several SDOs (Standards Developing Organizations).
@@ -268,7 +314,7 @@
       
       
       <t hangText="Network Slice Instance (NSI):">
-      An NSI is a logical network instantiated with network and server resources, 
+      An NSI is a logical network instantiated with network(WAN), computing(NFVI), and functionality resources, 
       and some include additional network service functions such as firewall or load-balancer. It is composed of 
       one or more Network Slice Subnet Instances. When it provides connectivity from end to end for end users, 
       it is called End-to-End Network Slice Instance. An NSI is an overlay network and is independent of 
@@ -288,19 +334,6 @@
       An NSaaS is a NS distribution model in which a third-party provider or a vertical customer hosts NSIs 
       and makes them available to customers.
       </t>
-
-      <t hangText="Infrastructure Operator:">
-      An infrastructure operator is an organization who manages infrastructure networks or data centers for running NSIs.
-      </t>
-
-      <t hangText="Vertical Customer:">
-      A vertical customer is a service provider providing some communication services with using NSIs on NSaaS model.
-      For example, video gaming companies or vehicle vendors will possibly be vertical customers on NSaaS.
-      </t>
-
-      <t hangText="Network Slice Stakeholder (NS Stakeholder):">
-      An NS stakeholder is an actor in network slicing, and has roles of either NS provider or tenant.
-      </t>
       
       <t hangText="Network Slice Provider (NS Provider):">
       An NS provider is a person or group that designs and instantiates one or more NSIs/NSSIs, and provides them to 
@@ -310,6 +343,19 @@
 
       <t hangText="Network Slice Tenant (NS Tenant):">
       An NS tenant is a person or group that rents and occupies NSIs from NS providers.
+      </t>
+
+      <t hangText="Network Slice Stakeholder (NS Stakeholder):">
+      An NS stakeholder is an actor in network slicing, and has roles of either NS provider or tenant.
+      </t>
+
+      <t hangText="Infrastructure Operator:">
+      An infrastructure operator is an organization who manages infrastructure networks or data centers for running NSIs.
+      </t>
+
+      <t hangText="Vertical Customer:">
+      A vertical customer is a service provider providing some communication services with using NSIs on NSaaS model.
+      For example, video gaming companies or vehicle vendors will possibly be vertical customers on NSaaS.
       </t>
 
       <t hangText="Network Slice Broker (NS Broker):">
@@ -360,7 +406,7 @@
 
       <t hangText="Network Operation System:">
       A network operation system is an entity or a group of entities for operating network nodes and functions as 
-      compositions of infrastructure network. For example, OSS/BSS, orchestrator, and EMS are network operation 
+      compositions of infrastructure network. For example, OSS/BSS, orchestrator, and EMS are considered to be network operation 
       systems. 
       </t>
 
@@ -379,9 +425,9 @@
       <t>
       In addition, each NS has to maintain concrete communication characteristics end to end, and resource reservations 
       on data plane and isolation among NSIs would be required. Isolation is a concept to prevent the reduction of 
-      communication quality caused by disturbance from other NSs, and it may have some levels of strength, 
+      communication quality caused by disturbance from other NSs, and it may have some levels of enforcement, 
       such as hard or soft isolations. In some cases, for providing appropriate communication between client and server, 
-      it would be allowed for NS tenants to put thier applications as contents server on NSIs by using computing resources.
+      it would be allowed for NS tenants to put their applications as contents server on NSIs by using computing resources.
       </t>
       
       <t>
@@ -466,8 +512,8 @@
           <t>Memory</t>
           <t>Disk</t>
           <t>vNIC</t>
-          <t>Connectivity (VPC Network)</t>
-          <t>Image</t>
+          <t>Connectivity for private VNF instance</t>
+<!--      <t>Image</t>  -->
           <t>VNF Type
             <list style="symbols">
             <t>VM</t>
@@ -537,7 +583,7 @@
 
       <t>
       In terms of security or usability for NS tenants, some abstraction on resource information would be required, 
-      however both low infrastructure and abstracted information may coexist in these lists.
+      however both setting parameters of underlay infrastructure and abstracted information may coexist in these lists.
       </t>
       </section>
       
@@ -630,8 +676,8 @@
 
       <t>
       In addition, structure on composition of NSI may be recursive. In other words, even though <xref target="Overview-NS-Structure"/> 
-      shows a case where NSSIs compose directly an E2E-NSI, in some cases, NSSIs compose an NSI which is a part of an E2E-NSI. Such NSI is called 
-      middle-NSI in this document. The overview is shown in <xref target="NS-Recursive"/>.
+      shows a case where NSSIs compose directly an E2E-NSI, in some cases, NSSIs compose an NSI which is a part of an E2E-NSI. The overview 
+      is shown in <xref target="NS-Recursive"/>. In this figure, NSI#4 is composed of NSSI#1 and NSSI#2, and it structures E2E-NSI#5 with NSSI#3.
       </t>
 
 <figure anchor="NS-Recursive" title="Overview of NS recursive structure">
@@ -640,13 +686,13 @@
    ___________________________________________
   /                                          /
  /__________________________________________/
-                    E2E-NSI
+                  E2E-NSI#5
                A                    A
                |                    |
    ___________________________      |
   /                          /      |
  /__________________________/       |
-         Middle-NSI#4               |
+   NSI#4 (= NSSI#1 + NSSI#2)        |
       A              A              |
       |              |              |
    ____________   ___________   _____________
@@ -677,7 +723,7 @@
           infrastructure operator
           </t>
           
-          <t hangText="Middle-NSI provider">
+          <t hangText="Middle-NSI provider:">
           infrastructure operator, NS broker
           </t>
 
@@ -704,12 +750,12 @@
       
       <section anchor="RM-NS" title="Ready-made Network Slice">
         <t>
-        RM-NS is an NS creation pattern in which an infrastructure operator decides service requirements in itself, and established based on the
+        RM-NS is an NS creation pattern in which an infrastructure operator decides service requirements by itself, and established based on the
         requirements in advance. NS tenants select one of RM-NSs whose features are closer to their requirements.  
         </t>
         
         <t>
-        This model doesn't need immediancy on designing of NSI and enables to mitigate the difficulty of implementation compared with other models. 
+        This model doesn't need immediacy on designing of NSI and enables to mitigate the difficulty of implementation compared with other models. 
         </t> 
         
 <!--    As examples of usages of RM-NSs, 
@@ -749,14 +795,14 @@
         </t>
         
         <t>
-        In this model, network operation system would be required to have incorperate intelligence for designing 
+        In this model, network operation system would be required to have incorporate intelligence for designing 
         appropriate NSs on-demand.
         </t>
       </section>
 
       <section anchor="sCM-NS" title="semi-Custom-made Network Slice">
         <t>
-        sCM-NS is a derivation of a CM-NS. In sCM-NS, an infrastructure operator designs the outline of NSs in advance, and a tenant 
+        sCM-NS is a derivation of a CM-NS. In sCM-NS, an NS provider designs the outline of NSs in advance, and a tenant 
         tunes an NS with deciding some parameters or applications run on resources. For example, an infrastructure operator designs 
         a logical network presenting connectivity, and tenants install their own applications on servers running on the logical network. 
         </t>
@@ -776,19 +822,19 @@
         SaaS (Software as a Service), PaaS (Platform as a Service), IaaS (Infrastructure as a Service) like models as below. 
         <list style="hanging">
           <t hangText="SaaS-like Model:">
-          In this model, an infrastructure operator designs NS templates in advance, and a tenant selects and uses one which fulfills 
+          In this model, an NS provider designs NS templates in advance, and a tenant selects and uses one which fulfills 
           most its requirement among the templates. The specifications of NSs are abstracted to KPIs as networks and servers and shown 
           to tenants. In short, detailed parameters of infrastructure network are hidden from tenants. 
           </t>
        
           <t hangText="PaaS-like Model:">
-          In this model, a tenant makes its request, including connected area, path routes, the KPIs, and included service functions, and infrastructure 
-          operator designs a template and instantiate an NS based on the request dynamically. The configurable values would vary depending on the policy 
+          In this model, a tenant makes its request, including connected area, path routes, the KPIs, and included service functions, and a NS provider
+          designs an NS template and instantiate an NS based on the request dynamically. The configurable values would vary depending on the policy 
           of each NS provider. 
           </t>
         
           <t hangText="IaaS-like Model:">
-          In this model, a tenant designs and instantiates NSs by indicating concrete resources to infrastructure operators. In other words, 
+          In this model, a tenant designs its own NS tenplate and instantiates NSs by indicating concrete resources to infrastructure operators. In other words, 
           infrastructure operators provide just their resources, and NSs are coordinated by the tenant.
           </t>
         </list>
@@ -849,8 +895,9 @@
 </figure>
 
         <t>
-        In some cases, NSIs provided based on IaaS- or PaaS-like models are coordinated to a form of SaaS-like model by an NS broker.  
-        For example, a vertical customer sends its high-level requirements to an NS broker, and the NS broker create an appropriate NSI 
+        In some cases, NSIs provided based on IaaS- or PaaS-like models are coordinated to a form of SaaS-like model by an NS broker , and 
+        the NS broker or by the tenant, becoming a NS provider in a recursive manner. For example, a vertical customer sends its 
+        high-level requirements to an NS broker create an appropriate NSI 
         with resources provided by infrastructure operators.
         </t>
       </section>
