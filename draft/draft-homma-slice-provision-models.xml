@@ -73,36 +73,36 @@
     </title>
 
     <author fullname="Shunsuke Homma" initials="S." surname="Homma">
-      <organization abbrev="NTT">NTT</organization>
+      <organization>NTT</organization>
 
       <address>
         <postal>
-          <street>3-9-11, Midori-cho</street>
+          <street/>
 
-          <city>Musashino-shi</city>
+          <city/>
 
-          <region>Tokyo</region>
+          <region/>
 
-          <code>180-8585</code>
+          <code/>
 
           <country>Japan</country>
         </postal>
-        <email>homma.shunsuke@lab.ntt.co.jp</email>
+        <email>shunsuke.homma.fp@hco.ntt.co.jp</email>
       </address>
     </author>
 
     <author fullname="Hidetaka Nishihara" initials="H." surname="Nishihara">
-      <organization abbrev="NTT">NTT</organization>
+      <organization>NTT</organization>
 
       <address>
         <postal>
-          <street>3-9-11, Midori-cho</street>
+          <street/>
 
-          <city>Musashino-shi</city>
+          <city/>
 
-          <region>Tokyo</region>
+          <region/>
 
-          <code>180-8585</code>
+          <code/>
 
           <country>Japan</country>
         </postal>
@@ -202,7 +202,7 @@
       </address>
     </author>
 
-    <author fullname="Li Qiang" initial="L." surname="Qiang">
+    <author fullname="Li Qiang" initials="L." surname="Qiang">
       <organization>Huawei Technologies</organization>
       
       <address>
@@ -348,6 +348,7 @@
       <t hangText="Core(CN)-NSSI:"> 
       Regardless of Core deployment, a CN-NSI creates a dedicate and logical resource on Core network for each NSI which are completely. 
       The overview of NSI composed with CN-NSSI is shown in <xref target="app-1"/>. 
+      </t>
 
       
       <t hangText="Network Slice as a Service (NSaaS):">
@@ -422,10 +423,10 @@
       
       <t hangText="Virtual Network Function (VNF):"> 
       A virtual network function (VNF) is a network function whose functional 
-      software is decoupled from hardware. One or more virtual machines running different software and 
+      software is decoupled from hardware. One or more VNFs run as different software and 
       processes on top of industry-standard high-volume servers, switches and storage, or cloud computing 
-      infrastructure, and capable of implementing network functions traditionally implemented via custom 
-      hardware appliances and middleboxes (e.g., router, NAT, firewall, load balancer, etc.)
+      infrastructure. They are capable of implementing network functions traditionally implemented via custom 
+      hardware appliances and middleboxes (e.g., router, NAT, firewall, load balancer, etc.).
       </t>
 
       <t hangText="Network Operation System:">
@@ -982,6 +983,18 @@
     &I-D.draft-homma-nfvrg-slice-gateway;
 
       
+       <reference anchor='TS.23.501-3GPP' target="http://www.3gpp.org/ftp//Specs/archive/23_series/23.501/23501-f30.zip"> 
+        <front> 
+        <title>3GPP TS 23.501 (V15.3.0): System Architecture for 5G System; Stage 2</title> 
+        <author> 
+        <organization> 
+        3rd Generation Partnership Project (3GPP) 
+        </organization> 
+        </author> 
+        <date month="September" year="2018"/> 
+        </front> 
+      </reference> 
+       
        <reference anchor='TS.28.530-3GPP'  target="http://ftp.3gpp.org//Specs/archive/28_series/28.530/28530-100.zip">
         <front>
         <title>3GPP TS 28.530 (V1.0.0): Management and orchestration of networks and network slicing; Concepts,
@@ -1048,7 +1061,7 @@
     <==================          E2E-NSI         =======================> 
                  :                 :                  :           :  : 
                  :                 :                  :           :  : 
-    <======  RAN-NSSI  ======><=TRN-NSSI=><===== Core-NSSI  =====>VL[APL] 
+    <======  RAN-NSSI  ======><=TRN-NSSI=><====== CN-NSSI  ======>VL[APL] 
         :        :        :        :         :       :        :   :  : 
         :        :        :        :         :       :        :   :  : 
     RW[NFs ]<=TRN-NSSI=>[NFs ]<=TRN-NSSI=>[NFs ]<=TRN-NSSI=>[NFs ]VL[APL] 
