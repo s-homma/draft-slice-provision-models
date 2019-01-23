@@ -314,25 +314,45 @@
       
       
       <t hangText="Network Slice Instance (NSI):">
-      An NSI is a logical network instantiated with network(WAN), computing(NFVI), and functionality resources, 
+      An NSI is a logical network instantiated with network(WAN) and computing(NFVI),  
       and some include additional network service functions such as firewall or load-balancer. It is composed of 
       one or more Network Slice Subnet Instances. When it provides connectivity from end to end for end users, 
-      it is called End-to-End Network Slice Instance. An NSI is an overlay network and is independent of 
+      it is called End-to-End Network Slice Instance. An NSI is basically an overlay network and is independent of 
       the underlay network's topology.
       </t>
       
       <t hangText="Network Slice Subnet Instance (NSSI):">
-      An NSSI is a partially virtual network instantiated within a single domain.
+      An NSSI is a partially virtual network instantiated within a single domain, and it basically provides connectivity to  
+      other domains or end points. Ways to construct an NSSI depends on the specifications of underlay networks.
       </t>
       
       
       <t hangText="End-to-End Network Slice Instance (E2E-NSI):">
-      An E2E-NSI is a virtual network connecting among end points. It is composed of one or multiple NSSIs.
+      An E2E-NSI is a virtual network connecting among end points. It is composed of one or multiple NSSIs. This term is 
+      used in this document when it should be emphasized that the NSI is structured from end to end. As an example, for 
+      providing an E2E-NSI on the 3GPP 5G network, combining three types of NSIs: RAN-, TRN-, and CN-NSIs would 
+      be required.  
       </t>
+
+      <t hangText="Transport(TRN)-NSSI:"> 
+      A set of connections between various network functions (VNF or PNF) with deterministic SLAs.  
+      They can be implemented (aka realized) with various technologies (e.g. IP, Optics, FN, Microwave) and various transport  
+      (e.g. RSVP, Segment routing, ODU, OCH etc). The overview of NSI composed with TRN-NSSI is shown in <xref target="app-1"/>. 
+      </t> 
+ 
+      <t hangText="RAN-NSSI:"> 
+      Regardless of RAN deployment (e.g. distributed-RAN, Centerilzed-RAN or Cloud-RAN, a RAN-NSSI creates a dedicate and logical  
+      resource on RAN for each NSI which are completely. The overview of NSI composed with RAN-NSSI is shown in <xref target="app-1"/>. 
+      </t> 
+ 
+      <t hangText="Core(CN)-NSSI:"> 
+      Regardless of Core deployment, a CN-NSI creates a dedicate and logical resource on Core network for each NSI which are completely. 
+      The overview of NSI composed with CN-NSSI is shown in <xref target="app-1"/>. 
+
       
       <t hangText="Network Slice as a Service (NSaaS):">
-      An NSaaS is a NS distribution model in which a third-party provider or a vertical customer hosts NSIs 
-      and makes them available to customers.
+      An NSaaS is a service delivery model in which a third-party provider or a vertical customer hosts NSIs 
+      and makes them available to customers. In this model, there mainly two roles: NS provider and NS tenant.
       </t>
       
       <t hangText="Network Slice Provider (NS Provider):">
@@ -350,12 +370,15 @@
       </t>
 
       <t hangText="Infrastructure Operator:">
-      An infrastructure operator is an organization who manages infrastructure networks or data centers for running NSIs.
+      An infrastructure operator is an organization who manages infrastructure networks or data centers for running NSIs. 
+      In the most of cases, infrastructure opeators are initial NS providers on NSaaS. Also, some of them may be NS tenants 
+      simultaniously. 
       </t>
 
       <t hangText="Vertical Customer:">
-      A vertical customer is a service provider providing some communication services with using NSIs on NSaaS model.
-      For example, video gaming companies or vehicle vendors will possibly be vertical customers on NSaaS.
+      A vertical customer is a organization who provides some communicating services with using NSIs on NSaaS model. In 
+      many cases, a vertical customer become the final NS tenant on NSaaS. For example, video gaming companies or 
+      vehicle vendors will possibly be vertical customers.
       </t>
 
       <t hangText="Network Slice Broker (NS Broker):">
@@ -363,11 +386,12 @@
       created with such resources or NSSIs.
       </t>
 
+<!--
       <t hangText="Network Slice Type (NS Type):">
       An NS type is a definition identifying characters or attributes on a NS. NS types can be defined by each NS provider. 
       As examples, <xref target="TS.28.530-3GPP"/> describes three NS types: URLLC, eMBB, and mIoT.
       </t>
-<!--
+
       <t hangText="URLLC (Ultra-Reliable and Low Latency Communication):">
       NS for URLLC provides low-latency and High reliable communication, and it is expected to be used for services which 
       require real-time control such as connected vehicles.
@@ -1009,7 +1033,49 @@
       </reference>
     </references>
 
+    <!-- Appendix --> 
+ 
+    <section anchor="app-1" 
+    		title="NS Structure in the 3GPP 5GS"> 
+ 
+    <t> 
+    The overview of structure of NS in the 3GPP 5GS is shown in <xref target="NS-structure-in-5gs"/>. The terms are described  
+    in the 3GPP documents (e.g., <xref target="TS.23.501-3GPP"/> and <xref target="TS.28.530-3GPP"/>). 
+    </t> 
+<figure anchor="NS-structure-in-5gs" title="Overview of Structure of NS in 3GPP 5GS"> 
+  <artwork align="center"><![CDATA[ 
+     
+    <==================          E2E-NSI         =======================> 
+                 :                 :                  :           :  : 
+                 :                 :                  :           :  : 
+    <======  RAN-NSSI  ======><=TRN-NSSI=><===== Core-NSSI  =====>VL[APL] 
+        :        :        :        :         :       :        :   :  : 
+        :        :        :        :         :       :        :   :  : 
+    RW[NFs ]<=TRN-NSSI=>[NFs ]<=TRN-NSSI=>[NFs ]<=TRN-NSSI=>[NFs ]VL[APL] 
+     
+     . . . . . . . . . . . . ..          . . . . . . . . . . . . ..  
+     .,----.   ,----.   ,----..  ,----.  .,----.   ,----.   ,----..   
+[UE]--|RAN |---| TN |---|RAN |---| TN |---|CN  |---| TN |---|CN  |--[APL] 
+     .|NFs |   `----'   |NFs |.  `----'  .|NFs |   `----'   |NFs |. 
+     .`----'            `----'.          .`----'            `----'. 
+     . . . . . . . . . . . . ..          . . . . . . . . . . . . .. 
+    RW         RAN                MBH               CN               DN 
+ 
+*Legends 
+ UE: User Equipment 
+ RAN: Radio Access Network 
+ CN: Core Network 
+ DN: Data Network 
+ TN: Transport Network 
+ MBH: Mobile Backhaul 
+ RW: Radio Wave 
+ NF: Network Function 
+ APL: Application Server 
+ 
+  ]]></artwork> 
+</figure> 
 
+</section>
   
   </back>
 </rfc>
