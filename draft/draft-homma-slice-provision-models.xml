@@ -809,6 +809,66 @@
         </list>
         </t>
       </section>
+
+      <section anchor="Roles-NS-Provisioning" title="Differentiated Roles in Network Slice Provisioning">
+
+      <t>
+      The widespread of system and network virtualization technologies has conducted
+      to new business opportunities, enlarging the offer of IT resources in the form
+      of Network Slices (NS). As a consequence, there is a clear differentiation
+      between the owner of physical resources, the Infrastructure Provider (InP),
+      and the intermediary that conforms and delivers network services to the final
+      customers, the Virtual Network Operator (VNO).
+      </t>
+
+      <t>
+      VNOs aim to exploit the virtualized infrastructures to deliver new and improved
+      services to their customers. However, current NS techniques offer poor support
+      for VNOs to control their resources. It has been considered that the InP is
+      responsible of the reliability of the NS elements but several situations
+      advocate the VNO to gain a finer control on its resources.  For instance,
+      dynamic events, such as the identification of new requirements or the
+      detection of incidents within the virtual system, might urge a VNO to quickly
+      reform its virtual infrastructure and resource allocation. However, the
+      interfaces offered by current virtualization platforms do not offer the
+      necessary functions for VNOs to perform the elastic adaptations they require
+      to tackle with their dynamic operation environments.
+      </t>
+
+      <t>
+      Beyond their heterogeneity, which can be resolved by software adapters, NS
+      platforms do not offer common methods and functions, so it is
+      difficult for the virtual network controllers used by the VNOs to actually
+      manage and control virtual resources instantiated on different platforms, not
+      even considering different InPs. Therefore it is necessary to reach a common
+      definition of the functions that should be offered by underlying platforms to
+      enable such overlay controllers with the possibility of allocate and deallocate
+      resources dynamically and get monitoring data about them.
+      </t>
+
+      <t>
+      Such common methods should be offered by all underlying controllers, regardless
+      of being network-oriented (e.g. ODL, ONOS, Ryu) or computing-oriented (e.g., 
+      OpenStack, OpenNebula, Eucalyptus). Furthermore, it is also important for those 
+      platforms to offer some "PUSH" function to report resource state, avoiding the
+      need for the VNO's controller to "POLL" for such data. A starting point to get
+      proper notifications within current REST APIs could be to consider the protocol
+      proposed by the WEBPUSH WG.
+      </t>
+
+      <t>
+      Finally, in order to establish a proper order and allow the coexistence and
+      collaboration of different systems, a common ontology regarding network and
+      system virtualization should be defined and agreed, so different and
+      heterogeneous systems can understand each other without requiring to rely on
+      specific adaptation mechanisms that might break with any update on any side of
+      the relation.
+      </t>
+
+      </section>
+
+
+
     </section>
 
     <section anchor="NS-Creation-Variations" title="Variations of Network Slice Creation">
