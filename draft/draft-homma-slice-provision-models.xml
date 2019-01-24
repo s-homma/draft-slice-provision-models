@@ -23,6 +23,9 @@
 <!ENTITY RFC7348 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7348.xml">
 <!ENTITY RFC7665 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7665.xml"> 
 <!ENTITY RFC8300 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8300.xml">
+-->
+<!ENTITY RFC8453 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8453.xml">
+<!--
 <!ENTITY I-D.draft-ietf-sfc-hierarchical SYSTEM "https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-sfc-hierarchical-05.xml">
 <!ENTITY I-D.draft-netslices-usecases SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-netslices-usecases-02.xml"> 
 <!ENTITY I-D.draft-qiang-coms-architecture SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-qiang-coms-architecture-00.xml">
@@ -35,6 +38,7 @@
 <!ENTITY I-D.draft-ietf-6man-segment-routing-header SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-6man-segment-routing-header-08.xml">
 -->
 <!ENTITY I-D.draft-homma-nfvrg-slice-gateway SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-homma-nfvrg-slice-gateway-00.xml">
+<!ENTITY I-D.draft-draft-dong-teas-enhanced-vpn SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-dong-teas-enhanced-vpn-03.xml">
 ]> 
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?> 
 <!-- used by XSLT processors --> 
@@ -202,6 +206,21 @@
       </address>
     </author>
 
+     <author fullname="Pedro Martinez-Julia" initials="P." surname="Martinez-Julia">
+      <organization>NICT</organization>
+
+      <address>
+        <postal>
+          <street/>
+          <city/>
+          <region/>
+          <code/>
+          <country>Japan</country>
+        </postal>
+        <email>pedro@nict.go.jp</email>
+      </address>
+    </author>
+
     <author fullname="Li Qiang" initials="L." surname="Qiang">
       <organization>Huawei Technologies</organization>
       
@@ -233,20 +252,7 @@
       </address>
     </author>
 
-     <author fullname="Pedro Martinez-Julia" initials="P." surname="Martinez-Julia">
-      <organization>NICT</organization>
 
-      <address>
-        <postal>
-          <street/>
-          <city/>
-          <region/>
-          <code/>
-          <country>Japan</country>
-        </postal>
-        <email>pedro@nict.go.jp</email>
-      </address>
-    </author>
 
 
 
@@ -476,59 +482,61 @@
       
         <t>
         <list style="hanging">
-          <t hangText="Network(WAN) Resources:">
+        <t hangText="Network(WAN) Resources:">
           <list style="symbols">
-          <t>
-          Connectivity:
-          <list style="symbols">
-            <t>(v)Link
+          <t>Connectivity:
             <list style="symbols">
-              <t>Bandwidth per link/session</t>
-              <t>Connected area/end points</t>
-              <t>Forwarding route/path (e.g., for traffic engineering, redundancy)</t>
-              <t>Communication Priority (e.g., QoS class)</t>              
-            </list>
-            </t>
-          
-            <t>
-            (v)Interface
-            <list style="symbols">
-              <t>QoS setting (e.g., Queue size, DSCP remarking, PIR/CIR)</t>
-              <t>Filter setting</t>
-            </list>
-            </t>
-        
-            <t>
-            vRouter/vSwitch (# Treated as a set of (v)links and (v)interfaces.)
-            </t>
-          </list>
-          </t>
-          
-            <t>Protocol of slice data plane:
+              <t>(v)Link
               <list style="symbols">
-                <t>VLAN</t>
-                <t>IPoE (IPv4 or IPv6)</t>
-                <t>MAP-E</t>
-                <t>DS-Lite</t>
-                <t>PPPoE</t>
-                <t>L2TP</t>
-                <t>GRE</t>
-                <t>MPLS</t>
-                <t>VxLAN</t>
-                <t>GTP-U</t>
-                <t>Segment Routing MPLS</t>
-                <t>Segment Routing IPv6</t>
-                <t>NSH</t>
-                <t>Other</t>
+                <t>Bandwidth per link/session</t>
+                <t>Connected area/end points</t>
+                <t>Forwarding route/path (e.g., for traffic engineering, redundancy)</t>
+                <t>Communication Priority (e.g., QoS class)</t>              
               </list>
-            </t>
-
-            <t>Multicast support</t>
-            <t>Metadata conveyance (e.g., subscriber ID)</t>
-
+              </t>
+          
+              <t>
+              (v)Interface
+              <list style="symbols">
+                <t>QoS setting (e.g., Queue size, DSCP remarking, PIR/CIR)</t>
+                <t>Filter setting</t>
+              </list>
+              </t>
         
+              <t>
+              vRouter/vSwitch (# Treated as a set of (v)links and (v)interfaces.)
+              </t>
+            </list>
+          </t>
+
+          <t>Multicast support</t>
+
+          <t>Encryption support</t>
+
+          <t>Authentication support</t>
+          
+          <t>Metadata conveyance (e.g., subscriber ID)</t>          
+        
+          <t>Slice data plane protocols (Option):
+            <list style="symbols">
+              <t>VLAN</t>
+              <t>IPoE (IPv4 or IPv6)</t>
+              <t>MAP-E</t>
+              <t>DS-Lite</t>
+              <t>PPPoE</t>
+              <t>L2TP</t>
+              <t>GRE</t>
+              <t>MPLS</t>
+              <t>VxLAN</t>
+              <t>GTP-U</t>
+              <t>Segment Routing MPLS</t>
+              <t>Segment Routing IPv6</t>
+              <t>NSH</t>
+              <t>Other</t>
+            </list>
+          </t>        
         </list>
-        </t>
+        </t> 
       
         <t hangText="Computing(NFVI) Resources:">
           <list style="symbols">
@@ -537,72 +545,98 @@
           <t>Memory</t>
           <t>Disk</t>
           <t>vNIC</t>
-          <t>Connectivity for private VNF instance</t>
-<!--      <t>Image</t>  -->
-          <t>VNF Type
+          <t>Connectivity to VNF instances</t>
+<!--      <t>Image</t> -->  
+          <t>Virtual Deployment Unit
             <list style="symbols">
             <t>VM</t>
             <t>container</t>
             <t>micro kernel</t>
             </list>
           </t>
+<!--
           <t>VNF Infrastructure Type (e.g., open source, product of vender#A, ..., etc.)</t>
-          <t>VNF location (i.e., data center where the VNF deployed)</t>
+-->
+          <t>Resource Deployment Location (i.e., edge DC, central DC, public cloud, ..., etc.)</t>
+
           </list>
         </t>
       
         <t hangText="Functionality Resources:">
           <list style="symbols">
-          <t>Data Plane(DP) NF:
+          
+          <t>Image
             <list style="symbols">
-              <t>
-              GateWay(GW) function:
+              <t>Data Plane(DP) NF:
                 <list style="symbols">
-                  <t>Access Point Type (e.g., for radio, Wi-Fi, and fixed accesses)</t>
-                  <t>Slice Selection Setting</t>
-                  <t>Terminate protocol</t>
-                  <t>Authentication</t>
+                  <t>GateWay(GW) function:
+                    <list style="symbols">
+                      <t>Access Point Type (e.g., for radio, Wi-Fi, and fixed accesses)</t>
+                      <t>Slice Selection Setting</t>
+                      <t>Terminate protocol</t>
+                      <t>Authentication</t>
+                    </list>
+                  </t>
+                  <t>Security Appliance:
+                    <list style="symbols">
+                      <t>IPS (Intrusion Prevention System)</t>
+                      <t>IDS (Intrusion Detection System)</t>
+                      <t>WAF (Web Application Firewall)</t>
+                    </list>
+                  </t>
+                  <t>DPI</t>
+                  <t>Load Balancer</t>
+                  <t>TCP Accelerator</t>
+                  <t>Video Optimizer</t>
+                  <t>Parental Control</t>
+                  <t>3GPP 5G DP functions
+                    <list style="symboles">
+                      <t>gNB</t>
+                      <t>UPF</t>
+                      <t>Uplink Classifier</t>
+                    </list>
+                  </t>
                 </list>
               </t>
-              <t>Security Appliance:
-              <list style="symbols">
-                <t>IPS (Intrusion Prevention System)</t>
-                <t>IDS (Intrusion Detection System)</t>
-                <t>WAF (Web Application Firewall)</t>
-              </list>
-              </t>
-            <t>DPI</t>
-            <t>Load Balancer</t>
-            <t>TCP Accelerator</t>
-            <t>Video Optimizer</t>
-            <t>Parental Control</t>
-            <t>Other</t>
-           </list>
-          </t>
-          <t>Control Plane(CP) NF:
-            <list style="symbols">
-              <t>DHCP
+          
+              <t>Control Plane(CP) NF:
                 <list style="symbols">
-                  <t>Fixed IP address allocation</t>
-                  <t>Dynamic IP address allocation</t>
-                  <t>The number of registrated devices</t>
-               </list>
-              </t>
-              <t>DNS</t>
-              <t>VoIP (SBC, SIP server)</t>
-              <t>Mobility Management Functionalities (referring 3GPP 5GS)
-                <list style="symbols">
-                  <t>AMF (Access and Mobility management Function)</t>
-                  <t>SMF (Session Management Function)</t>
-                  <t>PCF (Policy Control Function)</t>
-                  <t>UDM (Unified Data Management)</t>
-                  <t>NEF (Network Exposure Function)</t>
-                </list>
+                  <t>DHCP
+                    <list style="symbols">
+                      <t>Fixed IP address allocation</t>
+                      <t>Dynamic IP address allocation</t>
+                      <t>The number of registrated devices</t>
+                    </list>
+                  </t>
+                  <t>DNS</t>
+                  <t>VoIP (SBC, SIP server)</t>
+                  <t>3GPP 5G CP function
+                    <list style="symbols">
+                      <t>AMF (Access and Mobility management Function)</t>
+                      <t>SMF (Session Management Function)</t>
+                      <t>PCF (Policy Control Function)</t>
+                      <t>UDM (Unified Data Management)</t>
+                      <t>NEF (Network Exposure Function)</t>
+                    </list>
+                  </t>
+                 </list>
               </t>
             </list>
-            </t>
-        </list>
-        </t>
+          </t>
+<!--
+          <t>Vertial Deployment Unit
+            <list style="symbols">
+              <t>Virtual Machine (VM)</t>
+              <t>Container</t>
+              <t>Micro kernel</t>
+            </list>
+          </t>
+-->
+          <t>Provided VNF Type (e.g., open source, product of vender#A, ..., etc.)</t>
+          <t>Function location (e.g., edge DC, central DC, Public cloud, etc.)</t>          
+
+
+
       </list>
       </t>
 
@@ -610,6 +644,13 @@
       In terms of security or usability for NS tenants, some abstraction on resource information would be required, 
       however both setting parameters of underlay infrastructure and abstracted information may coexist in these lists.
       </t>
+
+      <t>
+      For abstruction of parameters of underlay networks,  some additional protocols or functions (like <xref target="RFC8453"/> ) 
+      would be required. Moreover, for providing strict communication qualities, combinations of some technologies may be 
+      useful (ref. <xref target="I-D.dong-teas-enhanced-vpn"/>).
+      </t> 
+
       </section>
       
 
@@ -641,9 +682,9 @@
           </t>
         </list>
         </t>
-
-        <t>Note: RAN in the 3GPP 5GS is NS aware, but it is not defined that slicing RAN.</t>
-      
+<!--
+        <t>Note: RAN in the 3GPP 5GS is NS aware, but no specific slicing support is currently defined in RAN.</t>
+-->      
         <t>
         <xref target="Overview-NS-Structure"/> describes the overview of this structure. Resources in each domain (e.g., access, 
         core networks, and DC) are handled by management entities and  constitute an NSSI. An E2E-NSI is established by stitching 
@@ -669,7 +710,7 @@
       A              A              A
       |              |              |
 
-  o---o         [SF]               /----[VM]
+  o---o         [PNF]              /----[VM]
      / `--.     /  `----.         /----[VM]
  o---o-----o...o---------o...o---o----[VM]
  NW Rsrc#1     NW Rsrc+SF      NW+CMP Rsrcs
@@ -685,10 +726,10 @@
 *Legends
  NW Rsrc : Network Resource
  CMP Rsrc: Computing Resource
-  o  : virtual/physical node structuring NSI
-  -- : virtual/physical link structuring NSI
- [SF]: service function on NSI
- [VM]: Virtual Machine Instance on NSI
+  o   : virtual/physical node structuring NSI
+  --  : virtual/physical link structuring NSI
+ [PNF]: Physical Network Function Appliance on NSI
+ [VM] : Virtual Machine Instance on NSI
 
   ]]></artwork>
 </figure>
@@ -972,6 +1013,11 @@
     &RFC7348;
     &RFC7665;
     &RFC8300;
+-->
+   
+    &RFC8453;
+
+<!--
     &I-D.draft-netslices-usecases;
     &I-D.draft-qiang-coms-netslicing-information-model;
     &I-D.draft-qiang-coms-architecture;
@@ -981,6 +1027,7 @@
 -->
     &I-D.draft-defoy-coms-subnet-interconnection;
     &I-D.draft-homma-nfvrg-slice-gateway;
+    &I-D.draft-dong-teas-enhanced-vpn;
 
       
        <reference anchor='TS.23.501-3GPP' target="http://www.3gpp.org/ftp//Specs/archive/23_series/23.501/23501-f30.zip"> 
