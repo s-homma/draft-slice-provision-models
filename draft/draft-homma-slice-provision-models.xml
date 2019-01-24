@@ -38,7 +38,7 @@
 <!ENTITY I-D.draft-ietf-6man-segment-routing-header SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-6man-segment-routing-header-08.xml">
 -->
 <!ENTITY I-D.draft-homma-nfvrg-slice-gateway SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-homma-nfvrg-slice-gateway-00.xml">
-<!ENTITY I-D.draft-draft-dong-teas-enhanced-vpn SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-dong-teas-enhanced-vpn-03.xml">
+<!ENTITY I-D.draft-dong-teas-enhanced-vpn SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-dong-teas-enhanced-vpn-03.xml">
 ]> 
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?> 
 <!-- used by XSLT processors --> 
@@ -495,8 +495,7 @@
               </list>
               </t>
           
-              <t>
-              (v)Interface
+              <t>(v)Interface
               <list style="symbols">
                 <t>QoS setting (e.g., Queue size, DSCP remarking, PIR/CIR)</t>
                 <t>Filter setting</t>
@@ -535,7 +534,9 @@
               <t>Other</t>
             </list>
           </t>        
-        </list>
+          
+          </list>
+  
         </t> 
       
         <t hangText="Computing(NFVI) Resources:">
@@ -547,9 +548,9 @@
           <t>vNIC</t>
           <t>Connectivity to VNF instances</t>
 <!--      <t>Image</t> -->  
-          <t>Virtual Deployment Unit
+          <t>Virtual Deployment Unit:
             <list style="symbols">
-            <t>VM</t>
+            <t>Virtual Machine (VM)</t>
             <t>container</t>
             <t>micro kernel</t>
             </list>
@@ -565,7 +566,7 @@
         <t hangText="Functionality Resources:">
           <list style="symbols">
           
-          <t>Image
+          <t>Image:
             <list style="symbols">
               <t>Data Plane(DP) NF:
                 <list style="symbols">
@@ -633,7 +634,9 @@
           </t>
 -->
           <t>Provided VNF Type (e.g., open source, product of vender#A, ..., etc.)</t>
-          <t>Function location (e.g., edge DC, central DC, Public cloud, etc.)</t>          
+          <t>Function location (e.g., edge DC, central DC, Public cloud, etc.)</t>
+        </list>
+        </t>          
 
 
 
@@ -785,22 +788,22 @@
         <t>
         Potential stakeholders in network slicing are described below:
         <list style="hanging">
-          <t hangText="NSSI provider:">
+          <t hangText="o NSSI provider:">
           infrastructure operator
           </t>
           
-          <t hangText="Middle-NSI provider:">
+          <t hangText="o Middle-NSI provider:">
           infrastructure operator, NS broker
           </t>
 
-          <t hangText="E2E-NSI provider:">
+          <t hangText="o E2E-NSI provider:">
           infrastructure operator, NS broker, service provider
           </t>
 
-          <t hangText="NS tenant:">
+          <t hangText="o NS tenant:">
           infrastructure operator, NS broker, service provider, enterprise, mass user
           </t>
-          <t hangText="End customer:">
+          <t hangText="o End customer:">
           enterprise, mass user, etc.
           </t>
         </list>
@@ -996,7 +999,7 @@
     
     <section title="Acknowledgement">
       <t>
-      The author would like to thank Toru Okugawa and  Laurent Ciavaglia for their kind review and valuable feedback.
+      The author would like to thank Toru Okugawa, Laurent Ciavaglia, and Xavier De Foy for their kind review and valuable feedback.
       </t>
     </section>
     
