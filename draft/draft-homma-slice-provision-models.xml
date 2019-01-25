@@ -557,7 +557,7 @@
                 <t>Connected area/end points</t>
                 <t>Forwarding route/path (e.g., for traffic engineering, redundancy)</t>
                 <t>Communication Priority (e.g., QoS class)</t> 
-                <t>Acceptable jitter range</t>           
+                <t>Range of jitter amount</t>           
               </list>
               </t>
           
@@ -656,7 +656,7 @@
                   <t>TCP Accelerator</t>
                   <t>Video Optimizer</t>
                   <t>Parental Control</t>
-                  <t>3GPP 5G DP functions
+                  <t>Mobile DP functions (Ref. 3GPP 5GS)
                     <list style="symboles">
                       <t>gNB</t>
                       <t>UPF</t>
@@ -677,7 +677,7 @@
                   </t>
                   <t>DNS</t>
                   <t>VoIP (SBC, SIP server)</t>
-                  <t>3GPP 5G CP function
+                  <t>Mobile CP function (Ref. 3GPP 5GS)
                     <list style="symbols">
                       <t>AMF (Access and Mobility management Function)</t>
                       <t>SMF (Session Management Function)</t>
