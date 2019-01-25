@@ -556,7 +556,8 @@
                 <t>Bandwidth per link/session</t>
                 <t>Connected area/end points</t>
                 <t>Forwarding route/path (e.g., for traffic engineering, redundancy)</t>
-                <t>Communication Priority (e.g., QoS class)</t>              
+                <t>Communication Priority (e.g., QoS class)</t> 
+                <t>Acceptable jitter range</t>           
               </list>
               </t>
           
