@@ -327,7 +327,7 @@
       platforms do not offer common methods and functions, so it is
       difficult for the virtual network controllers used by the VNOs to actually
       manage and control virtual resources instantiated on different platforms, not
-      even considering different infrastructure operaters. Therefore it is necessary to reach a common
+      even considering different infrastructure operators. Therefore, it is necessary to reach a common
       definition of the functions that should be offered by underlying platforms to
       enable such overlay controllers with the possibility of allocate and deallocate
       resources dynamically and get monitoring data about them.
@@ -335,7 +335,7 @@
 
       <t>
       Such common methods should be offered by all underlying controllers, regardless
-      of being network-oriented (e.g. ODL, ONOS, Ryu) or computing-oriented (e.g., 
+      of being network-oriented (e.g., ODL, ONOS, Ryu) or computing-oriented (e.g., 
       OpenStack, OpenNebula, Eucalyptus). Furthermore, it is also important for those 
       platforms to offer some "PUSH" function to report resource state, avoiding the
       need for the VNO's controller to "POLL" for such data. A starting point to get
@@ -358,7 +358,7 @@
 
     <section title="Definition of Terms">
       <t>
-      This section lists definitions and terms related to network slicing. Although this document refers terms and view points 
+      This section lists definitions and terms related to network slicing. Although this document refers terms and viewpoints 
       on network slicing in 3GPP documents (<xref target="TS.28.530-3GPP"/> and <xref target="TS.28.801-3GPP"/>) and <xref target="NGMN-5G-White-Paper"/>, 
       some of definitions in this document may be different from ones of those documents.
       </t>
@@ -405,7 +405,7 @@
       </t> 
  
       <t hangText="RAN-NSSI:"> 
-      Regardless of RAN deployment (e.g. distributed-RAN, Centerilzed-RAN or Cloud-RAN, a RAN-NSSI creates a dedicate and logical  
+      Regardless of RAN deployment (e.g. distributed-RAN, Centralized-RAN or Cloud-RAN, a RAN-NSSI creates a dedicate and logical  
       resource on RAN for each NSI which are completely. The overview of NSI composed with RAN-NSSI is shown in <xref target="app-1"/>. 
       </t> 
  
@@ -436,8 +436,8 @@
 
       <t hangText="Infrastructure Operator:">
       An infrastructure operator is an organization who manages infrastructure networks or data centers for running NSIs. 
-      In the most of cases, infrastructure opeators are initial NS providers on NSaaS. Also, some of them may be NS tenants 
-      simultaniously. 
+      In the most of cases, infrastructure operators are initial NS providers on NSaaS. Also, some of them may be NS tenants 
+      simultaneously. 
       </t>
 
       <t hangText="Vertical Customer:">
@@ -448,7 +448,7 @@
 
       <t hangText="Virtual Network Operator (VNO):">
       A VNO is a person or group that operates virtual networks composed with resources or NSSIs rent from infrastructure 
-      operators and provides such virtual networks as NSIs to vertical customsers who are final NS tenats. In some cases, 
+      operators and provides such virtual networks as NSIs to vertical customers who are final NS tenants. In some cases, 
       infrastructure operators have this role in addition to operating their own infrastructure simultaneously.
       </t>
 <!--
@@ -671,7 +671,7 @@
                     <list style="symbols">
                       <t>Fixed IP address allocation</t>
                       <t>Dynamic IP address allocation</t>
-                      <t>The number of registrated devices</t>
+                      <t>The number of registered devices</t>
                     </list>
                   </t>
                   <t>DNS</t>
@@ -714,7 +714,7 @@
       </t>
 
       <t>
-      For abstruction of parameters of underlay networks,  some additional protocols or functions (like <xref target="RFC8453"/> ) 
+      For abstraction of parameters of underlay networks,  some additional protocols or functions (like <xref target="RFC8453"/> ) 
       would be required. Moreover, for providing strict communication qualities, combinations of some technologies may be 
       useful (ref. <xref target="I-D.dong-teas-enhanced-vpn"/>).
       </t> 
@@ -805,7 +805,7 @@
 
       <t>
       Althoug it is shown that an NSSI belongs to just only one E2E-NSI in <xref target="Overview-NS-Structure"/>, it may be allowed that 
-      multple E2E-NSIs share an NSSI. Some resouces may belong to multiple NSSI as well.
+      multiple E2E-NSIs share an NSSI. Some resources may belong to multiple NSSI as well.
       </t>
 
       <t>
@@ -875,12 +875,6 @@
         </t>
       </section>
 
-
-
-      </section>
-
-
-
     </section>
 
     <section anchor="NS-Creation-Variations" title="Variations of Network Slice Creation">
@@ -931,7 +925,7 @@
         <t>
         CM-NS is an NS creation pattern in which an NS is established based on an order from a tenant and is provided to it. As examples of usage of CM-NS, 
         an enterprise builds and operates a virtual private network for connecting several bases, or OTT (Over The Top) or other industrial 
-        service providers create NSs based on thier own requirements and use them as a part of their own services (e.g., connected vehicles/drones, online video games, 
+        service providers create NSs based on their own requirements and use them as a part of their own services (e.g., connected vehicles/drones, online video games, 
         or remote surgery). 
         </t>
         
@@ -953,7 +947,7 @@
  
     <section anchor="NS-Provision-Model" title="Network Slice Provision Models">
       <t>
-      This document classify NS provision models into three categories defined in the following section. The capabilities which NS tenants 
+      This document classifis NS provision models into three categories defined in the following section. The capabilities which NS tenants 
       can have on management of NSs would vary depending on the selected provision model. 
       </t>
       
@@ -975,7 +969,7 @@
           </t>
         
           <t hangText="IaaS-like Model:">
-          In this model, a tenant designs its own NS tenplate and instantiates NSs by indicating concrete resources to infrastructure operators. In other words, 
+          In this model, a tenant designs its own NS templates and instantiates NSs by indicating concrete resources to infrastructure operators. In other words, 
           infrastructure operators provide just their resources, and NSs are coordinated by the tenant.
           </t>
         </list>
@@ -1180,21 +1174,22 @@
 <figure anchor="NS-structure-in-5gs" title="Overview of Structure of NS in 3GPP 5GS"> 
   <artwork align="center"><![CDATA[ 
      
-    <==================          E2E-NSI         =======================> 
-                 :                 :                  :           :  : 
-                 :                 :                  :           :  : 
-    <======  RAN-NSSI  ======><=TRN-NSSI=><====== CN-NSSI  ======>VL[APL] 
-        :        :        :        :         :       :        :   :  : 
-        :        :        :        :         :       :        :   :  : 
-    RW[NFs ]<=TRN-NSSI=>[NFs ]<=TRN-NSSI=>[NFs ]<=TRN-NSSI=>[NFs ]VL[APL] 
-     
-     . . . . . . . . . . . . ..          . . . . . . . . . . . . ..  
-     .,----.   ,----.   ,----..  ,----.  .,----.   ,----.   ,----..   
-[UE]--|RAN |---| TN |---|RAN |---| TN |---|CN  |---| TN |---|CN  |--[APL] 
-     .|NFs |   `----'   |NFs |.  `----'  .|NFs |   `----'   |NFs |. 
-     .`----'            `----'.          .`----'            `----'. 
-     . . . . . . . . . . . . ..          . . . . . . . . . . . . .. 
-    RW         RAN                MBH               CN               DN 
+  <==================          E2E-NSI         =======================> 
+               :                 :                  :           :  : 
+               :                 :                  :           :  : 
+  <======  RAN-NSSI  ======><=TRN-NSSI=><====== CN-NSSI  ======>VL[APL] 
+      :        :        :        :         :       :        :   :  : 
+      :        :        :        :         :       :        :   :  : 
+  RW[NFs ]<=TRN-NSSI=>[NFs ]<=TRN-NSSI=>[NFs ]<=TRN-NSSI=>[NFs ]VL[APL] 
+   
+   . . . . . . . . . . . . ..          . . . . . . . . . . . . ..  
+   .,----.   ,----.   ,----..  ,----.  .,----.   ,----.   ,----..   
+UE--|RAN |---| TN |---|RAN |---| TN |---|CN  |---| TN |---|CN  |--[APL] 
+   .|NFs |   `----'   |NFs |.  `----'  .|NFs |   `----'   |NFs |. 
+   .`----'            `----'.          .`----'            `----'. 
+   . . . . . . . . . . . . ..          . . . . . . . . . . . . .. 
+
+  RW         RAN                MBH               CN               DN 
  
 *Legends 
  UE: User Equipment 
