@@ -805,7 +805,7 @@
     
 
       <t>
-      Althoug it is shown that an NSSI belongs to just only one E2E-NSI in <xref target="Overview-NS-Structure"/>, it may be allowed that 
+      Although it is shown that an NSSI belongs to just only one E2E-NSI in <xref target="Overview-NS-Structure"/>, it may be allowed that 
       multiple E2E-NSIs share an NSSI. Some resources may belong to multiple NSSI as well.
       </t>
 
