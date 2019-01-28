@@ -618,6 +618,7 @@
               <t>GRE</t>
               <t>MPLS</t>
               <t>VxLAN</t>
+              <t>Geneve</t>
               <t>GTP-U</t>
               <t>Segment Routing MPLS</t>
               <t>Segment Routing IPv6</t>
