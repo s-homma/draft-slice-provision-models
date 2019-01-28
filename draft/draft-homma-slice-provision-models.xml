@@ -145,7 +145,7 @@
       </address>
     </author>
 
-    <author fullname="Vishnu Ram" initials="V." surname="Ram">
+    <author fullname="Vishnu Ram OV" initials="V." surname="Ram OV">
       <organization>Independent Research Consultant India</organization>
 
       <address>
@@ -191,7 +191,7 @@
       </address>
     </author>
 
-    <author fullname="Jose Ordonez-Lucena" initials="J." surname="Ordnez-Lucena">
+    <author fullname="Jose A. Ordonez-Lucena" initials="J." surname="Ordonez-Lucena">
       <organization>Telefonica I+D</organization>
 
       <address>
@@ -252,8 +252,33 @@
       </address>
     </author>
 
+    <author fullname="Laurent Ciavaglia" initials="L." surname="Ciavaglia">
+      <organization>Nokia</organization>
 
+      <address>
+        <postal>
+          <street/>
+          <city/>
+          <region/>
+          <code/>
+          <country>France</country>
+        </postal>
+        <email>Laurent.ciavaglia@nokia.com</email>
+      </address>
+    </author>
 
+    <author fullname="Xavier de Foy" initials="X." surname="de Foy">
+      <organization abbrev="InterDigital Inc.">InterDigital Inc.</organization>
+      
+      <address>
+        <postal>
+          <street/>
+          <city/>
+          <country>Canada</country>
+        </postal>
+        <email>Xavier.Defoy@InterDigital.com</email>
+      </address>
+    </author>
 
 
     <date/>
@@ -1066,7 +1091,7 @@
     
     <section title="Acknowledgement">
       <t>
-      The author would like to thank Toru Okugawa, Laurent Ciavaglia, and Xavier De Foy for their kind review and valuable feedback.
+      The author would like to thank Toru Okugawa and Xavier De Foy for their kind review and valuable feedback.
       </t>
     </section>
     
