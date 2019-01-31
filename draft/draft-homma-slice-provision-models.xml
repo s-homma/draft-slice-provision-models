@@ -316,8 +316,9 @@
       </t>
       
       <t>
-      This document clarifies provision patterns of network slice, and provides the definitions and purposes which are 
-      available over several organizations.
+      This document clarifies provision patterns of network slice, and provides the definitions and scope of network slicing which are 
+      available over several organizations. Furthermore, the deliverables would be help for evaluating applicabilities of existing technologies/solutions 
+      to network slicing.
       </t>
 
     <section anchor="Roles-NS-Provisioning" title="Differentiated Roles in Network Slice Provisioning">
@@ -365,7 +366,7 @@
       platforms to offer some "PUSH" function to report resource state, avoiding the
       need for the VNO's controller to "POLL" for such data. A starting point to get
       proper notifications within current REST APIs could be to consider the protocol
-      proposed by the WEBPUSH WG.
+      proposed by the <xref target="WEBPUSH-WG"/>.
       </t>
 
       <t>
@@ -540,7 +541,7 @@
       <t>
       On network slice operations, capabilities for dynamic instantiation, change, and deletion should be required because 
       an NSI is established based on received orders from tenants in NSaaS. From this aspect, some mechanisms to design a network 
-      based on service requirements and to convert concrete configurations based on the design would be required. 
+      based on service requirements and to convert those to concrete configurations based on the design would be required. 
       </t>
 
       <t>
@@ -552,7 +553,7 @@
       </t>
       
       <t>
-      The required agility of slice operation and granularity of communication quality requested can vary depending on 
+      The required agility of slice operation and granularity of end to end communication quality requested can vary depending on 
       provision model.
       </t>
 
@@ -808,7 +809,7 @@
   o---o         [PNF]              /----[VM]
      / `--.     /  `----.         /----[VM]
  o---o-----o...o---------o...o---o----[VM]
- NW Rsrc#1     NW Rsrc+SF      NW+CMP Rsrcs
+ NW Rsrc#1     NW Rsrc+PNF      NW+CMP Rsrcs
      A               A              A
      |               |              |
 
@@ -1092,7 +1093,7 @@
     
     <section title="Acknowledgement">
       <t>
-      The author would like to thank Toru Okugawa and Xavier De Foy for their kind review and valuable feedback.
+      The author would like to thank Toru Okugawa for his kind review and valuable feedback.
       </t>
     </section>
     
@@ -1185,6 +1186,17 @@
         </organization>
         </author>
         <date month="June" year="2018"/>
+        </front>
+      </reference>
+
+      <reference anchor='WEBPUSH-WG'
+       target='https://datatracker.ietf.org/wg/webpush/about/'>
+        <front>
+        <title>Web-Based Push Notifications(webpush)</title>
+        <author>
+        <organization>IETF</organization>
+        </author>
+        <date/>
         </front>
       </reference>
     </references>
