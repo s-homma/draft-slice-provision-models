@@ -384,9 +384,11 @@
 
     <section title="Definition of Terms">
       <t>
-      This section lists definitions and terms related to network slicing. Although this document refers terms and viewpoints 
-      on network slicing in 3GPP documents (<xref target="TS.28.530-3GPP"/> and <xref target="TS.28.801-3GPP"/>) and <xref target="NGMN-5G-White-Paper"/>, 
-      some of definitions in this document may be different from ones of those documents.
+      This section lists definitions and terms related to network slicing. This document refers terms and view points 
+      on network slicing in some SDOs, such as 3GPP(<xref target="TS.23.501-3GPP"/>, <xref target="TS.28.530-3GPP"/>,  and 
+      <xref target="TS.28.801-3GPP"/>),  NGMN (<xref target="NGMN-5G-White-Paper"/>), and MEF white paper.  
+      However the scope of this document is not network slicing which is mobile specific but one for general networks, and 
+      thus some of definitions in this document may be different from ones of those documents.
       </t>
       
       <t>
@@ -398,30 +400,51 @@
       </t>
       
       <t hangText="Network Slice (NS):">
-      An NS is a general name of logical separate networks instantiated on a network infrastructure. It includes 
-      Network Slice Instance, Network Slice Subnet Instance, and End-to-End Network Slice Instance.
-      </t>
+      An NS is a logical separate network that provides specific network capabilities and characteristics. In 3GPP definitions, 
+      an NS includes both data plane and control plane resources/functions. Meanwhile, in MEF definitions, a set of control 
+      and management functionalities is provided as an NS independently of data plane resources. Such NS for control 
+      and management of data plane resources is called OCM (Orchestration, Control, and Management) slice. An OCM slice 
+      manages one or more data plane NSs, called resource slices.
       
+      <!-
+      It is stractured with 
+      several types of resources and instantiated on a network infrastructure.
+      It includes Network Slice Instance, Network Slice Subnet Instance, and End-to-End Network Slice Instance.
+      ->
+      </t>
+
       
       <t hangText="Network Slice Instance (NSI):">
-      An NSI is a logical network instantiated with network(WAN) and computing(NFVI),  
-      and some include additional network service functions such as firewall or load-balancer. It is composed of 
-      one or more Network Slice Subnet Instances. When it provides connectivity from end to end for end users, 
+      An NSI is a logical network instance composed with required infrastructure resources, including networking (WAN), 
+      computing (NFVI) resources,  and some include additional network service functions such as firewall or load-balancer. 
+      It is composed of one or more Network Slice Subnet Instances. 
+      <!-
+      When it provides connectivity from end to end for end users, 
       it is called End-to-End Network Slice Instance. An NSI is basically an overlay network and is independent of 
       the underlay network's topology.
+      ->
       </t>
-      
+
+      <t hangText="Network Slice Subnet:">
+      A Network Slice Subnet is a representation of a set of required resources. It is composed and managed as 
+      a group of network elements.
+      </t>
+
       <t hangText="Network Slice Subnet Instance (NSSI):">
+      An NSSI is a partial logical network instance represented as a network slicce instance. It is a minimul unit managed 
+      or provided as a network slice. One or more NSSI structure an NSI or an E2E-NSI.
+      <!-
       An NSSI is a partially virtual network instantiated within a single domain, and it basically provides connectivity to  
       other domains or end points. Ways to construct an NSSI depends on the specifications of underlay networks.
+      ->
       </t>
       
       
       <t hangText="End-to-End Network Slice Instance (E2E-NSI):">
       An E2E-NSI is a virtual network connecting among end points. It is composed of one or multiple NSSIs. This term is 
-      used in this document when it should be emphasized that the NSI is structured from end to end. As an example, for 
-      providing an E2E-NSI on the 3GPP 5G network, combining three types of NSIs: RAN-, TRN-, and CN-NSIs would 
-      be required.  
+      original of this document and is used when it should be emphasized that the target NSI provides connectivity  from 
+      end to end. As an example, for providing an E2E-NSI on the 3GPP 5G network, combining three types of NSIs: RAN-, 
+      TRN-, and CN-NSIs would be required.  
       </t>
 
       <t hangText="Transport(TRN)-NSSI:"> 
