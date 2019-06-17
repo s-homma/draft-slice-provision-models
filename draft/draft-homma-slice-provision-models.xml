@@ -406,11 +406,11 @@
       and management of data plane resources is called OCM (Orchestration, Control, and Management) slice. An OCM slice 
       manages one or more data plane NSs, called resource slices.
       
-      <!-
+      <!--
       It is stractured with 
       several types of resources and instantiated on a network infrastructure.
       It includes Network Slice Instance, Network Slice Subnet Instance, and End-to-End Network Slice Instance.
-      ->
+      -->
       </t>
 
       
@@ -418,11 +418,11 @@
       An NSI is a logical network instance composed with required infrastructure resources, including networking (WAN), 
       computing (NFVI) resources,  and some include additional network service functions such as firewall or load-balancer. 
       It is composed of one or more Network Slice Subnet Instances. 
-      <!-
+      <!--
       When it provides connectivity from end to end for end users, 
       it is called End-to-End Network Slice Instance. An NSI is basically an overlay network and is independent of 
       the underlay network's topology.
-      ->
+      -->
       </t>
 
       <t hangText="Network Slice Subnet:">
@@ -433,10 +433,10 @@
       <t hangText="Network Slice Subnet Instance (NSSI):">
       An NSSI is a partial logical network instance represented as a network slicce instance. It is a minimul unit managed 
       or provided as a network slice. One or more NSSI structure an NSI or an E2E-NSI.
-      <!-
+      <!--
       An NSSI is a partially virtual network instantiated within a single domain, and it basically provides connectivity to  
       other domains or end points. Ways to construct an NSSI depends on the specifications of underlay networks.
-      ->
+      -->
       </t>
       
       
