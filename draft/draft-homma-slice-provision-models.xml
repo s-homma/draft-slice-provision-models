@@ -23,6 +23,9 @@
 <!ENTITY RFC7348 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7348.xml">
 <!ENTITY RFC7665 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7665.xml"> 
 <!ENTITY RFC8300 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8300.xml">
+-->
+<!ENTITY RFC8453 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8453.xml">
+<!--
 <!ENTITY I-D.draft-ietf-sfc-hierarchical SYSTEM "https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-sfc-hierarchical-05.xml">
 <!ENTITY I-D.draft-netslices-usecases SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-netslices-usecases-02.xml"> 
 <!ENTITY I-D.draft-qiang-coms-architecture SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-qiang-coms-architecture-00.xml">
@@ -35,6 +38,7 @@
 <!ENTITY I-D.draft-ietf-6man-segment-routing-header SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-6man-segment-routing-header-08.xml">
 -->
 <!ENTITY I-D.draft-homma-nfvrg-slice-gateway SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-homma-nfvrg-slice-gateway-00.xml">
+<!ENTITY I-D.draft-dong-teas-enhanced-vpn SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-dong-teas-enhanced-vpn-03.xml">
 ]> 
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?> 
 <!-- used by XSLT processors --> 
@@ -73,36 +77,36 @@
     </title>
 
     <author fullname="Shunsuke Homma" initials="S." surname="Homma">
-      <organization abbrev="NTT">NTT</organization>
+      <organization>NTT</organization>
 
       <address>
         <postal>
-          <street>3-9-11, Midori-cho</street>
+          <street/>
 
-          <city>Musashino-shi</city>
+          <city/>
 
-          <region>Tokyo</region>
+          <region/>
 
-          <code>180-8585</code>
+          <code/>
 
           <country>Japan</country>
         </postal>
-        <email>homma.shunsuke@lab.ntt.co.jp</email>
+        <email>shunsuke.homma.fp@hco.ntt.co.jp</email>
       </address>
     </author>
 
     <author fullname="Hidetaka Nishihara" initials="H." surname="Nishihara">
-      <organization abbrev="NTT">NTT</organization>
+      <organization>NTT</organization>
 
       <address>
         <postal>
-          <street>3-9-11, Midori-cho</street>
+          <street/>
 
-          <city>Musashino-shi</city>
+          <city/>
 
-          <region>Tokyo</region>
+          <region/>
 
-          <code>180-8585</code>
+          <code/>
 
           <country>Japan</country>
         </postal>
@@ -141,7 +145,7 @@
       </address>
     </author>
 
-    <author fullname="Vishnu Ram" initials="V." surname="Ram">
+    <author fullname="Vishnu Ram OV" initials="V." surname="Ram OV">
       <organization>Independent Research Consultant India</organization>
 
       <address>
@@ -172,8 +176,8 @@
     </author>
 
 
-    <author fullname="Luis M. Contreras" initials="L." surname="Contreras">
-      <organization>Telefonica</organization>
+    <author fullname="Luis M. Contreras-Murillo" initials="L." surname="Contreras-Murillo">
+      <organization>Telefonica I+D</organization>
 
       <address>
         <postal>
@@ -187,8 +191,8 @@
       </address>
     </author>
 
-    <author fullname="Jose Ordonez Lucena" initials="J." surname="Ordnez">
-      <organization>Telefonica</organization>
+    <author fullname="Jose A. Ordonez-Lucena" initials="J." surname="Ordonez-Lucena">
+      <organization>Telefonica I+D</organization>
 
       <address>
         <postal>
@@ -202,7 +206,22 @@
       </address>
     </author>
 
-    <author fullname="Li Qiang" initial="L." surname="Qiang">
+     <author fullname="Pedro Martinez-Julia" initials="P." surname="Martinez-Julia">
+      <organization>NICT</organization>
+
+      <address>
+        <postal>
+          <street/>
+          <city/>
+          <region/>
+          <code/>
+          <country>Japan</country>
+        </postal>
+        <email>pedro@nict.go.jp</email>
+      </address>
+    </author>
+
+    <author fullname="Li Qiang" initials="L." surname="Qiang">
       <organization>Huawei Technologies</organization>
       
       <address>
@@ -233,8 +252,8 @@
       </address>
     </author>
 
-     <author fullname="Pedro Martinez-Julia" initials="P." surname="Martinez-Julia">
-      <organization>NICT</organization>
+    <author fullname="Laurent Ciavaglia" initials="L." surname="Ciavaglia">
+      <organization>Nokia</organization>
 
       <address>
         <postal>
@@ -242,12 +261,24 @@
           <city/>
           <region/>
           <code/>
-          <country>Japan</country>
+          <country>France</country>
         </postal>
-        <email>pedro@nict.go.jp</email>
+        <email>Laurent.ciavaglia@nokia.com</email>
       </address>
     </author>
 
+    <author fullname="Xavier de Foy" initials="X." surname="de Foy">
+      <organization abbrev="InterDigital Inc.">InterDigital Inc.</organization>
+      
+      <address>
+        <postal>
+          <street/>
+          <city/>
+          <country>Canada</country>
+        </postal>
+        <email>Xavier.Defoy@InterDigital.com</email>
+      </address>
+    </author>
 
 
     <date/>
@@ -270,7 +301,7 @@
   </front>
 
   <middle>
-    <section title="Introduction">
+    <section title="Introduction and Motivation">
       <t>
       Network slicing is an approach to provide separate virtual networks depending on requirements of each service. 
       Network slicing receives attention due to factors such as diversity of services and devices, and it is also a 
@@ -285,18 +316,79 @@
       </t>
       
       <t>
-      This document clarifies provision patterns of network slice, and provides the definitions and purposes which are 
-      available over several organizations.
+      This document clarifies provision patterns of network slice, and provides the definitions and scope of network slicing which are 
+      available over several organizations. Furthermore, the deliverables would be help for evaluating applicabilities of existing technologies/solutions 
+      to network slicing.
       </t>
+
+    <section anchor="Roles-NS-Provisioning" title="Differentiated Roles in Network Slice Provisioning">
+
+      <t>
+      The widespread of system and network virtualization technologies has conducted
+      to new business opportunities, enlarging the offer of IT resources in the form
+      of Network Slices (NS). As a consequence, there is a clear differentiation
+      between the owner of physical resources, the infrastructure operator,
+      and the intermediary that conforms and delivers network services to the final
+      customers, the Virtual Network Operator (VNO).
+      </t>
+
+      <t>
+      VNOs aim to exploit the virtualized infrastructures to deliver new and improved
+      services to their customers. However, current NS techniques offer poor support
+      for VNOs to control their resources. It has been considered that the infrastructure operator is
+      responsible of the reliability of the NS elements but several situations
+      advocate the VNO to gain a finer control on its resources.  For instance,
+      dynamic events, such as the identification of new requirements or the
+      detection of incidents within the virtual system, might urge a VNO to quickly
+      reform its virtual infrastructure and resource allocation. However, the
+      interfaces offered by current virtualization platforms do not offer the
+      necessary functions for VNOs to perform the elastic adaptations they require
+      to tackle with their dynamic operation environments.
+      </t>
+    </section>
+
+    <section title="High-level Problem Statement">  
+      <t>
+      Beyond their heterogeneity, which can be resolved by software adapters, NS
+      platforms do not offer common methods and functions, so it is
+      difficult for the virtual network controllers used by the VNOs to actually
+      manage and control virtual resources instantiated on different platforms, not
+      even considering different infrastructure operators. Therefore, it is necessary to reach a common
+      definition of the functions that should be offered by underlying platforms to
+      enable such overlay controllers with the possibility of allocate and deallocate
+      resources dynamically and get monitoring data about them.
+      </t>
+
+      <t>
+      Such common methods should be offered by all underlying controllers, regardless
+      of being network-oriented (e.g., ODL, ONOS, Ryu) or computing-oriented (e.g., 
+      OpenStack, OpenNebula, Eucalyptus). Furthermore, it is also important for those 
+      platforms to offer some "PUSH" function to report resource state, avoiding the
+      need for the VNO's controller to "POLL" for such data. A starting point to get
+      proper notifications within current REST APIs could be to consider the protocol
+      proposed by the <xref target="WEBPUSH-WG"/>.
+      </t>
+
+      <t>
+      Finally, in order to establish a proper order and allow the coexistence and
+      collaboration of different systems, a common ontology regarding network and
+      system virtualization should be defined and agreed, so different and
+      heterogeneous systems can understand each other without requiring to rely on
+      specific adaptation mechanisms that might break with any update on any side of
+      the relation.
+      </t>
+    </section>
 
     </section>
 
 
     <section title="Definition of Terms">
       <t>
-      This section lists definitions and terms related to network slicing. Although this document refers terms and view points 
-      on network slicing in 3GPP documents (<xref target="TS.28.530-3GPP"/> and <xref target="TS.28.801-3GPP"/>) and <xref target="NGMN-5G-White-Paper"/>, 
-      some of definitions in this document may be different from ones of those documents.
+      This section lists definitions and terms related to network slicing. This document refers terms and view points 
+      on network slicing in some SDOs, such as 3GPP(<xref target="TS.23.501-3GPP"/>, <xref target="TS.28.530-3GPP"/>,  and 
+      <xref target="TS.28.801-3GPP"/>),  NGMN (<xref target="NGMN-5G-White-Paper"/>), and MEF white paper.  
+      However the scope of this document is not network slicing which is mobile specific but one for general networks, and 
+      thus some of definitions in this document may be different from ones of those documents.
       </t>
       
       <t>
@@ -308,31 +400,73 @@
       </t>
       
       <t hangText="Network Slice (NS):">
-      An NS is a general name of logical separate networks instantiated on a network infrastructure. It includes 
-      Network Slice Instance, Network Slice Subnet Instance, and End-to-End Network Slice Instance.
-      </t>
+      An NS is a logical separate network that provides specific network capabilities and characteristics. In 3GPP definitions, 
+      an NS includes both data plane and control plane resources/functions. Meanwhile, in MEF definitions, a set of control 
+      and management functionalities is provided as an NS independently of data plane resources. Such NS for control 
+      and management of data plane resources is called OCM (Orchestration, Control, and Management) slice. An OCM slice 
+      manages one or more data plane NSs, called resource slices.
       
+      <!--
+      It is stractured with 
+      several types of resources and instantiated on a network infrastructure.
+      It includes Network Slice Instance, Network Slice Subnet Instance, and End-to-End Network Slice Instance.
+      -->
+      </t>
+
       
       <t hangText="Network Slice Instance (NSI):">
-      An NSI is a logical network instantiated with network(WAN), computing(NFVI), and functionality resources, 
-      and some include additional network service functions such as firewall or load-balancer. It is composed of 
-      one or more Network Slice Subnet Instances. When it provides connectivity from end to end for end users, 
-      it is called End-to-End Network Slice Instance. An NSI is an overlay network and is independent of 
+      An NSI is a logical network instance composed with required infrastructure resources, including networking (WAN), 
+      computing (NFVI) resources,  and some include additional network service functions such as firewall or load-balancer. 
+      It is composed of one or more Network Slice Subnet Instances. 
+      <!--
+      When it provides connectivity from end to end for end users, 
+      it is called End-to-End Network Slice Instance. An NSI is basically an overlay network and is independent of 
       the underlay network's topology.
+      -->
       </t>
-      
+
+      <t hangText="Network Slice Subnet:">
+      A Network Slice Subnet is a representation of a set of required resources. It is composed and managed as 
+      a group of network elements.
+      </t>
+
       <t hangText="Network Slice Subnet Instance (NSSI):">
-      An NSSI is a partially virtual network instantiated within a single domain.
+      An NSSI is a partial logical network instance represented as a network slicce instance. It is a minimul unit managed 
+      or provided as a network slice. One or more NSSI structure an NSI or an E2E-NSI.
+      <!--
+      An NSSI is a partially virtual network instantiated within a single domain, and it basically provides connectivity to  
+      other domains or end points. Ways to construct an NSSI depends on the specifications of underlay networks.
+      -->
       </t>
       
       
       <t hangText="End-to-End Network Slice Instance (E2E-NSI):">
-      An E2E-NSI is a virtual network connecting among end points. It is composed of one or multiple NSSIs.
+      An E2E-NSI is a virtual network connecting among end points. It is composed of one or multiple NSSIs. This term is 
+      original of this document and is used when it should be emphasized that the target NSI provides connectivity  from 
+      end to end. As an example, for providing an E2E-NSI on the 3GPP 5G network, combining three types of NSIs: RAN-, 
+      TRN-, and CN-NSIs would be required.  
       </t>
+
+      <t hangText="Transport(TRN)-NSSI:"> 
+      A set of connections between various network functions (VNF or PNF) with deterministic SLAs.  
+      They can be implemented (aka realized) with various technologies (e.g. IP, Optics, FN, Microwave) and various transport  
+      (e.g. RSVP, Segment routing, ODU, OCH etc). The overview of NSI composed with TRN-NSSI is shown in <xref target="app-1"/>. 
+      </t> 
+ 
+      <t hangText="RAN-NSSI:"> 
+      Regardless of RAN deployment (e.g. distributed-RAN, Centralized-RAN or Cloud-RAN, a RAN-NSSI creates a dedicate and logical  
+      resource on RAN for each NSI which are completely. The overview of NSI composed with RAN-NSSI is shown in <xref target="app-1"/>. 
+      </t> 
+ 
+      <t hangText="Core(CN)-NSSI:"> 
+      Regardless of Core deployment, a CN-NSI creates a dedicate and logical resource on Core network for each NSI which are completely. 
+      The overview of NSI composed with CN-NSSI is shown in <xref target="app-1"/>. 
+      </t>
+
       
       <t hangText="Network Slice as a Service (NSaaS):">
-      An NSaaS is a NS distribution model in which a third-party provider or a vertical customer hosts NSIs 
-      and makes them available to customers.
+      An NSaaS is a service delivery model in which a third-party provider or a vertical customer hosts NSIs 
+      and makes them available to customers. In this model, there mainly two roles: NS provider and NS tenant.
       </t>
       
       <t hangText="Network Slice Provider (NS Provider):">
@@ -350,24 +484,35 @@
       </t>
 
       <t hangText="Infrastructure Operator:">
-      An infrastructure operator is an organization who manages infrastructure networks or data centers for running NSIs.
+      An infrastructure operator is an organization who manages infrastructure networks or data centers for running NSIs. 
+      In the most of cases, infrastructure operators are initial NS providers on NSaaS. Also, some of them may be NS tenants 
+      simultaneously. 
       </t>
 
       <t hangText="Vertical Customer:">
-      A vertical customer is a service provider providing some communication services with using NSIs on NSaaS model.
-      For example, video gaming companies or vehicle vendors will possibly be vertical customers on NSaaS.
+      A vertical customer is a organization who provides some communicating services with using NSIs on NSaaS model. In 
+      many cases, a vertical customer become the final NS tenant on NSaaS. For example, video gaming companies or 
+      vehicle vendors will possibly be vertical customers.
       </t>
 
+      <t hangText="Virtual Network Operator (VNO):">
+      A VNO is a person or group that operates virtual networks composed with resources or NSSIs rent from infrastructure 
+      operators and provides such virtual networks as NSIs to vertical customers who are final NS tenants. In some cases, 
+      infrastructure operators have this role in addition to operating their own infrastructure simultaneously.
+      </t>
+<!--
       <t hangText="Network Slice Broker (NS Broker):">
       An NS broker is a person or group that rents resources or NSSIs from infrastructure provider and sells E2E-NSIs 
       created with such resources or NSSIs.
       </t>
+-->
 
+<!--
       <t hangText="Network Slice Type (NS Type):">
       An NS type is a definition identifying characters or attributes on a NS. NS types can be defined by each NS provider. 
       As examples, <xref target="TS.28.530-3GPP"/> describes three NS types: URLLC, eMBB, and mIoT.
       </t>
-<!--
+
       <t hangText="URLLC (Ultra-Reliable and Low Latency Communication):">
       NS for URLLC provides low-latency and High reliable communication, and it is expected to be used for services which 
       require real-time control such as connected vehicles.
@@ -398,10 +543,10 @@
       
       <t hangText="Virtual Network Function (VNF):"> 
       A virtual network function (VNF) is a network function whose functional 
-      software is decoupled from hardware. One or more virtual machines running different software and 
+      software is decoupled from hardware. One or more VNFs run as different software and 
       processes on top of industry-standard high-volume servers, switches and storage, or cloud computing 
-      infrastructure, and capable of implementing network functions traditionally implemented via custom 
-      hardware appliances and middleboxes (e.g., router, NAT, firewall, load balancer, etc.)
+      infrastructure. They are capable of implementing network functions traditionally implemented via custom 
+      hardware appliances and middleboxes (e.g., router, NAT, firewall, load balancer, etc.).
       </t>
 
       <t hangText="Network Operation System:">
@@ -419,7 +564,7 @@
       <t>
       On network slice operations, capabilities for dynamic instantiation, change, and deletion should be required because 
       an NSI is established based on received orders from tenants in NSaaS. From this aspect, some mechanisms to design a network 
-      based on service requirements and to convert concrete configurations based on the design would be required. 
+      based on service requirements and to convert those to concrete configurations based on the design would be required. 
       </t>
 
       <t>
@@ -431,7 +576,7 @@
       </t>
       
       <t>
-      The required agility of slice operation and granularity of communication quality requested can vary depending on 
+      The required agility of slice operation and granularity of end to end communication quality requested can vary depending on 
       provision model.
       </t>
 
@@ -451,59 +596,64 @@
       
         <t>
         <list style="hanging">
-          <t hangText="Network(WAN) Resources:">
+        <t hangText="Network(WAN) Resources:">
           <list style="symbols">
-          <t>
-          Connectivity:
-          <list style="symbols">
-            <t>(v)Link
+          <t>Connectivity:
             <list style="symbols">
-              <t>Bandwidth per link/session</t>
-              <t>Connected area/end points</t>
-              <t>Forwarding route/path (e.g., for traffic engineering, redundancy)</t>
-              <t>Communication Priority (e.g., QoS class)</t>              
-            </list>
-            </t>
-          
-            <t>
-            (v)Interface
-            <list style="symbols">
-              <t>QoS setting (e.g., Queue size, DSCP remarking, PIR/CIR)</t>
-              <t>Filter setting</t>
-            </list>
-            </t>
-        
-            <t>
-            vRouter/vSwitch (# Treated as a set of (v)links and (v)interfaces.)
-            </t>
-          </list>
-          </t>
-          
-            <t>Protocol of slice data plane:
+              <t>(v)Link
               <list style="symbols">
-                <t>VLAN</t>
-                <t>IPoE (IPv4 or IPv6)</t>
-                <t>MAP-E</t>
-                <t>DS-Lite</t>
-                <t>PPPoE</t>
-                <t>L2TP</t>
-                <t>GRE</t>
-                <t>MPLS</t>
-                <t>VxLAN</t>
-                <t>GTP-U</t>
-                <t>Segment Routing MPLS</t>
-                <t>Segment Routing IPv6</t>
-                <t>NSH</t>
-                <t>Other</t>
+                <t>Bandwidth per link/session</t>
+                <t>Connected area/end points</t>
+                <t>Forwarding route/path (e.g., for traffic engineering, redundancy)</t>
+                <t>Communication Priority (e.g., QoS class)</t> 
+                <t>Range of jitter amount</t>           
               </list>
-            </t>
-
-            <t>Multicast support</t>
-            <t>Metadata conveyance (e.g., subscriber ID)</t>
-
+              </t>
+          
+              <t>Interface of vNode
+              <list style="symbols">
+                <t>QoS setting (e.g., Queue size, DSCP remarking, PIR/CIR)</t>
+                <t>Filter setting</t>
+              </list>
+              </t>
         
-        </list>
-        </t>
+              <t>
+              vRouter/vSwitch (# Treated as a set of (v)links and interfaces of vNodes.)
+              </t>
+            </list>
+          </t>
+
+          <t>Multicast support</t>
+
+          <t>Encryption support</t>
+
+          <t>Authentication support</t>
+          
+          <t>Metadata conveyance (e.g., subscriber ID)</t>          
+        
+          <t>Protocols for slice data plane:
+            <list style="symbols">
+              <t>VLAN</t>
+              <t>IPoE (IPv4 or IPv6)</t>
+              <t>MAP-E</t>
+              <t>DS-Lite</t>
+              <t>PPPoE</t>
+              <t>L2TP</t>
+              <t>GRE</t>
+              <t>MPLS</t>
+              <t>VxLAN</t>
+              <t>Geneve</t>
+              <t>GTP-U</t>
+              <t>Segment Routing MPLS</t>
+              <t>Segment Routing IPv6</t>
+              <t>NSH</t>
+              <t>Other</t>
+            </list>
+          </t>        
+          
+          </list>
+  
+        </t> 
       
         <t hangText="Computing(NFVI) Resources:">
           <list style="symbols">
@@ -512,72 +662,100 @@
           <t>Memory</t>
           <t>Disk</t>
           <t>vNIC</t>
-          <t>Connectivity for private VNF instance</t>
-<!--      <t>Image</t>  -->
-          <t>VNF Type
+          <t>Connectivity to VNF instances</t>
+<!--      <t>Image</t> -->  
+          <t>Virtual Deployment Unit:
             <list style="symbols">
-            <t>VM</t>
+            <t>Virtual Machine (VM)</t>
             <t>container</t>
             <t>micro kernel</t>
             </list>
           </t>
+<!--
           <t>VNF Infrastructure Type (e.g., open source, product of vender#A, ..., etc.)</t>
-          <t>VNF location (i.e., data center where the VNF deployed)</t>
+-->
+          <t>Resource Deployment Location (i.e., edge DC, central DC, public cloud, ..., etc.)</t>
+
           </list>
         </t>
       
         <t hangText="Functionality Resources:">
           <list style="symbols">
-          <t>Data Plane(DP) NF:
+          
+          <t>Image:
             <list style="symbols">
-              <t>
-              GateWay(GW) function:
+              <t>Data Plane(DP) NF:
                 <list style="symbols">
-                  <t>Access Point Type (e.g., for radio, Wi-Fi, and fixed accesses)</t>
-                  <t>Slice Selection Setting</t>
-                  <t>Terminate protocol</t>
-                  <t>Authentication</t>
+                  <t>GateWay(GW) function:
+                    <list style="symbols">
+                      <t>Access Point Type (e.g., for radio, Wi-Fi, and fixed accesses)</t>
+                      <t>Slice Selection Setting</t>
+                      <t>Terminate protocol</t>
+                      <t>Authentication</t>
+                    </list>
+                  </t>
+                  <t>Security Appliance:
+                    <list style="symbols">
+                      <t>IPS (Intrusion Prevention System)</t>
+                      <t>IDS (Intrusion Detection System)</t>
+                      <t>WAF (Web Application Firewall)</t>
+                    </list>
+                  </t>
+                  <t>DPI</t>
+                  <t>Load Balancer</t>
+                  <t>TCP Accelerator</t>
+                  <t>Video Optimizer</t>
+                  <t>Parental Control</t>
+                  <t>Mobile DP functions (Ref. 3GPP 5GS)
+                    <list style="symboles">
+                      <t>gNB</t>
+                      <t>UPF</t>
+                      <t>Uplink Classifier</t>
+                    </list>
+                  </t>
                 </list>
               </t>
-              <t>Security Appliance:
-              <list style="symbols">
-                <t>IPS (Intrusion Prevention System)</t>
-                <t>IDS (Intrusion Detection System)</t>
-                <t>WAF (Web Application Firewall)</t>
-              </list>
-              </t>
-            <t>DPI</t>
-            <t>Load Balancer</t>
-            <t>TCP Accelerator</t>
-            <t>Video Optimizer</t>
-            <t>Parental Control</t>
-            <t>Other</t>
-           </list>
-          </t>
-          <t>Control Plane(CP) NF:
-            <list style="symbols">
-              <t>DHCP
+          
+              <t>Control Plane(CP) NF:
                 <list style="symbols">
-                  <t>Fixed IP address allocation</t>
-                  <t>Dynamic IP address allocation</t>
-                  <t>The number of registrated devices</t>
-               </list>
-              </t>
-              <t>DNS</t>
-              <t>VoIP (SBC, SIP server)</t>
-              <t>Mobility Management Functionalities (referring 3GPP 5GS)
-                <list style="symbols">
-                  <t>AMF (Access and Mobility management Function)</t>
-                  <t>SMF (Session Management Function)</t>
-                  <t>PCF (Policy Control Function)</t>
-                  <t>UDM (Unified Data Management)</t>
-                  <t>NEF (Network Exposure Function)</t>
-                </list>
+                  <t>DHCP
+                    <list style="symbols">
+                      <t>Fixed IP address allocation</t>
+                      <t>Dynamic IP address allocation</t>
+                      <t>The number of registered devices</t>
+                    </list>
+                  </t>
+                  <t>DNS</t>
+                  <t>VoIP (SBC, SIP server)</t>
+                  <t>Mobile CP function (Ref. 3GPP 5GS)
+                    <list style="symbols">
+                      <t>AMF (Access and Mobility management Function)</t>
+                      <t>SMF (Session Management Function)</t>
+                      <t>PCF (Policy Control Function)</t>
+                      <t>UDM (Unified Data Management)</t>
+                      <t>NEF (Network Exposure Function)</t>
+                    </list>
+                  </t>
+                 </list>
               </t>
             </list>
-            </t>
+          </t>
+<!--
+          <t>Vertial Deployment Unit
+            <list style="symbols">
+              <t>Virtual Machine (VM)</t>
+              <t>Container</t>
+              <t>Micro kernel</t>
+            </list>
+          </t>
+-->
+          <t>Provided VNF Type (e.g., open source, product of vender#A, ..., etc.)</t>
+          <t>Function location (e.g., edge DC, central DC, Public cloud, etc.)</t>
         </list>
-        </t>
+        </t>          
+
+
+
       </list>
       </t>
 
@@ -585,6 +763,13 @@
       In terms of security or usability for NS tenants, some abstraction on resource information would be required, 
       however both setting parameters of underlay infrastructure and abstracted information may coexist in these lists.
       </t>
+
+      <t>
+      For abstraction of parameters of underlay networks,  some additional protocols or functions (like <xref target="RFC8453"/> ) 
+      would be required. Moreover, for providing strict communication qualities, combinations of some technologies may be 
+      useful (ref. <xref target="I-D.dong-teas-enhanced-vpn"/>).
+      </t> 
+
       </section>
       
 
@@ -616,9 +801,9 @@
           </t>
         </list>
         </t>
-
-        <t>Note: RAN in the 3GPP 5GS is NS aware, but it is not defined that slicing RAN.</t>
-      
+<!--
+        <t>Note: RAN in the 3GPP 5GS is NS aware, but no specific slicing support is currently defined in RAN.</t>
+-->      
         <t>
         <xref target="Overview-NS-Structure"/> describes the overview of this structure. Resources in each domain (e.g., access, 
         core networks, and DC) are handled by management entities and  constitute an NSSI. An E2E-NSI is established by stitching 
@@ -644,10 +829,10 @@
       A              A              A
       |              |              |
 
-  o---o         [SF]               /----[VM]
+  o---o         [PNF]              /----[VM]
      / `--.     /  `----.         /----[VM]
  o---o-----o...o---------o...o---o----[VM]
- NW Rsrc#1     NW Rsrc+SF      NW+CMP Rsrcs
+ NW Rsrc#1     NW Rsrc+PNF      NW+CMP Rsrcs
      A               A              A
      |               |              |
 
@@ -660,18 +845,18 @@
 *Legends
  NW Rsrc : Network Resource
  CMP Rsrc: Computing Resource
-  o  : virtual/physical node structuring NSI
-  -- : virtual/physical link structuring NSI
- [SF]: service function on NSI
- [VM]: Virtual Machine Instance on NSI
+  o   : virtual/physical node structuring NSI
+  --  : virtual/physical link structuring NSI
+ [PNF]: Physical Network Function Appliance on NSI
+ [VM] : Virtual Machine Instance on NSI
 
   ]]></artwork>
 </figure>
     
 
       <t>
-      Althoug it is shown that an NSSI belongs to just only one E2E-NSI in <xref target="Overview-NS-Structure"/>, it may be allowed that 
-      multple E2E-NSIs share an NSSI. Some resouces may belong to multiple NSSI as well.
+      Although it is shown that an NSSI belongs to just only one E2E-NSI in <xref target="Overview-NS-Structure"/>, it may be allowed that 
+      multiple E2E-NSIs share an NSSI. Some resources may belong to multiple NSSI as well.
       </t>
 
       <t>
@@ -719,27 +904,28 @@
         <t>
         Potential stakeholders in network slicing are described below:
         <list style="hanging">
-          <t hangText="NSSI provider:">
+          <t hangText="o NSSI provider:">
           infrastructure operator
           </t>
           
-          <t hangText="Middle-NSI provider:">
-          infrastructure operator, NS broker
+          <t hangText="o Intermediate-NSI provider:">
+          infrastructure operator, VNO
           </t>
 
-          <t hangText="E2E-NSI provider:">
-          infrastructure operator, NS broker, service provider
+          <t hangText="o E2E-NSI provider:">
+          infrastructure operator, VNO, service provider
           </t>
 
-          <t hangText="NS tenant:">
-          infrastructure operator, NS broker, service provider, enterprise, mass user
+          <t hangText="o NS tenant:">
+          infrastructure operator, VNO, service provider, enterprise, mass user
           </t>
-          <t hangText="End customer:">
+          <t hangText="o End customer:">
           enterprise, mass user, etc.
           </t>
         </list>
         </t>
       </section>
+
     </section>
 
     <section anchor="NS-Creation-Variations" title="Variations of Network Slice Creation">
@@ -790,7 +976,7 @@
         <t>
         CM-NS is an NS creation pattern in which an NS is established based on an order from a tenant and is provided to it. As examples of usage of CM-NS, 
         an enterprise builds and operates a virtual private network for connecting several bases, or OTT (Over The Top) or other industrial 
-        service providers create NSs based on thier own requirements and use them as a part of their own services (e.g., connected vehicles/drones, online video games, 
+        service providers create NSs based on their own requirements and use them as a part of their own services (e.g., connected vehicles/drones, online video games, 
         or remote surgery). 
         </t>
         
@@ -812,7 +998,7 @@
  
     <section anchor="NS-Provision-Model" title="Network Slice Provision Models">
       <t>
-      This document classify NS provision models into three categories defined in the following section. The capabilities which NS tenants 
+      This document classifis NS provision models into three categories defined in the following section. The capabilities which NS tenants 
       can have on management of NSs would vary depending on the selected provision model. 
       </t>
       
@@ -834,7 +1020,7 @@
           </t>
         
           <t hangText="IaaS-like Model:">
-          In this model, a tenant designs its own NS tenplate and instantiates NSs by indicating concrete resources to infrastructure operators. In other words, 
+          In this model, a tenant designs its own NS templates and instantiates NSs by indicating concrete resources to infrastructure operators. In other words, 
           infrastructure operators provide just their resources, and NSs are coordinated by the tenant.
           </t>
         </list>
@@ -930,7 +1116,7 @@
     
     <section title="Acknowledgement">
       <t>
-      The author would like to thank Toru Okugawa and  Laurent Ciavaglia for their kind review and valuable feedback.
+      The author would like to thank Toru Okugawa for his kind review and valuable feedback.
       </t>
     </section>
     
@@ -947,6 +1133,11 @@
     &RFC7348;
     &RFC7665;
     &RFC8300;
+-->
+   
+    &RFC8453;
+
+<!--
     &I-D.draft-netslices-usecases;
     &I-D.draft-qiang-coms-netslicing-information-model;
     &I-D.draft-qiang-coms-architecture;
@@ -956,8 +1147,21 @@
 -->
     &I-D.draft-defoy-coms-subnet-interconnection;
     &I-D.draft-homma-nfvrg-slice-gateway;
+    &I-D.draft-dong-teas-enhanced-vpn;
 
       
+       <reference anchor='TS.23.501-3GPP' target="http://www.3gpp.org/ftp//Specs/archive/23_series/23.501/23501-f30.zip"> 
+        <front> 
+        <title>3GPP TS 23.501 (V15.3.0): System Architecture for 5G System; Stage 2</title> 
+        <author> 
+        <organization> 
+        3rd Generation Partnership Project (3GPP) 
+        </organization> 
+        </author> 
+        <date month="September" year="2018"/> 
+        </front> 
+      </reference> 
+       
        <reference anchor='TS.28.530-3GPP'  target="http://ftp.3gpp.org//Specs/archive/28_series/28.530/28530-100.zip">
         <front>
         <title>3GPP TS 28.530 (V1.0.0): Management and orchestration of networks and network slicing; Concepts,
@@ -1007,9 +1211,63 @@
         <date month="June" year="2018"/>
         </front>
       </reference>
+
+      <reference anchor='WEBPUSH-WG'
+       target='https://datatracker.ietf.org/wg/webpush/about/'>
+        <front>
+        <title>Web-Based Push Notifications(webpush)</title>
+        <author>
+        <organization>IETF</organization>
+        </author>
+        <date/>
+        </front>
+      </reference>
     </references>
 
+    <!-- Appendix --> 
+ 
+    <section anchor="app-1" 
+    		title="NS Structure in the 3GPP 5GS"> 
+ 
+    <t> 
+    The overview of structure of NS in the 3GPP 5GS is shown in <xref target="NS-structure-in-5gs"/>. The terms are described  
+    in the 3GPP documents (e.g., <xref target="TS.23.501-3GPP"/> and <xref target="TS.28.530-3GPP"/>). 
+    </t> 
+<figure anchor="NS-structure-in-5gs" title="Overview of Structure of NS in 3GPP 5GS"> 
+  <artwork align="center"><![CDATA[ 
+     
+  <==================          E2E-NSI         =======================> 
+               :                 :                  :           :  : 
+               :                 :                  :           :  : 
+  <======  RAN-NSSI  ======><=TRN-NSSI=><====== CN-NSSI  ======>VL[APL] 
+      :        :        :        :         :       :        :   :  : 
+      :        :        :        :         :       :        :   :  : 
+  RW[NFs ]<=TRN-NSSI=>[NFs ]<=TRN-NSSI=>[NFs ]<=TRN-NSSI=>[NFs ]VL[APL] 
+   
+   . . . . . . . . . . . . ..          . . . . . . . . . . . . ..  
+   .,----.   ,----.   ,----..  ,----.  .,----.   ,----.   ,----..   
+UE--|RAN |---| TN |---|RAN |---| TN |---|CN  |---| TN |---|CN  |--[APL] 
+   .|NFs |   `----'   |NFs |.  `----'  .|NFs |   `----'   |NFs |. 
+   .`----'            `----'.          .`----'            `----'. 
+   . . . . . . . . . . . . ..          . . . . . . . . . . . . .. 
 
+  RW         RAN                MBH               CN               DN 
+ 
+*Legends 
+ UE: User Equipment 
+ RAN: Radio Access Network 
+ CN: Core Network 
+ DN: Data Network 
+ TN: Transport Network 
+ MBH: Mobile Backhaul 
+ RW: Radio Wave 
+ NF: Network Function 
+ APL: Application Server 
+ 
+  ]]></artwork> 
+</figure> 
+
+</section>
   
   </back>
 </rfc>
