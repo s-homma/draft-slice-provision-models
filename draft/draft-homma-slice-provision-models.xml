@@ -405,12 +405,6 @@
       and management functionalities is provided as an NS independently of data plane resources. Such NS for control 
       and management of data plane resources is called OCM (Orchestration, Control, and Management) slice. An OCM slice 
       manages one or more data plane NSs, called resource slices.
-      
-      <!--
-      It is stractured with 
-      several types of resources and instantiated on a network infrastructure.
-      It includes Network Slice Instance, Network Slice Subnet Instance, and End-to-End Network Slice Instance.
-      -->
       </t>
 
       
@@ -418,11 +412,6 @@
       An NSI is a logical network instance composed with required infrastructure resources, including networking (WAN), 
       computing (NFVI) resources,  and some include additional network service functions such as firewall or load-balancer. 
       It is composed of one or more Network Slice Subnet Instances. 
-      <!--
-      When it provides connectivity from end to end for end users, 
-      it is called End-to-End Network Slice Instance. An NSI is basically an overlay network and is independent of 
-      the underlay network's topology.
-      -->
       </t>
 
       <t hangText="Network Slice Subnet:">
@@ -433,10 +422,6 @@
       <t hangText="Network Slice Subnet Instance (NSSI):">
       An NSSI is a partial logical network instance represented as a network slicce instance. It is a minimul unit managed 
       or provided as a network slice. One or more NSSI structure an NSI or an E2E-NSI.
-      <!--
-      An NSSI is a partially virtual network instantiated within a single domain, and it basically provides connectivity to  
-      other domains or end points. Ways to construct an NSSI depends on the specifications of underlay networks.
-      -->
       </t>
       
       
@@ -1008,7 +993,7 @@
         SaaS (Software as a Service), PaaS (Platform as a Service), IaaS (Infrastructure as a Service) like models as below. 
         <list style="hanging">
           <t hangText="SaaS-like Model:">
-          In this model, an NS provider designs NS templates in advance, and a tenant selects and uses one which fulfills 
+          In this model, an NS is  provider designs NS templates in advance, and a tenant selects and uses one which fulfills 
           most its requirement among the templates. The specifications of NSs are abstracted to KPIs as networks and servers and shown 
           to tenants. In short, detailed parameters of infrastructure network are hidden from tenants. 
           </t>
@@ -1089,12 +1074,99 @@
       </section>
 
           
-      <section title="Configurable Parameters/Attributes on each Provision Models">
-        <t>TBD</t>
+      <section anchor='configurable-parameters' title="Configurable Parameters/Attributes for NS">
+        <t>
+        In the NS creating proceedure, configuration parameters would be decided based on requirements 
+        which the intended service has. Such service requirements are expressible in the following attribute values.
+          <list style="symbols">
+            <t>Requrirements for Network Resource
+             <list style="symbols">
+              <t>bandwidth</t>
+              <t>latency</t>
+              <t>jitter</t>
+              <t>packet loss rate</t>
+              <t>reliability (e.g., MTBF, MTTF)</t>
+             </list>
+            </t>
+<!--
+            <t>Requirements for Computing Resources
+              <list style="symbols">
+                <t>throughput</t>
+                <t>data strage size</t>
+                <t>processing delay</t>
+                <t>availability</t>
+              </list>
+            </t>
+-->          
+            <t>Requirements for Functionalities Resources
+              <list style="symbols">
+                <t>function type (e.g., security, parental control)</t>
+                <t>throughput</t>
+                <t>availability</t>
+              </list>
+            </t>
+          </list>
+        </t>
+
+        <t>
+        Configurable parameters of components in underlay infrastructure will vary depending on the implementation
+        and structure. Controlled resource types are described in <xref target="NS-Rsrc"/>. 
+        </t>
       </section>
 
       <section title="Capability of NS Tenant on each Provision Model">
-      <t>TBD</t>
+      <t>
+      Capability of NS tenants on NS management would vary depending on the NS provision model. This section 
+      describes clarification about such capability in each model.
+      </t>
+
+        <section title="Capability in SaaS-like Model">
+          <t>
+          In SaaS-like Model, an NS is presented for a tenant with attributes values 
+          listed in <xref target="configurable-parameters"?>. In other words, an NS tenant never know 
+          the concrete configurations of components in underlay infrastructure. 
+          </t>
+
+          <t>
+          An NS tenant choose value from te range presented by the NS provider in each attribute. The NS 
+          provider creates or changes a NS by configuraing components in underlay infrastructures based 
+          on the decided attribute values.
+          </t>
+
+          <t>
+          In terms of telemetry for assurance of service qualities on a NS, a tenant can obtain telemetry 
+          information with unit of NSI, and never know ones of underlay components structuring the NS.
+          </t>
+        </section>
+
+        <section title="Capability in PaaS-like Model">
+          <t>
+          In PaaS-like model, an NS is represented with NF nodes and their connectivities. An NS tenant can indicate 
+          locations  and functionalities of NF nodes, and decide attribute values of connectivities. An NS provider creates or
+          changes an NSI by configuring underlay nodes and links depending on the indicated information from tenant.
+          An NS tenant is also able to deploy its own NF as software with provided computing resources.
+          </t>
+
+          <t>
+          In terms of telemetry, an NS tenant can obtain telemetry information of NF nodes and connectivities structuring 
+          an NS in addition to whole of NSI.
+          </t>
+        </section>
+
+        <section title="Capability in IaaS-like Model">
+          <t>
+          In IaaS-like Model, an NS is represented with configurations of (virtual) nodes and (virtual) links connecting the nodes.
+          An NS tenant is able to configure nodes and links in underlay infrastructure. In short, an NS tenant directly design detailed 
+          NS and manages it. In addition, an NS tenant inserts its own functions or applications in the NS with using 
+          computing resources.
+          </t>
+
+          <t>
+          In terms of telemetry, an NS tenant can obtain telemetry information of nodes and links in addition of whole 
+          of NSI.
+          </t>
+        </section>
+
       </section>
 
     </section>
