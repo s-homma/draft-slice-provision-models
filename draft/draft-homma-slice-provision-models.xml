@@ -1385,17 +1385,6 @@ UE--|RAN |---| TN |---|RAN |---| TN |---|CN  |---| TN |---|CN  |--[APL]
 <figure anchor="NS-structure-in-mef" title="Overview of Basic Structure of NS in MEF"> 
   <artwork align="center"><![CDATA[ 
 
-   . . . . . . . . . . . .
-.      Network Slice      .
-.      ,-----------.      .
-.      | OCM Slice |      .
-.      `-----+-----'      .
-.            |            .
-.            |            .
-.      ,-----+-----.      .
-.      | RSC Slice |      .
-.      `-----------'      .
-  . . . . . . . . . . . . 
 
 *Legends
  RSC Slice: Resouce Slice
@@ -1406,21 +1395,7 @@ UE--|RAN |---| TN |---|RAN |---| TN |---|CN  |---| TN |---|CN  |--[APL]
 <figure anchor="NS-structures-with-one-ocm-and-two-rsc-slices" title="Example of an NS with one OCM slice and two Resource Slices"> 
   <artwork align="center"><![CDATA[ 
 
-  . . . . . . . . . . . . .
-.      Network Slice        .
-.      ,-----------.        .
-.      | OCM Slice |        .
-.      `-----+-----'        .
-.           /^\             .
-.          /   \            .
-.         /     \           .
-.  ,-----+-----. \          .
-.  | RSC Slice |  \         .
-.  `-----------'   \        .
-.             ,-----+-----. .
-.             | RSC Slice | .
-.             `-----------' .
-  . . . . . . . . . . . . .
+ 
 
   ]]></artwork> 
 </figure> 
@@ -1429,28 +1404,6 @@ UE--|RAN |---| TN |---|RAN |---| TN |---|CN  |---| TN |---|CN  |--[APL]
 <figure anchor="hierarchical-ocm-rcs-slicesf" title="Example of hierarchical Structure of OCM and Resource Slices"> 
   <artwork align="center"><![CDATA[ 
 
-  . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-.                     Network Slice                       .
-.                                                         .
-.                 ,-----------.                           .
-.                 | OCM Slice |                           .
-.                 `-----+-----'                           .
-.                       |                                 .
-.       +---------------+------------------+              .
-.       |               |                  |              .
-. ,-----+-----.   .-----+-----.      ,-----+-----.        .
-. | OCM Slice |   | RSC Slice |      | OCM Slice |        .
-. `-----+-----'   `-----------'      `-----+-----'        .
-.       |                                 /^\             .
-.       |                                /   \            .
-.       |                               /     \           .
-. ,-----+-----.                 ,------+----.  \          .
-. | RSC Slice |                 | RSC Slice |   \         .
-. `-----------'                 `-----------'    \        .
-.                                           ,-----+-----. .
-.                                           | RSC Slice | .
-.                                           `-----------' .
-  . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
   ]]></artwork> 
 </figure> 
