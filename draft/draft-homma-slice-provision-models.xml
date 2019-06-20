@@ -1005,9 +1005,9 @@
           </t>
 
           <t>
-          NS tenants need not to grasp detailed configurations in underlay networks in this model. However, it may not be possible to provide 
-          desired NS to tenants because of some reasons such as lack of capability on resource control (e.g., NFVI doesn't support). Moreover, it may cause complexity on 
-          designing NS catalog due to quantities of selected attributes.
+          NS tenants need not to grasp detailed configurations in underlay networks in this model. However, it may not be possible to provide strictly 
+          desired NS to tenants because of abstruction of configurable parameters.  
+          Moreover, it may cause complexity on designing NS catalog due to quantities of selected attributes.
           </t>
         </section>
 
