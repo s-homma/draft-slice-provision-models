@@ -386,7 +386,7 @@
       <t>
       This section lists definitions and terms related to network slicing. This document refers terms and view points 
       on network slicing in some SDOs, such as 3GPP(<xref target="TS.23.501-3GPP"/>, <xref target="TS.28.530-3GPP"/>,  and 
-      <xref target="TS.28.801-3GPP"/>),  NGMN (<xref target="NGMN-5G-White-Paper"/>), and MEF white paper.  
+      <xref target="TS.28.801-3GPP"/>), and NGMN (<xref target="NGMN-5G-White-Paper"/>).  
       However the scope of this document is not network slicing which is mobile specific but one for general networks, and 
       thus some of definitions in this document may be different from ones of those documents.
       </t>
@@ -401,10 +401,13 @@
       
       <t hangText="Network Slice (NS):">
       An NS is a logical separate network that provides specific network capabilities and characteristics. In 3GPP definitions, 
-      an NS potentially includes both data plane and control plane resources/functions. Meanwhile, MEF expressly defines that an NS is 
+      an NS potentially includes both data plane and control plane resources/functions. 
+<!--
+      Meanwhile, MEF expressly defines that an NS is 
       composed with a group of control and management planes functionalities, called OCM ("service Orchestration functionalities" and 
       "infrastructure Control and Management") slice, and data plane resouces, called   
       resource slice (the detailes is described in <xref target="app-2"/>).
+-->
       </t>
 
       
@@ -1002,8 +1005,8 @@
           </t>
 
           <t>
-          NS tenants need not to grap detailed configurations in underlay networks in this model. However, it may not be possible to provide 
-          desired NS to tenants because of some reasons such as lack of capability on resource control (e.g., NFVI doesn't support ). Moreover, it may cause complexity on 
+          NS tenants need not to grasp detailed configurations in underlay networks in this model. However, it may not be possible to provide 
+          desired NS to tenants because of some reasons such as lack of capability on resource control (e.g., NFVI doesn't support). Moreover, it may cause complexity on 
           designing NS catalog due to quantities of selected attributes.
           </t>
         </section>
@@ -1017,7 +1020,7 @@
           </t>
 
           <t>
-          This model potentially has high custamizability of NS rather than SaaS-like model, but needs NS tenants to have some knowledge about network management. 
+          This model potentially has high customizability of NS rather than SaaS-like model, but needs NS tenants to have some knowledge about network management. 
           In terms of designing NS, the tenants provide outline of their NSs, and thus it would make creation of concrete configurations be easier.
           </t>
         </section>
@@ -1029,9 +1032,9 @@
           </t>
 
           <t>
-          This model potentially has high custamizability of NS rather than other models, but needs NS tenants to have deep knowledge about network and server operation. 
+          This model potentially has high customizability of NS rather than other models, but needs NS tenants to have deep knowledge about network and server operation. 
           Also, NS providers need not to recognize NSs on their infrastructure  because NS tenants directly manage their NS. Meanwhile, in terms of security and 
-          prevension of disturbances among NSs, some limitations on expositions of resources to tenants would be needed.
+          prevention of disturbances among NSs, some limitations on expositions of resources to tenants would be needed.
           </t>
         </section>
       </section>
@@ -1102,10 +1105,10 @@
           
       <section anchor="configurable-parameters" title="Configurable Parameters/Attributes for NS">
         <t>
-        In the NS creating proceedure, configuration parameters would be decided based on requirements 
+        In the NS creating procedure, configuration parameters are decided based on requirements 
         which the intended service has. Such service requirements are expressible in the following attribute values.
           <list style="symbols">
-            <t>Requrirements for Network Resource
+            <t>Attributes for Network Resource
              <list style="symbols">
               <t>bandwidth</t>
               <t>latency</t>
@@ -1115,7 +1118,7 @@
              </list>
             </t>
 <!--
-            <t>Requirements for Computing Resources
+            <t>Attributes for Computing Resources
               <list style="symbols">
                 <t>throughput</t>
                 <t>data strage size</t>
@@ -1124,7 +1127,7 @@
               </list>
             </t>
 -->          
-            <t>Requirements for Functionalities Resources
+            <t>Attributes for Functionalities Resources
               <list style="symbols">
                 <t>function type (e.g., security, parental control)</t>
                 <t>throughput</t>
@@ -1248,9 +1251,9 @@
     &I-D.draft-dong-teas-enhanced-vpn;
 
       
-       <reference anchor='TS.23.501-3GPP' target="http://www.3gpp.org/ftp//Specs/archive/23_series/23.501/23501-f30.zip"> 
+       <reference anchor='TS.23.501-3GPP' target="http://www.3gpp.org/ftp//Specs/archive/23_series/23.501/23501-g00.zip"> 
         <front> 
-        <title>3GPP TS 23.501 (V15.3.0): System Architecture for 5G System; Stage 2</title> 
+        <title>3GPP TS 23.501 (V16.0.0): System Architecture for 5G System; Stage 2</title> 
         <author> 
         <organization> 
         3rd Generation Partnership Project (3GPP) 
@@ -1367,7 +1370,9 @@ UE--|RAN |---| TN |---|RAN |---| TN |---|CN  |---| TN |---|CN  |--[APL]
 
 </section>
 
-    <section anchor="app-2" 
+<!--
+
+<section anchor="app-2" 
     		title="NS Structure in MEF"> 
      
     <t>
@@ -1449,7 +1454,7 @@ UE--|RAN |---| TN |---|RAN |---| TN |---|CN  |---| TN |---|CN  |--[APL]
 
   ]]></artwork> 
 </figure> 
-
+-->
 
 
 
