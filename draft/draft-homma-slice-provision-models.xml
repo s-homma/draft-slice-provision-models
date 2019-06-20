@@ -1407,7 +1407,7 @@ UE--|RAN |---| TN |---|RAN |---| TN |---|CN  |---| TN |---|CN  |--[APL]
 
   ]]></artwork> 
 </figure> 
--->
+
 
 
 
@@ -1415,6 +1415,6 @@ UE--|RAN |---| TN |---|RAN |---| TN |---|CN  |---| TN |---|CN  |--[APL]
 
 
 </section>
-
+-->
   </back>
 </rfc>
