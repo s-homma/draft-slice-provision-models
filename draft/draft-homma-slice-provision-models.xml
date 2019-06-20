@@ -401,10 +401,10 @@
       
       <t hangText="Network Slice (NS):">
       An NS is a logical separate network that provides specific network capabilities and characteristics. In 3GPP definitions, 
-      an NS includes both data plane and control plane resources/functions. Meanwhile, in MEF definitions, a set of control 
-      and management functionalities is provided as an NS independently of data plane resources. Such NS for control 
-      and management of data plane resources is called OCM (Orchestration, Control, and Management) slice. An OCM slice 
-      manages one or more data plane NSs, called resource slices.
+      an NS potentially includes both data plane and control plane resources/functions. Meanwhile, MEF expressly defines that an NS is 
+      composed with a group of control and management planes functionalities, called OCM ("service Orchestration functionalities" and 
+      "infrastructure Control and Management") slice, and data plane resouces, called   
+      resource slice (the detailes is described in <xref target="app-2"/>).
       </t>
 
       
@@ -987,30 +987,56 @@
       can have on management of NSs would vary depending on the selected provision model. 
       </t>
       
-      <section title="Three Provision Models">
+      <section title="Categorization of NS Provision Models">
         <t>
-        The provision models are categorized into three models: 
-        SaaS (Software as a Service), PaaS (Platform as a Service), IaaS (Infrastructure as a Service) like models as below. 
-        <list style="hanging">
-          <t hangText="SaaS-like Model:">
-          In this model, an NS is  provider designs NS templates in advance, and a tenant selects and uses one which fulfills 
-          most its requirement among the templates. The specifications of NSs are abstracted to KPIs as networks and servers and shown 
-          to tenants. In short, detailed parameters of infrastructure network are hidden from tenants. 
-          </t>
-       
-          <t hangText="PaaS-like Model:">
-          In this model, a tenant makes its request, including connected area, path routes, the KPIs, and included service functions, and a NS provider
-          designs an NS template and instantiate an NS based on the request dynamically. The configurable values would vary depending on the policy 
-          of each NS provider. 
-          </t>
-        
-          <t hangText="IaaS-like Model:">
-          In this model, a tenant designs its own NS templates and instantiates NSs by indicating concrete resources to infrastructure operators. In other words, 
-          infrastructure operators provide just their resources, and NSs are coordinated by the tenant.
-          </t>
-        </list>
+        The provision models are categorized into three models: SaaS (Software as a Service) -like Model, PaaS (Platform as a Service) -like Model, 
+        and IaaS (Infrastructure as a Service) -like Model.
         </t>
-        
+
+
+        <section anchor="SaaS-like-model" title="SaaS-like Model"> 
+          <t>
+          In SaaS-like Model, underlay infrastructure is hidden from tenants, and tenants can receive desired communication environment 
+          without deep knowledge about network and servers. An NS tenant decides attribute values of its NS, such as bandwidth or latency, 
+          based on their requirements, and NS providers design and create NSIs which fulfill the values.
+          </t>
+
+          <t>
+          NS tenants need not to grap detailed configurations in underlay networks in this model. However, it may not be possible to provide 
+          desired NS to tenants because of some reasons such as lack of capability on resource control (e.g., NFVI doesn't support ). Moreover, it may cause complexity on 
+          designing NS catalog due to quantities of selected attributes.
+          </t>
+        </section>
+
+        <section anchor="PaaS-like-model" title="PaaS-like Model">
+          <t>
+          In PaaS-like Model, an NS is represented with several components such as nodes and connectivities among them. An NS tenant can design and customize 
+          its desired NS with combining such components. NS providers breakdown the NS designed by the NS tenant to concrete configurations of their infrastructure, 
+          and create/change NSSIs by inputting the configurations. An NS tenant is also able to incorporate its own functions or applications into its NSI by using 
+          computing resources provided from NS providers.
+          </t>
+
+          <t>
+          This model potentially has high custamizability of NS rather than SaaS-like model, but needs NS tenants to have some knowledge about network management. 
+          In terms of designing NS, the tenants provide outline of their NSs, and thus it would make creation of concrete configurations be easier.
+          </t>
+        </section>
+
+        <section anchor="IaaS-like-model" title="IaaS-like Model">
+          <t>
+          In IaaS-like model, an NS is represented with concrete configurations of underlay infrastructure. NS tenants are able to structure or change their desired 
+          NS by controlling infrastructure resources directly.
+          </t>
+
+          <t>
+          This model potentially has high custamizability of NS rather than other models, but needs NS tenants to have deep knowledge about network and server operation. 
+          Also, NS providers need not to recognize NSs on their infrastructure  because NS tenants directly manage their NS. Meanwhile, in terms of security and 
+          prevension of disturbances among NSs, some limitations on expositions of resources to tenants would be needed.
+          </t>
+        </section>
+      </section>
+
+      <section title="Mapping of NS Provision Models and Infrastructure Layering">
         <t>
         An example of mapping of each NS provision model is shown in <xref target="Mapping-NS-Provision-Model"/>.
         </t>
@@ -1074,7 +1100,7 @@
       </section>
 
           
-      <section anchor='configurable-parameters' title="Configurable Parameters/Attributes for NS">
+      <section anchor="configurable-parameters" title="Configurable Parameters/Attributes for NS">
         <t>
         In the NS creating proceedure, configuration parameters would be decided based on requirements 
         which the intended service has. Such service requirements are expressible in the following attribute values.
@@ -1102,6 +1128,7 @@
               <list style="symbols">
                 <t>function type (e.g., security, parental control)</t>
                 <t>throughput</t>
+                <t>packet error rate</t>
                 <t>availability</t>
               </list>
             </t>
@@ -1121,14 +1148,14 @@
       </t>
 
         <section title="Capability in SaaS-like Model">
-          <t>
-          In SaaS-like Model, an NS is presented for a tenant with attributes values 
-          listed in <xref target="configurable-parameters"?>. In other words, an NS tenant never know 
+          <t>        
+          In SaaS-like Model, an NS is represented for a tenant with attributes values 
+          listed in <xref target="configurable-parameters"/>. In other words, an NS tenant never know 
           the concrete configurations of components in underlay infrastructure. 
           </t>
 
           <t>
-          An NS tenant choose value from te range presented by the NS provider in each attribute. The NS 
+          An NS tenant chooses a value from the range presented by the NS provider in each attribute. The NS 
           provider creates or changes a NS by configuraing components in underlay infrastructures based 
           on the decided attribute values.
           </t>
@@ -1142,14 +1169,14 @@
         <section title="Capability in PaaS-like Model">
           <t>
           In PaaS-like model, an NS is represented with NF nodes and their connectivities. An NS tenant can indicate 
-          locations  and functionalities of NF nodes, and decide attribute values of connectivities. An NS provider creates or
-          changes an NSI by configuring underlay nodes and links depending on the indicated information from tenant.
+          functionalities of NF nodes and thier locations. Also, the tenant decides attribute values of connectivities. 
+          An NS provider creates or changes an NSI by configuring underlay nodes and links depending on the indication of the tenant.
           An NS tenant is also able to deploy its own NF as software with provided computing resources.
           </t>
 
           <t>
           In terms of telemetry, an NS tenant can obtain telemetry information of NF nodes and connectivities structuring 
-          an NS in addition to whole of NSI.
+          an NS, in addition to whole of NSI.
           </t>
         </section>
 
@@ -1162,8 +1189,7 @@
           </t>
 
           <t>
-          In terms of telemetry, an NS tenant can obtain telemetry information of nodes and links in addition of whole 
-          of NSI.
+          In terms of telemetry, an NS tenant can obtain telemetry information of nodes and links in addition of whole of NSI.
           </t>
         </section>
 
@@ -1340,6 +1366,97 @@ UE--|RAN |---| TN |---|RAN |---| TN |---|CN  |---| TN |---|CN  |--[APL]
 </figure> 
 
 </section>
-  
+
+    <section anchor="app-2" 
+    		title="NS Structure in MEF"> 
+     
+    <t>
+    In the MEF definitions, an NS is composed with OCM slice which is a group of operation, management, and control functionalities 
+    and resource slice which is a set of data plane resources such as networking or data plane functionalities. An OCM Slice manage 
+    one or more Resource Slices, and it may have a hierarchical structure. The lifecycle of NSs is managed MEF LSO (Life Cycle Orchestrator). 
+    The overview of the structures are shown in the following figures.
+    </t> 
+
+<figure anchor="NS-structure-in-mef" title="Overview of Basic Structure of NS in MEF"> 
+  <artwork align="center"><![CDATA[ 
+
+   . . . . . . . . . . . .
+.      Network Slice      .
+.      ,-----------.      .
+.      | OCM Slice |      .
+.      `-----+-----'      .
+.            |            .
+.            |            .
+.      ,-----+-----.      .
+.      | RSC Slice |      .
+.      `-----------'      .
+  . . . . . . . . . . . . 
+
+*Legends
+ RSC Slice: Resouce Slice
+
+  ]]></artwork> 
+</figure> 
+
+<figure anchor="NS-structures-with-one-ocm-and-two-rsc-slices" title="Example of an NS with one OCM slice and two Resource Slices"> 
+  <artwork align="center"><![CDATA[ 
+
+  . . . . . . . . . . . . .
+.      Network Slice        .
+.      ,-----------.        .
+.      | OCM Slice |        .
+.      `-----+-----'        .
+.           /^\             .
+.          /   \            .
+.         /     \           .
+.  ,-----+-----. \          .
+.  | RSC Slice |  \         .
+.  `-----------'   \        .
+.             ,-----+-----. .
+.             | RSC Slice | .
+.             `-----------' .
+  . . . . . . . . . . . . .
+
+  ]]></artwork> 
+</figure> 
+
+
+<figure anchor="hierarchical-ocm-rcs-slicesf" title="Example of hierarchical Structure of OCM and Resource Slices"> 
+  <artwork align="center"><![CDATA[ 
+
+  . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+.                     Network Slice                       .
+.                                                         .
+.                 ,-----------.                           .
+.                 | OCM Slice |                           .
+.                 `-----+-----'                           .
+.                       |                                 .
+.       +---------------+------------------+              .
+.       |               |                  |              .
+. ,-----+-----.   .-----+-----.      ,-----+-----.        .
+. | OCM Slice |   | RSC Slice |      | OCM Slice |        .
+. `-----+-----'   `-----------'      `-----+-----'        .
+.       |                                 /^\             .
+.       |                                /   \            .
+.       |                               /     \           .
+. ,-----+-----.                 ,------+----.  \          .
+. | RSC Slice |                 | RSC Slice |   \         .
+. `-----------'                 `-----------'    \        .
+.                                           ,-----+-----. .
+.                                           | RSC Slice | .
+.                                           `-----------' .
+  . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+  ]]></artwork> 
+</figure> 
+
+
+
+
+
+
+
+</section>
+
   </back>
 </rfc>
