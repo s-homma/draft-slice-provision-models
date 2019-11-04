@@ -65,7 +65,7 @@
 <?rfc subcompact="no" ?> 
 <!-- keep one blank line between list items --> 
 <!-- end of list of popular I-D processing instructions --> 
-<rfc category="info" docName="draft-homma-slice-provision-models-01">
+<rfc category="info" docName="draft-homma-slice-provision-models-02">
   <!-- ***** FRONT MATTER ***** --> 
 
 
@@ -176,7 +176,7 @@
     </author>
 
 
-    <author fullname="Luis M. Contreras-Murillo" initials="L." surname="Contreras-Murillo">
+    <author fullname="Luis M. Contreras" initials="LM." surname="Contreras">
       <organization>Telefonica I+D</organization>
 
       <address>
@@ -291,9 +291,10 @@
 
     <abstract>
       <t>
-      Network slicing is an approach to provide separate virtual network based on service requirements. It's a 
-      fundamental concept of the 5G, and the architecture and specification is under standardization in several 
-      organizations. However, the definitions and scopes of network slicing vary to some degree from one organization 
+      Network slicing is an approach to provide separate virtual network based on service requirements, and it's a 
+      key feature of the 5G.  3GPP has standardized the specifications for network slicing  in the 5GS, but there are still some 
+      problems for realization of end-to-end network slices. For complementing the lacks or expanding the usability, 
+      several organizations are proceeding standardization. However, the definitions and scopes of network slicing vary to some degree from one organization 
       to another. This document provides classification of provisioning models of network slice for clarifying the differences 
       on the definitions and scopes.
       </t>
@@ -317,11 +318,11 @@
       
       <t>
       This document clarifies provision patterns of network slice, and provides the definitions and scope of network slicing which are 
-      available over several organizations. Furthermore, the deliverables would be help for evaluating applicabilities of existing technologies/solutions 
+      available over several organizations. Furthermore, the deliverables would be help for evaluating applicability of existing technologies/solutions 
       to network slicing.
       </t>
 
-    <section anchor="Roles-NS-Provisioning" title="Differentiated Roles in Network Slice Provisioning">
+    <section anchor="Roles-NS-Provisioning" title="Roles in Network Slice Provisioning">
 
       <t>
       The widespread of system and network virtualization technologies has conducted
@@ -345,6 +346,37 @@
       necessary functions for VNOs to perform the elastic adaptations they require
       to tackle with their dynamic operation environments.
       </t>
+
+      <section title="Definitions in 3GPP on NS Provision Roles">
+        <t>
+        3GPP has defined multiple roles related to 5G networks and network slicing management in 
+        <xref target="TS.28.540-3GPP"/> and they include:
+        <list style="symbols">
+          <t>Communication Service Customer (CSC): Uses communication services, e.g. end user, tenant, vertical</t>
+          <t>Communication Service Provider (CSP): Provides communication services. Designs, builds and operates 
+          its communication services. The CSP provided communication service can be built with or without network slice. </t>
+          <t>Network Operator (NOP): Provides network services. Designs, builds and operates its networks to offer such services.</t>
+          <t>Network Equipment Provider (NEP): Supplies network equipment to network. For sake of simplicity, 
+          VNF Supplier is considered here as a type of Network Equipment Provider. This can be provided also in the f
+          orm of one or more appropriate VNF(s).</t>
+          <t>Virtualization Infrastructure Service Provider (VISP): Provides virtualized infrastructure services. Designs, 
+          builds and operates its virtualization infrastructure(s). Virtualization Infrastructure Service Providers may also 
+          offer their virtualized infrastructure services to other types of customers including to Communication Service 
+          Providers directly, i.e. without going through the Network Operator.</t>
+         <t>Data Centre Service Provider (DCSP): Provides data centre services. Designs, builds and operates its data centres.</t>
+         <t>NFVI Supplier: Supplies network function virtualization infrastructure to its customers.</t>
+         <t>Hardware Supplier: Supplies hardware.</t>
+        </list>
+      </t>
+      
+      <t>
+      In case of Network Slice as a Service (NSaaS), the Communication Service Provider (CSP) role can be refined into Network 
+      Slice Provider (NSP). The Communication Service Customer (CSC) role can be refined into Network Slice Customer (NSC). A 
+      NSC can, in turn, offer its own communication services to its own customers, being thus CSP at the same time.
+      </t>
+    </section>
+
+
     </section>
 
     <section title="High-level Problem Statement">  
@@ -385,8 +417,9 @@
     <section title="Definition of Terms">
       <t>
       This section lists definitions and terms related to network slicing. This document refers terms and view points 
-      on network slicing in some SDOs, such as 3GPP(<xref target="TS.23.501-3GPP"/>, <xref target="TS.28.530-3GPP"/>,  and 
-      <xref target="TS.28.801-3GPP"/>), and NGMN (<xref target="NGMN-5G-White-Paper"/>).  
+      on network slicing in some SDOs, such as 3GPP(<xref target="TS.23.501-3GPP"/>, <xref target="TS.28.530-3GPP"/>,  
+      <xref target="TS.28.540-3GPP"/>, <xref target="TR.28.801-3GPP"/>and 
+      <xref target="TR.28.804-3GPP"/>), and NGMN (<xref target="NGMN-5G-White-Paper"/>).  
       However the scope of this document is not network slicing which is mobile specific but one for general networks, and 
       thus some of definitions in this document may be different from ones of those documents.
       </t>
@@ -401,7 +434,8 @@
       
       <t hangText="Network Slice (NS):">
       An NS is a logical separate network that provides specific network capabilities and characteristics. In 3GPP definitions, 
-      an NS potentially includes both data plane and control plane resources/functions. 
+      an NS potentially includes both data plane and control plane resources/functions. An NS can have multiple network slice subnets 
+      (Radio Access Network/RAN, Transport Network/TN, Core Network/CN, etc.).
 <!--
       Meanwhile, MEF expressly defines that an NS is 
       composed with a group of control and management planes functionalities, called OCM ("service Orchestration functionalities" and 
@@ -418,8 +452,8 @@
       </t>
 
       <t hangText="Network Slice Subnet:">
-      A Network Slice Subnet is a representation of a set of required resources. It is composed and managed as 
-      a group of network elements.
+      A Network Slice Subnet is a representation of a set of required resources. 
+      It is composed and managed as a group of network elements.
       </t>
 
       <t hangText="Network Slice Subnet Instance (NSSI):">
@@ -435,18 +469,18 @@
       TRN-, and CN-NSIs would be required.  
       </t>
 
-      <t hangText="Transport(TRN)-NSSI:"> 
+      <t hangText="Transport Network(TN)-NSSI:"> 
       A set of connections between various network functions (VNF or PNF) with deterministic SLAs.  
       They can be implemented (aka realized) with various technologies (e.g. IP, Optics, FN, Microwave) and various transport  
       (e.g. RSVP, Segment routing, ODU, OCH etc). The overview of NSI composed with TRN-NSSI is shown in <xref target="app-1"/>. 
       </t> 
  
-      <t hangText="RAN-NSSI:"> 
+      <t hangText="Radio Access Network(RAN)-NSSI:"> 
       Regardless of RAN deployment (e.g. distributed-RAN, Centralized-RAN or Cloud-RAN, a RAN-NSSI creates a dedicate and logical  
       resource on RAN for each NSI which are completely. The overview of NSI composed with RAN-NSSI is shown in <xref target="app-1"/>. 
       </t> 
  
-      <t hangText="Core(CN)-NSSI:"> 
+      <t hangText="Core Network(CN)-NSSI:"> 
       Regardless of Core deployment, a CN-NSI creates a dedicate and logical resource on Core network for each NSI which are completely. 
       The overview of NSI composed with CN-NSSI is shown in <xref target="app-1"/>. 
       </t>
@@ -635,6 +669,7 @@
               <t>Segment Routing MPLS</t>
               <t>Segment Routing IPv6</t>
               <t>NSH</t>
+              <t>FlexE</t>
               <t>Other</t>
             </list>
           </t>        
@@ -809,32 +844,33 @@
                     E2E-NSI
       A              A              A
       |              |              |
-
    ____________   ___________   ______________
   /           /  /          /  /             /
  /___________/  /__________/  /_____________/
     NSSI#1         NSSI#2         NSSI#3
       A              A              A
       |              |              |
-
+      
   o---o         [PNF]              /----[VM]
      / `--.     /  `----.         /----[VM]
  o---o-----o...o---------o...o---o----[VM]
+
  NW Rsrc#1     NW Rsrc+PNF      NW+CMP Rsrcs
      A               A              A
      |               |              |
 
- ,--------.     ,--------.    ,-----------.
-/ Access   \   / Core     \  /             \
-| Network  |   | Network  |  |  DC Domain  |
-\ Domain   /   \ Domain   /  \             /
- `--------'     `--------'    `-----------'
+ ,-------.      ,-------.      ,----------.
+/ Access  \    / Core    \    /            \
+| Network |-TN-| Network |-TN-| DC Domain  |
+\ Domain  /    \ Domain  /    \            /
+ `-------'     `--------'      `----------'
      
 *Legends
  NW Rsrc : Network Resource
  CMP Rsrc: Computing Resource
   o   : virtual/physical node structuring NSI
   --  : virtual/physical link structuring NSI
+ -TN-: Transport Network
  [PNF]: Physical Network Function Appliance on NSI
  [VM] : Virtual Machine Instance on NSI
 
@@ -1275,15 +1311,17 @@
         <date month="June" year="2018"/>
         </front>
       </reference>
-      
-      <reference anchor='NGMN-5G-White-Paper'
-       target='https://www.ngmn.org/5g-white-paper/5g-white-paper.html'>
+
+     <reference anchor='TS.28.540-3GPP'  target="http://www.3gpp.org/ftp//Specs/archive/28_series/28.540/28540-g00.zip">
         <front>
-        <title>NGMN 5G White Paper</title>
+        <title>3GPP TS 28.540 (V16.0.0): 5G Netowkr Resource Model (NRM); Stage 1(Release 16)
+        </title>
         <author>
-        <organization>NGMN</organization>
+        <organization>
+        3rd Generation Partnership Project (3GPP)
+        </organization>
         </author>
-        <date month="February" year="2015"/>
+        <date month="June" year="2019"/>
         </front>
       </reference>
 
@@ -1300,9 +1338,9 @@
         </front>
       </reference>
 
-       <reference anchor='TS.28.801-3GPP'  target="http://www.3gpp.org/ftp//Specs/archive/28_series/28.801/28801-f10.zip">
+       <reference anchor='TR.28.801-3GPP'  target="http://www.3gpp.org/ftp//Specs/archive/28_series/28.801/28801-f10.zip">
         <front>
-        <title>3GPP TS 28.801 (V15.1.0): Study on Management and Orchestration of Network Slicing for next generation network (Release 15)
+        <title>3GPP TR 28.801 (V15.1.0): Study on Management and Orchestration of Network Slicing for next generation network (Release 15)
         </title>
         <author>
         <organization>
@@ -1310,6 +1348,30 @@
         </organization>
         </author>
         <date month="June" year="2018"/>
+        </front>
+      </reference>
+
+       <reference anchor='TR.28.804-3GPP'  target="http://www.3gpp.org/ftp//Specs/archive/28_series/28.801/28801-f10.zip">
+        <front>
+        <title>3GPP TR 28.804 (V16.1.0): Study on tenancy concept in 5G networks and network slicing management (Release 16)
+        </title>
+        <author>
+        <organization>
+        3rd Generation Partnership Project (3GPP)
+        </organization>
+        </author>
+        <date month="October" year="2019"/>
+        </front>
+      </reference>
+
+      <reference anchor='NGMN-5G-White-Paper'
+       target='https://www.ngmn.org/5g-white-paper/5g-white-paper.html'>
+        <front>
+        <title>NGMN 5G White Paper</title>
+        <author>
+        <organization>NGMN</organization>
+        </author>
+        <date month="February" year="2015"/>
         </front>
       </reference>
 
@@ -1340,10 +1402,10 @@
   <==================          E2E-NSI         =======================> 
                :                 :                  :           :  : 
                :                 :                  :           :  : 
-  <======  RAN-NSSI  ======><=TRN-NSSI=><====== CN-NSSI  ======>VL[APL] 
+  <======  RAN-NSSI  ======><= TN-NSSI=><====== CN-NSSI  ======>VL[APL] 
       :        :        :        :         :       :        :   :  : 
       :        :        :        :         :       :        :   :  : 
-  RW[NFs ]<=TRN-NSSI=>[NFs ]<=TRN-NSSI=>[NFs ]<=TRN-NSSI=>[NFs ]VL[APL] 
+  RW[NFs ]<= TN-NSSI=>[NFs ]<= TN-NSSI=>[NFs ]<= TN-NSSI=>[NFs ]VL[APL] 
    
    . . . . . . . . . . . . ..          . . . . . . . . . . . . ..  
    .,----.   ,----.   ,----..  ,----.  .,----.   ,----.   ,----..   
